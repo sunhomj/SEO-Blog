@@ -6,6 +6,8 @@ exports.signup = (req, res) => {
   //   res.json({
   //     user: { name, email, password }
   //   });
+
+  // handle exist user id by matching email
   User.findOne({ email: req.body.email }).exec((err, user) => {
     if (user) {
       return res.status(400).json({
@@ -13,6 +15,7 @@ exports.signup = (req, res) => {
       });
     }
 
+    // create username, profile=clientaddress ,
     const { name, email, password } = req.body;
     let username = shortId.generate();
     let profile = `${process.env.CLIENT_URL}/profile/${username}`;
@@ -23,12 +26,12 @@ exports.signup = (req, res) => {
           error: err
         });
       }
-      res.json({
-        user: success
-      });
       //   res.json({
-      //     message: "Signup Success! Please Signin."
+      //     user: success
       //   });
+      res.json({
+        message: "Signup Success! Please Signin."
+      });
     });
   });
 };
