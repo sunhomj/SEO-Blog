@@ -1,5 +1,7 @@
 const User = require("../models/user");
 const shortId = require("shortid");
+const jwt = require("jsonwebtoken");
+const expressJwt = require("express-jwt");
 
 exports.signup = (req, res) => {
   //   const { name, email, password } = req.body;
@@ -15,7 +17,7 @@ exports.signup = (req, res) => {
       });
     }
 
-    // create username, profile=clientaddress ,
+    // create username, profile=clientaddress and save to DB
     const { name, email, password } = req.body;
     let username = shortId.generate();
     let profile = `${process.env.CLIENT_URL}/profile/${username}`;
@@ -35,3 +37,40 @@ exports.signup = (req, res) => {
     });
   });
 };
+
+exports.signin = (req, res) => {
+  const { email, password } = req.body;
+  // check if user exist
+  User.findOne({ email }).exec((err, user) => {
+    if (err || !user) {
+      return res.status(400).json({
+        error: " User with that email does not exist. Please sign up."
+      });
+    }
+    // authenticate
+    if (!user.authenticate(password)) {
+      return res.status(400).json({
+        error: " Email and password do not match."
+      });
+    }
+    // generate a JWT and send to client. create process.env.JWT_SECRET random key in .env
+    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
+    res.cookie("token", token, { expiresIn: "1d" });
+    const { _id, username, name, email, rold } = user;
+    return res.json({
+      token,
+      user: { _id, username, name, email, rold }
+    });
+  });
+};
+
+exports.signout = (req, res) => {
+  res.clearCookie("token");
+  res.json({
+    message: "Signout success"
+  });
+};
+// check incoming token secret and compare to JWT_SECRET then return true or false
+exports.requireSignin = expressJwt({
+  secret: process.env.JWT_SECRET
+});
