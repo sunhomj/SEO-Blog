@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -160,7 +160,7 @@ const Header = props => {
     onClick: toggle,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 31
     },
     __self: undefined
   }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Collapse"], {
@@ -168,7 +168,7 @@ const Header = props => {
     navbar: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 32
     },
     __self: undefined
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Nav"], {
@@ -176,47 +176,47 @@ const Header = props => {
     navbar: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 33
     },
     __self: undefined
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavItem"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 34
     },
     __self: undefined
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
     href: "/signin",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 35
     },
     __self: undefined
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavLink"], {
     className: _Header_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.mbutton,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 36
     },
     __self: undefined
   }, "Sign In"))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavItem"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 39
     },
     __self: undefined
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
     href: "/signup",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 40
     },
     __self: undefined
   }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavLink"], {
     className: _Header_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.mbutton,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 41
     },
     __self: undefined
   }, "Sign Up")))))));
@@ -300,14 +300,55 @@ var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\front
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
 const SignupComponent = () => {
+  const {
+    0: values,
+    1: setValues
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    name: "sun",
+    email: "sun@gmail.com",
+    password: "sunholee",
+    error: "",
+    loading: false,
+    message: "",
+    showForm: true
+  });
+  const {
+    name,
+    email,
+    password,
+    error,
+    loading,
+    message,
+    showForm
+  } = values;
+
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("handle submit");
+    console.table({
+      name,
+      email,
+      password,
+      error,
+      loading,
+      message,
+      showForm
+    });
   };
 
-  const handleChange = e => {
-    console.log(e.target.value);
+  const handleChange = inputValue => e => {
+    setValues(_objectSpread({}, values, {
+      error: false,
+      [inputValue]: e.target.value
+    }));
   };
 
   const signupForm = () => {
@@ -315,33 +356,78 @@ const SignupComponent = () => {
       onSubmit: handleSubmit,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 13
+        lineNumber: 27
       },
       __self: undefined
     }, __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 14
+        lineNumber: 28
       },
       __self: undefined
     }, __jsx("input", {
-      onChange: handleChange,
+      onChange: handleChange("name"),
       type: "text",
       className: "form-control",
-      placeholder: "Type your name",
+      placeholder: "Type your Name",
+      value: name,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 15
+        lineNumber: 29
       },
       __self: undefined
-    })));
+    })), __jsx("div", {
+      className: "form-group",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 37
+      },
+      __self: undefined
+    }, __jsx("input", {
+      onChange: handleChange("email"),
+      type: "email",
+      className: "form-control",
+      placeholder: "Email Address",
+      value: email,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 38
+      },
+      __self: undefined
+    })), __jsx("div", {
+      className: "form-group",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 46
+      },
+      __self: undefined
+    }, __jsx("input", {
+      onChange: handleChange("password"),
+      type: "password",
+      className: "form-control",
+      placeholder: "Password",
+      value: password,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 47
+      },
+      __self: undefined
+    })), __jsx("button", {
+      type: "submit",
+      className: "btn btn-primary",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 55
+      },
+      __self: undefined
+    }, "Sign Up"));
   };
 
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 62
     },
     __self: undefined
   }, signupForm());
@@ -2092,7 +2178,7 @@ const Signup = () => {
 
 /***/ }),
 
-/***/ 5:
+/***/ 3:
 /*!*******************************!*\
   !*** multi ./pages/signup.js ***!
   \*******************************/
