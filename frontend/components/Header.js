@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { APP_NAME } from "../config";
+import Link from "next/link";
+import styles from "./Header.module.css";
 import {
   Collapse,
   Navbar,
@@ -23,18 +25,30 @@ const Header = props => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">{APP_NAME}</NavbarBrand>
+        <Link href="/">
+          <NavLink className={styles.mbutton}>{APP_NAME}</NavLink>
+        </Link>
+        {/* <NavbarBrand href="/"></NavbarBrand> */}
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <Link href="/signin">
+                <NavLink className={styles.mbutton}>Sign In</NavLink>
+              </Link>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+              <Link href="/signup">
+                <NavLink className={styles.mbutton}>Sign Up</NavLink>
+              </Link>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              {/* <DropdownToggle nav caret>
+
+            {/* <NavItem>
+              <NavLink href="https://github.com/sunhomj">GitHub</NavLink>
+            </NavItem> */}
+
+            {/* <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
                 Options
               </DropdownToggle>
               <DropdownMenu right>
@@ -42,10 +56,11 @@ const Header = props => {
                 <DropdownItem>Option 2</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>Reset</DropdownItem>
-              </DropdownMenu> */}
-            </UncontrolledDropdown>
+              </DropdownMenu>
+            </UncontrolledDropdown> */}
           </Nav>
-          <NavbarText>Simple Text</NavbarText>
+
+          {/* <NavbarText>Simple Text</NavbarText> */}
         </Collapse>
       </Navbar>
     </div>

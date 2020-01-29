@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -105,10 +105,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../config */ "./config.js");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! reactstrap */ "reactstrap");
-/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Header_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Header.module.css */ "./components/Header.module.css");
+/* harmony import */ var _Header_module_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Header_module_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_4__);
 var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\Header.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
 
 
 
@@ -124,92 +130,113 @@ const Header = props => {
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 26
     },
     __self: undefined
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Navbar"], {
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Navbar"], {
     color: "light",
     light: true,
     expand: "md",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25
-    },
-    __self: undefined
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavbarBrand"], {
-    href: "/",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 26
-    },
-    __self: undefined
-  }, _config__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"]), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavbarToggler"], {
-    onClick: toggle,
-    __source: {
-      fileName: _jsxFileName,
       lineNumber: 27
     },
     __self: undefined
-  }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Collapse"], {
-    isOpen: isOpen,
-    navbar: true,
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "/",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 28
     },
     __self: undefined
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["Nav"], {
-    className: "mr-auto",
-    navbar: true,
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavLink"], {
+    className: _Header_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.mbutton,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 29
     },
     __self: undefined
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
+  }, _config__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"])), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavbarToggler"], {
+    onClick: toggle,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 32
     },
     __self: undefined
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
-    href: "/components/",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 31
-    },
-    __self: undefined
-  }, "Components")), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavItem"], {
+  }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Collapse"], {
+    isOpen: isOpen,
+    navbar: true,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 33
     },
     __self: undefined
-  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
-    href: "https://github.com/reactstrap/reactstrap",
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["Nav"], {
+    className: "ml-auto",
+    navbar: true,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 34
     },
     __self: undefined
-  }, "GitHub")), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["UncontrolledDropdown"], {
-    nav: true,
-    inNavbar: true,
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavItem"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35
+    },
+    __self: undefined
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "/signin",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 36
     },
     __self: undefined
-  })), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_2__["NavbarText"], {
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavLink"], {
+    className: _Header_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.mbutton,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 37
     },
     __self: undefined
-  }, "Simple Text"))));
+  }, "Sign In"))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavItem"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40
+    },
+    __self: undefined
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "/signup",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41
+    },
+    __self: undefined
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_4__["NavLink"], {
+    className: _Header_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.mbutton,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42
+    },
+    __self: undefined
+  }, "Sign Up")))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);
+
+/***/ }),
+
+/***/ "./components/Header.module.css":
+/*!**************************************!*\
+  !*** ./components/Header.module.css ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// Exports
+module.exports = {
+	"mbutton": "Header_mbutton__1MBmJ"
+};
 
 /***/ }),
 
@@ -248,13 +275,79 @@ const Layout = ({
   }), children, __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 9
     },
     __self: undefined
   }, "footer"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Layout);
+
+/***/ }),
+
+/***/ "./components/auth/SignupComponent.js":
+/*!********************************************!*\
+  !*** ./components/auth/SignupComponent.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\auth\\SignupComponent.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+const SignupComponent = () => {
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log("handle submit");
+  };
+
+  const handleChange = e => {
+    console.log(e.target.value);
+  };
+
+  const signupForm = () => {
+    return __jsx("form", {
+      onSubmit: handleSubmit,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 13
+      },
+      __self: undefined
+    }, __jsx("div", {
+      className: "form-group",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 14
+      },
+      __self: undefined
+    }, __jsx("input", {
+      onChange: handleChange,
+      type: "text",
+      className: "form-control",
+      placeholder: "Type your name",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 15
+      },
+      __self: undefined
+    })));
+  };
+
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26
+    },
+    __self: undefined
+  }, signupForm());
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SignupComponent);
 
 /***/ }),
 
@@ -1965,9 +2058,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_auth_SignupComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/auth/SignupComponent */ "./components/auth/SignupComponent.js");
 var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\pages\\signup.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -1975,36 +2070,29 @@ const Signup = () => {
   return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 5
+      lineNumber: 6
     },
     __self: undefined
   }, __jsx("h2", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6
-    },
-    __self: undefined
-  }, "Signup page"), __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    href: "/",
-    __source: {
-      fileName: _jsxFileName,
       lineNumber: 7
     },
     __self: undefined
-  }, __jsx("a", {
+  }, "Signup page"), __jsx(_components_auth_SignupComponent__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 8
     },
     __self: undefined
-  }, "Home")));
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Signup);
 
 /***/ }),
 
-/***/ 3:
+/***/ 5:
 /*!*******************************!*\
   !*** multi ./pages/signup.js ***!
   \*******************************/
