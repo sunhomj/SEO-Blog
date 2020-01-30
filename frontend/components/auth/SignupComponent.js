@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { signup } from "../../actions/auth";
+
 const SignupComponent = () => {
   const [values, setValues] = useState({
     name: "sun",
