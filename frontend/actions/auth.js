@@ -1,6 +1,6 @@
 import fetch from "isomorphic-fetch";
 import { API } from "../config";
-import Signin from "../pages/signin";
+import cookie from "js-cookie";
 
 export const signup = user => {
   return fetch(`${API}/signup`, {
@@ -34,4 +34,68 @@ export const signin = user => {
     .catch(err => {
       console.log(err);
     });
+};
+
+// set cookie
+
+export const setCookie = (key, value) => {
+  // client side
+  if (process.browser) {
+    cookie.set(key, value, {
+      expires: 1
+    });
+  }
+};
+
+export const removeCookie = key => {
+  // client side
+  if (process.browser) {
+    cookie.remove(key, {
+      expires: 1
+    });
+  }
+};
+
+// get cookie
+
+export const getCookie = key => {
+  // client side
+  if (process.browser) {
+    cookie.get(key);
+  }
+};
+
+// localstorage
+
+export const setLocalStorage = (key, value) => {
+  if (process.browser) {
+    localStorage.setItem(key, JSON.stringify(value));
+  }
+};
+
+export const removeLocalStorage = key => {
+  if (process.browser) {
+    localStorage.removeItem(key);
+  }
+};
+
+//authenticate user by passing data to cookie and localstorage
+
+export const authenticate = (data, next) => {
+  setCookie("token", data.token);
+  setLocalStorage("user", data.user);
+  next();
+};
+
+export const isAuth = () => {
+  if (process.browser) {
+    const cookieChecked = getCookie("token");
+    if (cookieChecked) {
+      if (localStorage.getItem("user")) {
+        return JSON.parse(localStorage.getItem("user"));
+      } else {
+        return false;
+      }
+    }
+  }
 };

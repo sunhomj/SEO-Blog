@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -97,17 +97,25 @@ module.exports =
 /*!*************************!*\
   !*** ./actions/auth.js ***!
   \*************************/
-/*! exports provided: signup, signin */
+/*! exports provided: signup, signin, setCookie, removeCookie, getCookie, setLocalStorage, removeLocalStorage, authenticate, isAuth */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signin", function() { return signin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setCookie", function() { return setCookie; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCookie", function() { return removeCookie; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCookie", function() { return getCookie; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setLocalStorage", function() { return setLocalStorage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeLocalStorage", function() { return removeLocalStorage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "authenticate", function() { return authenticate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isAuth", function() { return isAuth; });
 /* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! isomorphic-fetch */ "isomorphic-fetch");
 /* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../config */ "./config.js");
-/* harmony import */ var _pages_signin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../pages/signin */ "./pages/signin.js");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! js-cookie */ "js-cookie");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
@@ -138,6 +146,36 @@ const signin = user => {
   }).catch(err => {
     console.log(err);
   });
+}; // set cookie
+
+const setCookie = (key, value) => {
+  // client side
+  if (false) {}
+};
+const removeCookie = key => {
+  // client side
+  if (false) {}
+}; // get cookie
+
+const getCookie = key => {
+  // client side
+  if (false) {}
+}; // localstorage
+
+const setLocalStorage = (key, value) => {
+  if (false) {}
+};
+const removeLocalStorage = key => {
+  if (false) {}
+}; //authenticate user by passing data to cookie and localstorage
+
+const authenticate = (data, next) => {
+  setCookie("token", data.token);
+  setLocalStorage("user", data.user);
+  next();
+};
+const isAuth = () => {
+  if (false) {}
 };
 
 /***/ }),
@@ -403,8 +441,9 @@ const SigninComponent = () => {
         // save user token to cookie
         // save user info to localstorage
         //authenticate user
-        // redirect to another page after signin
-        next_router__WEBPACK_IMPORTED_MODULE_2___default.a.push(`/`);
+        Object(_actions_auth__WEBPACK_IMPORTED_MODULE_1__["authenticate"])(data, () => {
+          next_router__WEBPACK_IMPORTED_MODULE_2___default.a.push(`/`);
+        });
       }
     });
   };
@@ -420,7 +459,7 @@ const SigninComponent = () => {
     className: "alert alert-info",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39
+      lineNumber: 40
     },
     __self: undefined
   }, "Loading ...") : "";
@@ -429,7 +468,7 @@ const SigninComponent = () => {
     className: "alert alert-danger",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 41
     },
     __self: undefined
   }, error) : "";
@@ -438,7 +477,7 @@ const SigninComponent = () => {
     className: "alert alert-info",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 42
     },
     __self: undefined
   }, message) : "";
@@ -448,14 +487,14 @@ const SigninComponent = () => {
       onSubmit: handleSubmit,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 45
+        lineNumber: 46
       },
       __self: undefined
     }, __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 46
+        lineNumber: 47
       },
       __self: undefined
     }, __jsx("input", {
@@ -466,14 +505,14 @@ const SigninComponent = () => {
       value: email,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 47
+        lineNumber: 48
       },
       __self: undefined
     })), __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 55
+        lineNumber: 56
       },
       __self: undefined
     }, __jsx("input", {
@@ -484,7 +523,7 @@ const SigninComponent = () => {
       value: password,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 56
+        lineNumber: 57
       },
       __self: undefined
     })), __jsx("button", {
@@ -492,7 +531,7 @@ const SigninComponent = () => {
       className: "btn btn-primary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 64
+        lineNumber: 65
       },
       __self: undefined
     }, "Sign In"));
@@ -501,7 +540,7 @@ const SigninComponent = () => {
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72
+      lineNumber: 73
     },
     __self: undefined
   }, showError(), showLoading(), showMessage(), showForm && signinForm());
@@ -2267,7 +2306,7 @@ const Signin = () => {
 
 /***/ }),
 
-/***/ 5:
+/***/ 4:
 /*!*******************************!*\
   !*** multi ./pages/signin.js ***!
   \*******************************/
@@ -2342,6 +2381,17 @@ module.exports = require("core-js/library/fn/weak-map");
 /***/ (function(module, exports) {
 
 module.exports = require("isomorphic-fetch");
+
+/***/ }),
+
+/***/ "js-cookie":
+/*!****************************!*\
+  !*** external "js-cookie" ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("js-cookie");
 
 /***/ }),
 
