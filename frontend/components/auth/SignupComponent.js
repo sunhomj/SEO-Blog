@@ -22,9 +22,9 @@ const SignupComponent = () => {
 
     signup(user).then(data => {
       if (data.error) {
-        console.log(data.error);
         setValues({ ...values, error: data.error, loading: false });
       } else {
+        console.log(data);
         setValues({
           ...values,
           name: "",
@@ -32,7 +32,7 @@ const SignupComponent = () => {
           password: "",
           error: "",
           loading: false,
-          message: data.mesage,
+          message: data.message,
           showForm: false
         });
       }
@@ -46,6 +46,10 @@ const SignupComponent = () => {
   const handleChange = inputValue => e => {
     setValues({ ...values, error: false, [inputValue]: e.target.value });
   };
+
+  const showLoading = () => (loading ? <div className="alert alert-info">Loading ...</div> : "");
+  const showError = () => (error ? <div className="alert alert-danger">{error}</div> : "");
+  const showMessage = () => (message ? <div className="alert alert-info">{message}</div> : "");
 
   const signupForm = () => {
     return (
@@ -84,7 +88,14 @@ const SignupComponent = () => {
     );
   };
 
-  return <React.Fragment>{signupForm()}</React.Fragment>;
+  return (
+    <React.Fragment>
+      {showError()}
+      {showLoading()}
+      {showMessage()}
+      {showForm && signupForm()}
+    </React.Fragment>
+  );
 };
 
 export default SignupComponent;

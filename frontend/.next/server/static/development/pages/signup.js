@@ -379,19 +379,19 @@ const SignupComponent = () => {
     };
     Object(_actions_auth__WEBPACK_IMPORTED_MODULE_1__["signup"])(user).then(data => {
       if (data.error) {
-        console.log(data.error);
         setValues(_objectSpread({}, values, {
           error: data.error,
           loading: false
         }));
       } else {
+        console.log(data);
         setValues(_objectSpread({}, values, {
           name: "",
           email: "",
           password: "",
           error: "",
           loading: false,
-          message: data.mesage,
+          message: data.message,
           showForm: false
         }));
       } // .catch(err => {
@@ -409,19 +409,46 @@ const SignupComponent = () => {
     }));
   };
 
+  const showLoading = () => loading ? __jsx("div", {
+    className: "alert alert-info",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 50
+    },
+    __self: undefined
+  }, "Loading ...") : "";
+
+  const showError = () => error ? __jsx("div", {
+    className: "alert alert-danger",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 51
+    },
+    __self: undefined
+  }, error) : "";
+
+  const showMessage = () => message ? __jsx("div", {
+    className: "alert alert-info",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 52
+    },
+    __self: undefined
+  }, message) : "";
+
   const signupForm = () => {
     return __jsx("form", {
       onSubmit: handleSubmit,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 52
+        lineNumber: 56
       },
       __self: undefined
     }, __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 53
+        lineNumber: 57
       },
       __self: undefined
     }, __jsx("input", {
@@ -432,14 +459,14 @@ const SignupComponent = () => {
       value: name,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 54
+        lineNumber: 58
       },
       __self: undefined
     })), __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 62
+        lineNumber: 66
       },
       __self: undefined
     }, __jsx("input", {
@@ -450,14 +477,14 @@ const SignupComponent = () => {
       value: email,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 63
+        lineNumber: 67
       },
       __self: undefined
     })), __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 71
+        lineNumber: 75
       },
       __self: undefined
     }, __jsx("input", {
@@ -468,7 +495,7 @@ const SignupComponent = () => {
       value: password,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 72
+        lineNumber: 76
       },
       __self: undefined
     })), __jsx("button", {
@@ -476,7 +503,7 @@ const SignupComponent = () => {
       className: "btn btn-primary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 80
+        lineNumber: 84
       },
       __self: undefined
     }, "Sign Up"));
@@ -485,10 +512,10 @@ const SignupComponent = () => {
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87
+      lineNumber: 92
     },
     __self: undefined
-  }, signupForm());
+  }, showError(), showLoading(), showMessage(), showForm && signupForm());
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SignupComponent);
@@ -2218,18 +2245,33 @@ const Signup = () => {
     },
     __self: undefined
   }, __jsx("h2", {
+    className: "text-center pt-4 pb-4",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 7
     },
     __self: undefined
-  }, "Signup page"), __jsx(_components_auth_SignupComponent__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, "Signup"), __jsx("div", {
+    className: "row",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 8
     },
     __self: undefined
-  }));
+  }, __jsx("div", {
+    className: "col-md-6 offset-md-3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9
+    },
+    __self: undefined
+  }, __jsx(_components_auth_SignupComponent__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10
+    },
+    __self: undefined
+  }))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Signup);
