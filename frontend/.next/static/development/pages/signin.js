@@ -484,7 +484,11 @@ var SigninComponent = function SigninComponent() {
         // save user info to localstorage
         //authenticate user
         Object(_actions_auth__WEBPACK_IMPORTED_MODULE_8__["authenticate"])(data, function () {
-          next_router__WEBPACK_IMPORTED_MODULE_9___default.a.push("/");
+          if (Object(_actions_auth__WEBPACK_IMPORTED_MODULE_8__["isAuth"])() && Object(_actions_auth__WEBPACK_IMPORTED_MODULE_8__["isAuth"])().role === 1) {
+            next_router__WEBPACK_IMPORTED_MODULE_9___default.a.push("/admin");
+          } else {
+            next_router__WEBPACK_IMPORTED_MODULE_9___default.a.push("/user");
+          }
         });
       }
     });
@@ -503,7 +507,7 @@ var SigninComponent = function SigninComponent() {
       className: "alert alert-info",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 43
+        lineNumber: 47
       },
       __self: this
     }, "Loading ...") : "";
@@ -514,7 +518,7 @@ var SigninComponent = function SigninComponent() {
       className: "alert alert-danger",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 44
+        lineNumber: 48
       },
       __self: this
     }, error) : "";
@@ -525,7 +529,7 @@ var SigninComponent = function SigninComponent() {
       className: "alert alert-info",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 45
+        lineNumber: 49
       },
       __self: this
     }, message) : "";
@@ -536,14 +540,14 @@ var SigninComponent = function SigninComponent() {
       onSubmit: handleSubmit,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 49
+        lineNumber: 53
       },
       __self: this
     }, __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 50
+        lineNumber: 54
       },
       __self: this
     }, __jsx("input", {
@@ -554,14 +558,14 @@ var SigninComponent = function SigninComponent() {
       value: email,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 51
+        lineNumber: 55
       },
       __self: this
     })), __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 59
+        lineNumber: 63
       },
       __self: this
     }, __jsx("input", {
@@ -572,7 +576,7 @@ var SigninComponent = function SigninComponent() {
       value: password,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 60
+        lineNumber: 64
       },
       __self: this
     })), __jsx("button", {
@@ -580,7 +584,7 @@ var SigninComponent = function SigninComponent() {
       className: "btn btn-primary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 68
+        lineNumber: 72
       },
       __self: this
     }, "Sign In"));
@@ -589,7 +593,7 @@ var SigninComponent = function SigninComponent() {
   return __jsx(react__WEBPACK_IMPORTED_MODULE_7___default.a.Fragment, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76
+      lineNumber: 80
     },
     __self: this
   }, showError(), showLoading(), showMessage(), showForm && signinForm());
