@@ -70,7 +70,43 @@ exports.signout = (req, res) => {
     message: "Signout success"
   });
 };
+
 // check incoming token secret and compare to JWT_SECRET then return true or false
 exports.requireSignin = expressJwt({
   secret: process.env.JWT_SECRET
 });
+
+// user middleware
+
+exports.authMiddleware = (req, res, next) => {
+  const authUserId = req.user._id;
+  User.findById({ _id: authUserId }).exec((err, user) => {
+    if (err || !user) {
+      return res.status(400).json({
+        err: "User not found"
+      });
+    }
+    req.profile = user;
+    next();
+  });
+};
+
+exports.adminMiddleware = (req, res, next) => {
+  const adminhUserId = req.user._id;
+  User.findById({ _id: adminhUserId }).exec((err, user) => {
+    if (err || !user) {
+      return res.status(400).json({
+        err: "Admin not found"
+      });
+    }
+
+    if (user.role !== 1) {
+      return res.status(400).json({
+        err: "Admin resource. Access denied"
+      });
+    }
+
+    req.profile = user;
+    next();
+  });
+};
