@@ -1,6 +1,8 @@
 import Layout from "../components/Layout";
 import Link from "next/link";
 import SigninComponent from "../components/auth/SigninComponent";
+
+import Router from "next/router";
 const Signin = () => {
   return (
     <Layout>
