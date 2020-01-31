@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -372,9 +372,9 @@ const Layout = ({
 
 /***/ }),
 
-/***/ "./components/auth/SigninComponent.js":
+/***/ "./components/auth/SignupComponent.js":
 /*!********************************************!*\
-  !*** ./components/auth/SigninComponent.js ***!
+  !*** ./components/auth/SignupComponent.js ***!
   \********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -384,9 +384,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _actions_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/auth */ "./actions/auth.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/router */ "next/router");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\auth\\SigninComponent.js";
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\auth\\SignupComponent.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -399,12 +397,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
-const SigninComponent = () => {
+const SignupComponent = () => {
   const {
     0: values,
     1: setValues
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    name: "sun",
     email: "sun@gmail.com",
     password: "sunholee",
     error: "",
@@ -413,6 +411,7 @@ const SigninComponent = () => {
     showForm: true
   });
   const {
+    name,
     email,
     password,
     error,
@@ -422,29 +421,39 @@ const SigninComponent = () => {
   } = values;
 
   const handleSubmit = e => {
-    e.preventDefault();
+    e.preventDefault(); // console.table({ name, email, password, error, loading, message, showForm });
+
     setValues(_objectSpread({}, values, {
       loading: true,
       error: false
     }));
     const user = {
+      name,
       email,
       password
     };
-    Object(_actions_auth__WEBPACK_IMPORTED_MODULE_1__["signin"])(user).then(data => {
+    Object(_actions_auth__WEBPACK_IMPORTED_MODULE_1__["signup"])(user).then(data => {
       if (data.error) {
         setValues(_objectSpread({}, values, {
           error: data.error,
           loading: false
         }));
       } else {
-        // save user token to cookie
-        // save user info to localstorage
-        //authenticate user
-        Object(_actions_auth__WEBPACK_IMPORTED_MODULE_1__["authenticate"])(data, () => {
-          next_router__WEBPACK_IMPORTED_MODULE_2___default.a.push(`/`);
-        });
-      }
+        console.log(data);
+        setValues(_objectSpread({}, values, {
+          name: "",
+          email: "",
+          password: "",
+          error: "",
+          loading: false,
+          message: data.message,
+          showForm: false
+        }));
+      } // .catch(err => {
+      //   setValues({ ...values, error: data.error, loading: false });
+      //   console.log(err);
+      // });
+
     });
   };
 
@@ -459,7 +468,7 @@ const SigninComponent = () => {
     className: "alert alert-info",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 50
     },
     __self: undefined
   }, "Loading ...") : "";
@@ -468,7 +477,7 @@ const SigninComponent = () => {
     className: "alert alert-danger",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 51
     },
     __self: undefined
   }, error) : "";
@@ -477,24 +486,42 @@ const SigninComponent = () => {
     className: "alert alert-info",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 52
     },
     __self: undefined
   }, message) : "";
 
-  const signinForm = () => {
+  const signupForm = () => {
     return __jsx("form", {
       onSubmit: handleSubmit,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 46
+        lineNumber: 56
       },
       __self: undefined
     }, __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 47
+        lineNumber: 57
+      },
+      __self: undefined
+    }, __jsx("input", {
+      onChange: handleChange("name"),
+      type: "text",
+      className: "form-control",
+      placeholder: "Type your Name",
+      value: name,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 58
+      },
+      __self: undefined
+    })), __jsx("div", {
+      className: "form-group",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 66
       },
       __self: undefined
     }, __jsx("input", {
@@ -505,14 +532,14 @@ const SigninComponent = () => {
       value: email,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 48
+        lineNumber: 67
       },
       __self: undefined
     })), __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 56
+        lineNumber: 75
       },
       __self: undefined
     }, __jsx("input", {
@@ -523,7 +550,7 @@ const SigninComponent = () => {
       value: password,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 57
+        lineNumber: 76
       },
       __self: undefined
     })), __jsx("button", {
@@ -531,22 +558,22 @@ const SigninComponent = () => {
       className: "btn btn-primary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 65
+        lineNumber: 84
       },
       __self: undefined
-    }, "Sign In"));
+    }, "Sign Up"));
   };
 
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73
+      lineNumber: 92
     },
     __self: undefined
-  }, showError(), showLoading(), showMessage(), showForm && signinForm());
+  }, showError(), showLoading(), showMessage(), showForm && signupForm());
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (SigninComponent);
+/* harmony default export */ __webpack_exports__["default"] = (SignupComponent);
 
 /***/ }),
 
@@ -2243,9 +2270,9 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 /***/ }),
 
-/***/ "./pages/signin.js":
+/***/ "./pages/signup.js":
 /*!*************************!*\
-  !*** ./pages/signin.js ***!
+  !*** ./pages/signup.js ***!
   \*************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2257,15 +2284,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_auth_SigninComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/auth/SigninComponent */ "./components/auth/SigninComponent.js");
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\pages\\signin.js";
+/* harmony import */ var _components_auth_SignupComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/auth/SignupComponent */ "./components/auth/SignupComponent.js");
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\pages\\signup.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
 
-const Signin = () => {
+const Signup = () => {
   return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __source: {
       fileName: _jsxFileName,
@@ -2276,44 +2303,44 @@ const Signin = () => {
     className: "text-center pt-4 pb-4",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 7
     },
     __self: undefined
-  }, "Signin"), __jsx("div", {
+  }, "Signup"), __jsx("div", {
     className: "row",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12
+      lineNumber: 8
     },
     __self: undefined
   }, __jsx("div", {
     className: "col-md-6 offset-md-3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 9
     },
     __self: undefined
-  }, __jsx(_components_auth_SigninComponent__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, __jsx(_components_auth_SignupComponent__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 10
     },
     __self: undefined
   }))));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Signin);
+/* harmony default export */ __webpack_exports__["default"] = (Signup);
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /*!*******************************!*\
-  !*** multi ./pages/signin.js ***!
+  !*** multi ./pages/signup.js ***!
   \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Administrator\Documents\GitHub\SEO-Blog\frontend\pages\signin.js */"./pages/signin.js");
+module.exports = __webpack_require__(/*! C:\Users\Administrator\Documents\GitHub\SEO-Blog\frontend\pages\signup.js */"./pages/signup.js");
 
 
 /***/ }),
@@ -2406,17 +2433,6 @@ module.exports = require("next/config");
 
 /***/ }),
 
-/***/ "next/router":
-/*!******************************!*\
-  !*** external "next/router" ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("next/router");
-
-/***/ }),
-
 /***/ "prop-types":
 /*!*****************************!*\
   !*** external "prop-types" ***!
@@ -2484,4 +2500,4 @@ module.exports = require("url");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=signin.js.map
+//# sourceMappingURL=signup.js.map

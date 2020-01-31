@@ -36,6 +36,17 @@ export const signin = user => {
     });
 };
 
+export const signin = next => {
+  removeCookie("token");
+  removeLocalStorage("user");
+  next();
+  return fetch(`(API)/signout`, {
+    method: "GET"
+  }).then(response => {
+    console.log("Signout Success!");
+  });
+};
+
 // set cookie
 
 export const setCookie = (key, value) => {
