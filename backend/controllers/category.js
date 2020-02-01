@@ -17,3 +17,51 @@ exports.create = (req, res) => {
     res.json(data);
   });
 };
+
+exports.list = (req, res) => {
+  Category.find({}).exec((err, data) => {
+    if (err) {
+      return res.status(400).json({
+        error: errorHandler(err)
+      });
+    }
+    res.json(data);
+  });
+};
+
+exports.read = (req, res) => {
+  console.log(req);
+  const slug = req.params.slug.toLowerCase();
+
+  Category.find({ slug }).exec((err, category) => {
+    if (err) {
+      return res.status(400).json({
+        error: errorHandler(err)
+      });
+    }
+    res.json(category);
+  });
+};
+
+exports.remove = (req, res) => {
+  const slug = req.params.slug.toLowerCase();
+
+  Category.findOneAndRemove({ slug }).exec((err, data) => {
+    if (err) {
+      return res.status(400).json({
+        error: errorHandler(err)
+      });
+    }
+    // Category.find({}).exec((err, data) => {
+    //   if (err) {
+    //     return res.status(400).json({
+    //       error: errorHandler(err)
+    //     });
+    //   }
+    //   res.json(data);
+    // });
+    res.json({
+      message: "Category deleted successfully"
+    });
+  });
+};
