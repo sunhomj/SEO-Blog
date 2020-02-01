@@ -107,7 +107,6 @@ exports.adminMiddleware = (req, res, next) => {
     }
 
     req.profile = user;
-    console.log(user);
     next();
   });
 };
