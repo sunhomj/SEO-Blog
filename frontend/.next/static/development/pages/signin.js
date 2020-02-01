@@ -283,7 +283,47 @@ var Header = function Header(props) {
       lineNumber: 53
     },
     __self: this
-  }, "Sign Out"))))));
+  }, "Sign Out")), Object(_actions_auth__WEBPACK_IMPORTED_MODULE_4__["isAuth"])() && Object(_actions_auth__WEBPACK_IMPORTED_MODULE_4__["isAuth"])().role === 0 && __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavItem"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 64
+    },
+    __self: this
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "/user",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 65
+    },
+    __self: this
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavLink"], {
+    className: _Header_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.mbutton,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 66
+    },
+    __self: this
+  }, "".concat(Object(_actions_auth__WEBPACK_IMPORTED_MODULE_4__["isAuth"])().name, "'s Dashboard")))), Object(_actions_auth__WEBPACK_IMPORTED_MODULE_4__["isAuth"])() && Object(_actions_auth__WEBPACK_IMPORTED_MODULE_4__["isAuth"])().role === 1 && __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavItem"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 71
+    },
+    __self: this
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "/admin",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 72
+    },
+    __self: this
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_5__["NavLink"], {
+    className: _Header_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.mbutton,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 73
+    },
+    __self: this
+  }, "".concat(Object(_actions_auth__WEBPACK_IMPORTED_MODULE_4__["isAuth"])().name, "'s Dashboard"))))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);

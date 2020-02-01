@@ -56,10 +56,10 @@ exports.signin = (req, res) => {
     // generate a JWT and send to client. create process.env.JWT_SECRET random key in .env
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
     res.cookie("token", token, { expiresIn: "1d" });
-    const { _id, username, name, email, rold } = user;
+    const { _id, username, name, email, role } = user;
     return res.json({
       token,
-      user: { _id, username, name, email, rold }
+      user: { _id, username, name, email, role }
     });
   });
 };
@@ -107,6 +107,7 @@ exports.adminMiddleware = (req, res, next) => {
     }
 
     req.profile = user;
+    console.log(user);
     next();
   });
 };
