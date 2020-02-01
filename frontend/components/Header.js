@@ -3,6 +3,7 @@ import { APP_NAME } from "../config";
 import Link from "next/link";
 import styles from "./Header.module.css";
 import { signout, isAuth } from "../actions/auth";
+import Router from "next/router";
 import {
   Collapse,
   Navbar,
@@ -17,7 +18,8 @@ import {
   DropdownItem,
   NavbarText
 } from "reactstrap";
-import Router from "next/router";
+
+//loading progress bar magic
 
 const Header = props => {
   const [isOpen, setIsOpen] = useState(false);

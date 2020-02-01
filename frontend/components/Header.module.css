@@ -2,3 +2,7 @@
   cursor: pointer;
   font-weight: bold;
 }
+
+#nprogress .bar {
+  height: 10px !important;
+}
