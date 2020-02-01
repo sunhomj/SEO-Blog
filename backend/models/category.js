@@ -15,7 +15,7 @@ const categorySchema = new mongoose.Schema(
       index: true
     }
   },
-  { timestamp: true }
+  { timestamps: { createdAt: true, updatedAt: false } }
 );
 
 module.exports = mongoose.model("Category", categorySchema);

@@ -51,7 +51,7 @@ const userSchema = new mongoose.Schema(
       default: ""
     }
   },
-  { timestamp: true }
+  { timestamps: { createdAt: true, updatedAt: false } }
 );
 
 // virtual field to handle password and save as hashed password
