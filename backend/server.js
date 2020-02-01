@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 
-//bring routes
+//bring routes middleware
 
 const blogRoutes = require("./routes/blog");
 const authRoutes = require("./routes/auth");

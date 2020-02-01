@@ -1,4 +1,4 @@
-const Tag = require("../models/category");
+const Tag = require("../models/Tag");
 const slugify = require("slugify");
 const { errorHandler } = require("../helpers/errorHandler");
 
@@ -14,7 +14,7 @@ exports.create = (req, res) => {
         err: errorHandler(err)
       });
     }
-    res.json(data);
+    res.json(data); //dont do this res.json({tag:data})
   });
 };
 
@@ -33,7 +33,7 @@ exports.read = (req, res) => {
   console.log(req);
   const slug = req.params.slug.toLowerCase();
 
-  Tag.find({ slug }).exec((err, tag) => {
+  Tag.findOne({ slug }).exec((err, tag) => {
     if (err) {
       return res.status(400).json({
         error: errorHandler(err)
@@ -52,14 +52,7 @@ exports.remove = (req, res) => {
         error: errorHandler(err)
       });
     }
-    // Category.find({}).exec((err, data) => {
-    //   if (err) {
-    //     return res.status(400).json({
-    //       error: errorHandler(err)
-    //     });
-    //   }
-    //   res.json(data);
-    // });
+
     res.json({
       message: "Tag deleted successfully"
     });

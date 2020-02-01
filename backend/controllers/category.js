@@ -33,7 +33,7 @@ exports.read = (req, res) => {
   console.log(req);
   const slug = req.params.slug.toLowerCase();
 
-  Category.find({ slug }).exec((err, category) => {
+  Category.findOne({ slug }).exec((err, category) => {
     if (err) {
       return res.status(400).json({
         error: errorHandler(err)
@@ -52,14 +52,7 @@ exports.remove = (req, res) => {
         error: errorHandler(err)
       });
     }
-    // Category.find({}).exec((err, data) => {
-    //   if (err) {
-    //     return res.status(400).json({
-    //       error: errorHandler(err)
-    //     });
-    //   }
-    //   res.json(data);
-    // });
+
     res.json({
       message: "Category deleted successfully"
     });
