@@ -1,7 +1,7 @@
 module.exports =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
-/******/ 	var installedModules = require('../../../../../ssr-module-cache.js');
+/******/ 	var installedModules = require('../../../ssr-module-cache.js');
 /******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -187,142 +187,6 @@ const authenticate = (data, next) => {
 };
 const isAuth = () => {
   if (false) {}
-};
-
-/***/ }),
-
-/***/ "./actions/category.js":
-/*!*****************************!*\
-  !*** ./actions/category.js ***!
-  \*****************************/
-/*! exports provided: create, getCategories, singleCategory, removeCategory */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create", function() { return create; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCategories", function() { return getCategories; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "singleCategory", function() { return singleCategory; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCategory", function() { return removeCategory; });
-/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! isomorphic-fetch */ "isomorphic-fetch");
-/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../config */ "./config.js");
-
-
-const create = (category, token) => {
-  return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default()(`${_config__WEBPACK_IMPORTED_MODULE_1__["API"]}/category`, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`
-    },
-    body: JSON.stringify(category)
-  }).then(response => {
-    return response.json();
-  }).catch(err => {
-    console.log(err);
-  });
-};
-const getCategories = () => {
-  return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default()(`${_config__WEBPACK_IMPORTED_MODULE_1__["API"]}/categories`, {
-    method: "GET"
-  }).then(response => {
-    return response.json();
-  }).catch(err => {
-    console.log(err);
-  });
-};
-const singleCategory = slug => {
-  return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default()(`${_config__WEBPACK_IMPORTED_MODULE_1__["API"]}/category/${slug}`, {
-    method: "GET"
-  }).then(response => {
-    return response.json();
-  }).catch(err => {
-    console.log(err);
-  });
-};
-const removeCategory = (slug, token) => {
-  return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default()(`${_config__WEBPACK_IMPORTED_MODULE_1__["API"]}/category/${slug}`, {
-    method: "DELETE",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`
-    }
-  }).then(response => {
-    return response.json();
-  }).catch(err => {
-    console.log(err);
-  });
-};
-
-/***/ }),
-
-/***/ "./actions/tag.js":
-/*!************************!*\
-  !*** ./actions/tag.js ***!
-  \************************/
-/*! exports provided: create, getTags, singleTag, removeTag */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create", function() { return create; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTags", function() { return getTags; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "singleTag", function() { return singleTag; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeTag", function() { return removeTag; });
-/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! isomorphic-fetch */ "isomorphic-fetch");
-/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../config */ "./config.js");
-
-
-const create = (tag, token) => {
-  return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default()(`${_config__WEBPACK_IMPORTED_MODULE_1__["API"]}/tag`, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`
-    },
-    body: JSON.stringify(tag)
-  }).then(response => {
-    return response.json();
-  }).catch(err => {
-    console.log(err);
-  });
-};
-const getTags = () => {
-  return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default()(`${_config__WEBPACK_IMPORTED_MODULE_1__["API"]}/tags`, {
-    method: "GET"
-  }).then(response => {
-    return response.json();
-  }).catch(err => {
-    console.log(err);
-  });
-};
-const singleTag = slug => {
-  return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default()(`${_config__WEBPACK_IMPORTED_MODULE_1__["API"]}/tag/${slug}`, {
-    method: "GET"
-  }).then(response => {
-    return response.json();
-  }).catch(err => {
-    console.log(err);
-  });
-};
-const removeTag = (slug, token) => {
-  return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default()(`${_config__WEBPACK_IMPORTED_MODULE_1__["API"]}/tag/${slug}`, {
-    method: "DELETE",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`
-    }
-  }).then(response => {
-    return response.json();
-  }).catch(err => {
-    console.log(err);
-  });
 };
 
 /***/ }),
@@ -628,510 +492,6 @@ const Admin = ({
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Admin);
-
-/***/ }),
-
-/***/ "./components/crud/Category.js":
-/*!*************************************!*\
-  !*** ./components/crud/Category.js ***!
-  \*************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/router */ "next/router");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _actions_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/auth */ "./actions/auth.js");
-/* harmony import */ var _actions_category__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/category */ "./actions/category.js");
-var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/crud/Category.js";
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-
-
-const Category = () => {
-  const {
-    0: values,
-    1: setValues
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    name: "",
-    error: false,
-    success: false,
-    categories: [],
-    removed: false,
-    reload: false
-  });
-  const {
-    name,
-    error,
-    success,
-    categories,
-    removed,
-    reload
-  } = values;
-  const token = Object(_actions_auth__WEBPACK_IMPORTED_MODULE_3__["getCookie"])("token");
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    loadCategories();
-  }, [reload]);
-
-  const loadCategories = () => {
-    Object(_actions_category__WEBPACK_IMPORTED_MODULE_4__["getCategories"])().then(data => {
-      if (data.error) {
-        console.log(data.error);
-      } else {
-        setValues(_objectSpread({}, values, {
-          categories: data
-        }));
-      }
-    });
-  };
-
-  const showCategories = () => {
-    return categories.map((el, index) => {
-      return __jsx("button", {
-        onDoubleClick: () => deleteConfirm(el.slug),
-        title: "Double click to delete",
-        key: index,
-        className: "btn btn-outline-primary mr-1 ml-1 mt-3 ",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 36
-        },
-        __self: undefined
-      }, el.name);
-    });
-  };
-
-  const deleteConfirm = slug => {
-    let answer = window.confirm("Are you sure you want to delete this category? ");
-
-    if (answer) {
-      deleteCategory(slug);
-    }
-  };
-
-  const deleteCategory = slug => {
-    console.log("delete", slug);
-    Object(_actions_category__WEBPACK_IMPORTED_MODULE_4__["removeCategory"])(slug, token).then(data => {
-      if (data.error) {
-        console.log(data.error);
-      } else {
-        setValues(_objectSpread({}, values, {
-          error: false,
-          success: false,
-          name: "",
-          removed: !removed,
-          reload: !reload
-        }));
-      }
-    });
-  };
-
-  const clickSubmit = e => {
-    e.preventDefault();
-    Object(_actions_category__WEBPACK_IMPORTED_MODULE_4__["create"])({
-      name
-    }, token).then(data => {
-      if (data.error) {
-        setValues(_objectSpread({}, values, {
-          error: data.error,
-          success: false
-        }));
-      } else {
-        console.log(data);
-        setValues(_objectSpread({}, values, {
-          error: false,
-          success: true,
-          name: "",
-          removed: false,
-          reload: !reload
-        }));
-      }
-    });
-    console.log("create category :", name);
-  };
-
-  const handleChange = e => {
-    setValues(_objectSpread({}, values, {
-      name: e.target.value,
-      error: false,
-      success: false,
-      removed: ""
-    }));
-  };
-
-  const showSuccess = () => {
-    if (success) {
-      return __jsx("p", {
-        className: "text-success",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 92
-        },
-        __self: undefined
-      }, "Category is created");
-    }
-  };
-
-  const showError = () => {
-    if (error) {
-      return __jsx("p", {
-        className: "text-danger",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 98
-        },
-        __self: undefined
-      }, "Category already exist");
-    }
-  };
-
-  const showRemoved = () => {
-    if (removed) {
-      return __jsx("p", {
-        className: "text-danger",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 104
-        },
-        __self: undefined
-      }, "Category is removed");
-    }
-  };
-
-  const newCategoryForm = () => __jsx("form", {
-    onSubmit: clickSubmit,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 109
-    },
-    __self: undefined
-  }, __jsx("div", {
-    className: "form-group",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 110
-    },
-    __self: undefined
-  }, __jsx("label", {
-    className: "text-muted",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 111
-    },
-    __self: undefined
-  }, "Category Name"), __jsx("input", {
-    type: "text",
-    className: "form-control",
-    onChange: handleChange,
-    value: name,
-    required: true,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 112
-    },
-    __self: undefined
-  })), __jsx("button", {
-    type: "submit",
-    className: "btn btn-primary",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 114
-    },
-    __self: undefined
-  }, "Create"));
-
-  const mouseMoveHandler = () => {
-    setValues(_objectSpread({}, values, {
-      error: false,
-      success: false,
-      removed: ""
-    }));
-  };
-
-  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 125
-    },
-    __self: undefined
-  }, showSuccess(), showError(), showRemoved(), __jsx("div", {
-    onMouseMove: mouseMoveHandler,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 130
-    },
-    __self: undefined
-  }, newCategoryForm(), showCategories()));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Category);
-
-/***/ }),
-
-/***/ "./components/crud/Tag.js":
-/*!********************************!*\
-  !*** ./components/crud/Tag.js ***!
-  \********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/router */ "next/router");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _actions_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/auth */ "./actions/auth.js");
-/* harmony import */ var _actions_tag__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/tag */ "./actions/tag.js");
-var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/crud/Tag.js";
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-
-
-const Tag = () => {
-  const {
-    0: values,
-    1: setValues
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    name: "",
-    error: false,
-    success: false,
-    tags: [],
-    removed: false,
-    reload: false
-  });
-  const {
-    name,
-    error,
-    success,
-    tags,
-    removed,
-    reload
-  } = values;
-  const token = Object(_actions_auth__WEBPACK_IMPORTED_MODULE_3__["getCookie"])("token");
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    loadTags();
-  }, [reload]);
-
-  const loadTags = () => {
-    Object(_actions_tag__WEBPACK_IMPORTED_MODULE_4__["getTags"])().then(data => {
-      if (data.error) {
-        console.log(data.error);
-      } else {
-        setValues(_objectSpread({}, values, {
-          tags: data
-        }));
-      }
-    });
-  };
-
-  const showTags = () => {
-    return tags.map((el, index) => {
-      return __jsx("button", {
-        onDoubleClick: () => deleteConfirm(el.slug),
-        title: "Double click to delete",
-        key: index,
-        className: "btn btn-outline-primary mr-1 ml-1 mt-3 ",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 35
-        },
-        __self: undefined
-      }, el.name);
-    });
-  };
-
-  const deleteConfirm = slug => {
-    let answer = window.confirm("Are you sure you want to delete this tag? ");
-
-    if (answer) {
-      deleteTag(slug);
-    }
-  };
-
-  const deleteTag = slug => {
-    console.log("delete", slug);
-    Object(_actions_tag__WEBPACK_IMPORTED_MODULE_4__["removeTag"])(slug, token).then(data => {
-      if (data.error) {
-        console.log(data.error);
-      } else {
-        setValues(_objectSpread({}, values, {
-          error: false,
-          success: false,
-          name: "",
-          removed: !removed,
-          reload: !reload
-        }));
-      }
-    });
-  };
-
-  const clickSubmit = e => {
-    e.preventDefault();
-    Object(_actions_tag__WEBPACK_IMPORTED_MODULE_4__["create"])({
-      name
-    }, token).then(data => {
-      if (data.error) {
-        setValues(_objectSpread({}, values, {
-          error: data.error,
-          success: false
-        }));
-      } else {
-        setValues(_objectSpread({}, values, {
-          error: false,
-          success: true,
-          name: "",
-          removed: false,
-          reload: !reload
-        }));
-      }
-    });
-  };
-
-  const handleChange = e => {
-    setValues(_objectSpread({}, values, {
-      name: e.target.value,
-      error: false,
-      success: false,
-      removed: ""
-    }));
-  };
-
-  const showSuccess = () => {
-    if (success) {
-      return __jsx("p", {
-        className: "text-success",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 89
-        },
-        __self: undefined
-      }, "Tag is created");
-    }
-  };
-
-  const showError = () => {
-    if (error) {
-      return __jsx("p", {
-        className: "text-danger",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 95
-        },
-        __self: undefined
-      }, "Tag already exist");
-    }
-  };
-
-  const showRemoved = () => {
-    if (removed) {
-      return __jsx("p", {
-        className: "text-danger",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 101
-        },
-        __self: undefined
-      }, "Tag is removed");
-    }
-  };
-
-  const newTagForm = () => __jsx("form", {
-    onSubmit: clickSubmit,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 106
-    },
-    __self: undefined
-  }, __jsx("div", {
-    className: "form-group",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 107
-    },
-    __self: undefined
-  }, __jsx("label", {
-    className: "text-muted",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 108
-    },
-    __self: undefined
-  }, "Tag Name"), __jsx("input", {
-    type: "text",
-    className: "form-control",
-    onChange: handleChange,
-    value: name,
-    required: true,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 109
-    },
-    __self: undefined
-  })), __jsx("button", {
-    type: "submit",
-    className: "btn btn-primary",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 111
-    },
-    __self: undefined
-  }, "Create"));
-
-  const mouseMoveHandler = () => {
-    setValues(_objectSpread({}, values, {
-      error: false,
-      success: false,
-      removed: ""
-    }));
-  };
-
-  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 122
-    },
-    __self: undefined
-  }, showSuccess(), showError(), showRemoved(), __jsx("div", {
-    onMouseMove: mouseMoveHandler,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 127
-    },
-    __self: undefined
-  }, newTagForm(), showTags()));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Tag);
 
 /***/ }),
 
@@ -2828,10 +2188,10 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 /***/ }),
 
-/***/ "./pages/admin/crud/category-tag.js":
-/*!******************************************!*\
-  !*** ./pages/admin/crud/category-tag.js ***!
-  \******************************************/
+/***/ "./pages/admin/index.js":
+/*!******************************!*\
+  !*** ./pages/admin/index.js ***!
+  \******************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2839,102 +2199,133 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components/Layout */ "./components/Layout.js");
-/* harmony import */ var _components_auth_Admin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../components/auth/Admin */ "./components/auth/Admin.js");
+/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Layout */ "./components/Layout.js");
+/* harmony import */ var _components_auth_Admin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/auth/Admin */ "./components/auth/Admin.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_crud_Category__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../components/crud/Category */ "./components/crud/Category.js");
-/* harmony import */ var _components_crud_Tag__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../components/crud/Tag */ "./components/crud/Tag.js");
-var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/pages/admin/crud/category-tag.js";
+var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/pages/admin/index.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
 
-
-
-const CategoryTag = () => {
+const AdminIndex = () => {
   return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 7
     },
     __self: undefined
   }, __jsx(_components_auth_Admin__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9
+      lineNumber: 8
     },
     __self: undefined
   }, __jsx("div", {
     className: "container-fluid",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 9
     },
     __self: undefined
   }, __jsx("div", {
     className: "row",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 10
     },
     __self: undefined
   }, __jsx("div", {
     className: "col-md-12 pt-5 pb-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12
+      lineNumber: 11
     },
     __self: undefined
   }, __jsx("h2", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 12
     },
     __self: undefined
-  }, "Manage Categories and Tangs")), __jsx("div", {
-    className: "col-md-6",
+  }, "Admin Dashboard")), __jsx("div", {
+    className: "col-md-4",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14
+    },
+    __self: undefined
+  }, __jsx("ul", {
+    className: "list-group",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 15
     },
     __self: undefined
-  }, __jsx(_components_crud_Category__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, __jsx("li", {
+    className: "list-group-item",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 16
     },
     __self: undefined
-  })), __jsx("div", {
-    className: "col-md-6",
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    href: "/admin/crud/category-tag",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17
+    },
+    __self: undefined
+  }, __jsx("a", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 18
     },
     __self: undefined
-  }, __jsx(_components_crud_Tag__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, "Create Category"))), __jsx("li", {
+    className: "list-group-item",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 21
     },
     __self: undefined
-  }))))));
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    href: "/admin/crud/category-tag",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    },
+    __self: undefined
+  }, __jsx("a", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23
+    },
+    __self: undefined
+  }, "Create Tag"))))), __jsx("div", {
+    className: "col-md-8",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28
+    },
+    __self: undefined
+  }, "right")))));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (CategoryTag);
+/* harmony default export */ __webpack_exports__["default"] = (AdminIndex);
 
 /***/ }),
 
-/***/ 4:
-/*!************************************************!*\
-  !*** multi ./pages/admin/crud/category-tag.js ***!
-  \************************************************/
+/***/ 6:
+/*!************************************!*\
+  !*** multi ./pages/admin/index.js ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/pages/admin/crud/category-tag.js */"./pages/admin/crud/category-tag.js");
+module.exports = __webpack_require__(/*! /Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/pages/admin/index.js */"./pages/admin/index.js");
 
 
 /***/ }),
@@ -3105,4 +2496,4 @@ module.exports = require("url");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=category-tag.js.map
+//# sourceMappingURL=admin.js.map
