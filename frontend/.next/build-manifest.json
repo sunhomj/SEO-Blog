@@ -17,11 +17,11 @@
       "static/runtime/polyfills.js",
       "static/runtime/polyfills.js.map"
     ],
-    "/admin/crud/category-tag": [
+    "/admin": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/signin": [
+    "/admin/crud/blog": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
