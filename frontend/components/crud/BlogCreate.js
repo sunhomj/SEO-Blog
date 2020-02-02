@@ -40,7 +40,12 @@ const BlogCreate = ({ router }) => {
   };
 
   const handleBody = e => {
-    console.log(e);
+    // console.log(e);
+    setBody(e);
+    formData.set("body", e);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("blog", JSON.stringify(e));
+    }
   };
 
   const createBlogForm = () => {
@@ -65,7 +70,13 @@ const BlogCreate = ({ router }) => {
       </form>
     );
   };
-  return <div>{createBlogForm()}</div>;
+  return (
+    <div>
+      {createBlogForm()}
+      <hr />
+      {JSON.stringify(title)}
+    </div>
+  );
 };
 
 BlogCreate.modules = {

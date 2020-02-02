@@ -768,7 +768,11 @@ const BlogCreate = ({
   };
 
   const handleBody = e => {
-    console.log(e);
+    // console.log(e);
+    setBody(e);
+    formData.set("body", e);
+
+    if (false) {}
   };
 
   const createBlogForm = () => {
@@ -776,21 +780,21 @@ const BlogCreate = ({
       onSubmit: publishBlog,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 48
+        lineNumber: 53
       },
       __self: undefined
     }, __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 49
+        lineNumber: 54
       },
       __self: undefined
     }, __jsx("label", {
       className: "text-muted",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 50
+        lineNumber: 55
       },
       __self: undefined
     }, "Title"), __jsx("input", {
@@ -799,14 +803,14 @@ const BlogCreate = ({
       onChange: handleChange("title"),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 51
+        lineNumber: 56
       },
       __self: undefined
     })), __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 53
+        lineNumber: 58
       },
       __self: undefined
     }, __jsx(ReactQuill, {
@@ -817,20 +821,20 @@ const BlogCreate = ({
       onChange: handleBody,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 54
+        lineNumber: 59
       },
       __self: undefined
     })), __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 62
+        lineNumber: 67
       },
       __self: undefined
     }, __jsx("button", {
       className: "btn btn-primary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 63
+        lineNumber: 68
       },
       __self: undefined
     }, "Publish")));
@@ -839,10 +843,16 @@ const BlogCreate = ({
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68
+      lineNumber: 74
     },
     __self: undefined
-  }, createBlogForm());
+  }, createBlogForm(), __jsx("hr", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 76
+    },
+    __self: undefined
+  }), JSON.stringify(title));
 };
 
 BlogCreate.modules = {
