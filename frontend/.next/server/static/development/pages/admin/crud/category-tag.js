@@ -605,19 +605,21 @@ const Category = () => {
     error: false,
     success: false,
     categories: [],
-    removed: false
+    removed: false,
+    reload: false
   });
   const {
     name,
     error,
     success,
     categories,
-    removed
+    removed,
+    reload
   } = values;
   const token = Object(_actions_auth__WEBPACK_IMPORTED_MODULE_3__["getCookie"])("token");
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     loadCategories();
-  });
+  }, [reload]);
 
   const loadCategories = () => {
     Object(_actions_category__WEBPACK_IMPORTED_MODULE_4__["getCategories"])().then(data => {
@@ -634,14 +636,41 @@ const Category = () => {
   const showCategories = () => {
     return categories.map((el, index) => {
       return __jsx("button", {
+        onDoubleClick: () => deleteConfirm(el.slug),
+        title: "Double click to delete",
         key: index,
         className: "btn btn-outline-primary mr-1 ml-1 mt-3 ",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35
+          lineNumber: 36
         },
         __self: undefined
       }, el.name);
+    });
+  };
+
+  const deleteConfirm = slug => {
+    let answer = window.confirm("Are you sure you want to delete this category? ");
+
+    if (answer) {
+      deleteCategory(slug);
+    }
+  };
+
+  const deleteCategory = slug => {
+    console.log("delete", slug);
+    Object(_actions_category__WEBPACK_IMPORTED_MODULE_4__["removeCategory"])(slug, token).then(data => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        setValues(_objectSpread({}, values, {
+          error: false,
+          success: false,
+          name: "",
+          removed: !removed,
+          reload: !reload
+        }));
+      }
     });
   };
 
@@ -660,7 +689,9 @@ const Category = () => {
         setValues(_objectSpread({}, values, {
           error: false,
           success: true,
-          name: ""
+          name: "",
+          removed: false,
+          reload: !reload
         }));
       }
     });
@@ -676,25 +707,64 @@ const Category = () => {
     }));
   };
 
+  const showSuccess = () => {
+    if (success) {
+      return __jsx("p", {
+        className: "text-success",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 92
+        },
+        __self: undefined
+      }, "Category is created");
+    }
+  };
+
+  const showError = () => {
+    if (error) {
+      return __jsx("p", {
+        className: "text-danger",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 98
+        },
+        __self: undefined
+      }, "Category already exist");
+    }
+  };
+
+  const showRemoved = () => {
+    if (removed) {
+      return __jsx("p", {
+        className: "text-danger",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 104
+        },
+        __self: undefined
+      }, "Category is removed");
+    }
+  };
+
   const newCategoryForm = () => __jsx("form", {
     onSubmit: clickSubmit,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66
+      lineNumber: 109
     },
     __self: undefined
   }, __jsx("div", {
     className: "form-group",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67
+      lineNumber: 110
     },
     __self: undefined
   }, __jsx("label", {
     className: "text-muted",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68
+      lineNumber: 111
     },
     __self: undefined
   }, "Name"), __jsx("input", {
@@ -705,7 +775,7 @@ const Category = () => {
     required: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69
+      lineNumber: 112
     },
     __self: undefined
   })), __jsx("button", {
@@ -713,24 +783,33 @@ const Category = () => {
     className: "btn btn-primary",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71
+      lineNumber: 114
     },
     __self: undefined
   }, "Create"));
 
+  const mouseMoveHandler = () => {
+    setValues(_objectSpread({}, values, {
+      error: false,
+      success: false,
+      removed: ""
+    }));
+  };
+
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78
+      lineNumber: 125
     },
     __self: undefined
-  }, newCategoryForm(), __jsx("div", {
+  }, showSuccess(), showError(), showRemoved(), __jsx("div", {
+    onMouseMove: mouseMoveHandler,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 80
+      lineNumber: 130
     },
     __self: undefined
-  }, showCategories()));
+  }, newCategoryForm(), showCategories()));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Category);

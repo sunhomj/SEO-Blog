@@ -606,7 +606,8 @@ var Category = function Category() {
     error: false,
     success: false,
     categories: [],
-    removed: false
+    removed: false,
+    reload: false
   }),
       values = _useState[0],
       setValues = _useState[1];
@@ -615,11 +616,12 @@ var Category = function Category() {
       error = values.error,
       success = values.success,
       categories = values.categories,
-      removed = values.removed;
+      removed = values.removed,
+      reload = values.reload;
   var token = Object(_actions_auth__WEBPACK_IMPORTED_MODULE_10__["getCookie"])("token");
   Object(react__WEBPACK_IMPORTED_MODULE_7__["useEffect"])(function () {
     loadCategories();
-  });
+  }, [reload]);
 
   var loadCategories = function loadCategories() {
     Object(_actions_category__WEBPACK_IMPORTED_MODULE_11__["getCategories"])().then(function (data) {
@@ -636,14 +638,43 @@ var Category = function Category() {
   var showCategories = function showCategories() {
     return categories.map(function (el, index) {
       return __jsx("button", {
+        onDoubleClick: function onDoubleClick() {
+          return deleteConfirm(el.slug);
+        },
+        title: "Double click to delete",
         key: index,
         className: "btn btn-outline-primary mr-1 ml-1 mt-3 ",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35
+          lineNumber: 36
         },
         __self: this
       }, el.name);
+    });
+  };
+
+  var deleteConfirm = function deleteConfirm(slug) {
+    var answer = window.confirm("Are you sure you want to delete this category? ");
+
+    if (answer) {
+      deleteCategory(slug);
+    }
+  };
+
+  var deleteCategory = function deleteCategory(slug) {
+    console.log("delete", slug);
+    Object(_actions_category__WEBPACK_IMPORTED_MODULE_11__["removeCategory"])(slug, token).then(function (data) {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        setValues(_objectSpread({}, values, {
+          error: false,
+          success: false,
+          name: "",
+          removed: !removed,
+          reload: !reload
+        }));
+      }
     });
   };
 
@@ -662,7 +693,9 @@ var Category = function Category() {
         setValues(_objectSpread({}, values, {
           error: false,
           success: true,
-          name: ""
+          name: "",
+          removed: false,
+          reload: !reload
         }));
       }
     });
@@ -678,26 +711,65 @@ var Category = function Category() {
     }));
   };
 
+  var showSuccess = function showSuccess() {
+    if (success) {
+      return __jsx("p", {
+        className: "text-success",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 92
+        },
+        __self: this
+      }, "Category is created");
+    }
+  };
+
+  var showError = function showError() {
+    if (error) {
+      return __jsx("p", {
+        className: "text-danger",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 98
+        },
+        __self: this
+      }, "Category already exist");
+    }
+  };
+
+  var showRemoved = function showRemoved() {
+    if (removed) {
+      return __jsx("p", {
+        className: "text-danger",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 104
+        },
+        __self: this
+      }, "Category is removed");
+    }
+  };
+
   var newCategoryForm = function newCategoryForm() {
     return __jsx("form", {
       onSubmit: clickSubmit,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 66
+        lineNumber: 109
       },
       __self: this
     }, __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 67
+        lineNumber: 110
       },
       __self: this
     }, __jsx("label", {
       className: "text-muted",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 68
+        lineNumber: 111
       },
       __self: this
     }, "Name"), __jsx("input", {
@@ -708,7 +780,7 @@ var Category = function Category() {
       required: true,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 69
+        lineNumber: 112
       },
       __self: this
     })), __jsx("button", {
@@ -716,25 +788,34 @@ var Category = function Category() {
       className: "btn btn-primary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 71
+        lineNumber: 114
       },
       __self: this
     }, "Create"));
   };
 
+  var mouseMoveHandler = function mouseMoveHandler() {
+    setValues(_objectSpread({}, values, {
+      error: false,
+      success: false,
+      removed: ""
+    }));
+  };
+
   return __jsx(react__WEBPACK_IMPORTED_MODULE_7___default.a.Fragment, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78
+      lineNumber: 125
     },
     __self: this
-  }, newCategoryForm(), __jsx("div", {
+  }, showSuccess(), showError(), showRemoved(), __jsx("div", {
+    onMouseMove: mouseMoveHandler,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 80
+      lineNumber: 130
     },
     __self: this
-  }, showCategories()));
+  }, newCategoryForm(), showCategories()));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Category);
