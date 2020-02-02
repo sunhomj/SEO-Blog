@@ -88,10 +88,575 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./actions/auth.js":
+/*!*************************!*\
+  !*** ./actions/auth.js ***!
+  \*************************/
+/*! exports provided: signup, signin, signout, setCookie, removeCookie, getCookie, setLocalStorage, removeLocalStorage, authenticate, isAuth */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signin", function() { return signin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signout", function() { return signout; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setCookie", function() { return setCookie; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCookie", function() { return removeCookie; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCookie", function() { return getCookie; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setLocalStorage", function() { return setLocalStorage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeLocalStorage", function() { return removeLocalStorage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "authenticate", function() { return authenticate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isAuth", function() { return isAuth; });
+/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! isomorphic-fetch */ "isomorphic-fetch");
+/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../config */ "./config.js");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! js-cookie */ "js-cookie");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+const signup = user => {
+  return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default()(`${_config__WEBPACK_IMPORTED_MODULE_1__["API"]}/signup`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(user)
+  }).then(response => {
+    return response.json();
+  }).catch(err => {
+    console.log(err);
+  });
+};
+const signin = user => {
+  return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default()(`${_config__WEBPACK_IMPORTED_MODULE_1__["API"]}/signin`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(user)
+  }).then(response => {
+    return response.json();
+  }).catch(err => {
+    console.log(err);
+  });
+};
+const signout = next => {
+  removeCookie("token");
+  removeLocalStorage("user");
+  next();
+  return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default()(`${_config__WEBPACK_IMPORTED_MODULE_1__["API"]}/signout`, {
+    method: "GET"
+  }).then(response => {
+    console.log("Signout success");
+  }).catch(err => console.log(err));
+}; // set cookie
+
+const setCookie = (key, value) => {
+  // client side
+  if (false) {}
+};
+const removeCookie = key => {
+  // client side
+  if (false) {}
+}; // get cookie
+
+const getCookie = key => {
+  // client side
+  if (false) {}
+}; // localstorage
+
+const setLocalStorage = (key, value) => {
+  if (false) {}
+};
+const removeLocalStorage = key => {
+  if (false) {}
+}; //authenticate user by passing data to cookie and localstorage
+
+const authenticate = (data, next) => {
+  setCookie("token", data.token);
+  setLocalStorage("user", data.user);
+  next();
+};
+const isAuth = () => {
+  if (false) {}
+};
+
+/***/ }),
+
+/***/ "./components/Header.js":
+/*!******************************!*\
+  !*** ./components/Header.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../config */ "./config.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Header_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Header.module.css */ "./components/Header.module.css");
+/* harmony import */ var _Header_module_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Header_module_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _actions_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../actions/auth */ "./actions/auth.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_6__);
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\Header.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+
+ //loading progress bar magic
+
+const Header = props => {
+  const {
+    0: isOpen,
+    1: setIsOpen
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+
+  const toggle = () => setIsOpen(!isOpen);
+
+  return __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30
+    },
+    __self: undefined
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Navbar"], {
+    color: "light",
+    light: true,
+    expand: "md",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31
+    },
+    __self: undefined
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "/",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32
+    },
+    __self: undefined
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["NavLink"], {
+    className: _Header_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.mbutton,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 33
+    },
+    __self: undefined
+  }, _config__WEBPACK_IMPORTED_MODULE_1__["APP_NAME"])), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["NavbarToggler"], {
+    onClick: toggle,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35
+    },
+    __self: undefined
+  }), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Collapse"], {
+    isOpen: isOpen,
+    navbar: true,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36
+    },
+    __self: undefined
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Nav"], {
+    className: "ml-auto",
+    navbar: true,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 37
+    },
+    __self: undefined
+  }, !Object(_actions_auth__WEBPACK_IMPORTED_MODULE_4__["isAuth"])() && __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 39
+    },
+    __self: undefined
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["NavItem"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40
+    },
+    __self: undefined
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "/signin",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41
+    },
+    __self: undefined
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["NavLink"], {
+    className: _Header_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.mbutton,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42
+    },
+    __self: undefined
+  }, "Sign In"))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["NavItem"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 45
+    },
+    __self: undefined
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "/signup",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 46
+    },
+    __self: undefined
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["NavLink"], {
+    className: _Header_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.mbutton,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 47
+    },
+    __self: undefined
+  }, "Sign Up")))), Object(_actions_auth__WEBPACK_IMPORTED_MODULE_4__["isAuth"])() && __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["NavItem"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 54
+    },
+    __self: undefined
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["NavLink"] // style=
+  , {
+    className: _Header_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.mbutton,
+    onClick: () => Object(_actions_auth__WEBPACK_IMPORTED_MODULE_4__["signout"])(() => next_router__WEBPACK_IMPORTED_MODULE_5___default.a.replace("/signin")),
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 55
+    },
+    __self: undefined
+  }, "Sign Out")), Object(_actions_auth__WEBPACK_IMPORTED_MODULE_4__["isAuth"])() && Object(_actions_auth__WEBPACK_IMPORTED_MODULE_4__["isAuth"])().role === 0 && __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["NavItem"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 66
+    },
+    __self: undefined
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "/user",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 67
+    },
+    __self: undefined
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["NavLink"], {
+    className: _Header_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.mbutton,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 68
+    },
+    __self: undefined
+  }, `${Object(_actions_auth__WEBPACK_IMPORTED_MODULE_4__["isAuth"])().name}'s Dashboard`))), Object(_actions_auth__WEBPACK_IMPORTED_MODULE_4__["isAuth"])() && Object(_actions_auth__WEBPACK_IMPORTED_MODULE_4__["isAuth"])().role === 1 && __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["NavItem"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 73
+    },
+    __self: undefined
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "/admin",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 74
+    },
+    __self: undefined
+  }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["NavLink"], {
+    className: _Header_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.mbutton,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 75
+    },
+    __self: undefined
+  }, `${Object(_actions_auth__WEBPACK_IMPORTED_MODULE_4__["isAuth"])().name}'s Dashboard`)))))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Header);
+
+/***/ }),
+
+/***/ "./components/Header.module.css":
+/*!**************************************!*\
+  !*** ./components/Header.module.css ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// Exports
+module.exports = {
+	"mbutton": "Header_mbutton__1MBmJ",
+	"nprogress": "Header_nprogress__JHRh3",
+	"bar": "Header_bar__TSU4U"
+};
+
+/***/ }),
+
+/***/ "./components/Layout.js":
+/*!******************************!*\
+  !*** ./components/Layout.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header */ "./components/Header.js");
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\Layout.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+const Layout = ({
+  children
+}) => {
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5
+    },
+    __self: undefined
+  }, __jsx(_Header__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6
+    },
+    __self: undefined
+  }), children, __jsx("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9
+    },
+    __self: undefined
+  }, "footer"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Layout);
+
+/***/ }),
+
+/***/ "./components/auth/SigninComponent.js":
+/*!********************************************!*\
+  !*** ./components/auth/SigninComponent.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/auth */ "./actions/auth.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\auth\\SigninComponent.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+const SigninComponent = () => {
+  const {
+    0: values,
+    1: setValues
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    email: "sun@gmail.com",
+    password: "sunholee",
+    error: "",
+    loading: false,
+    message: "",
+    showForm: true
+  });
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    Object(_actions_auth__WEBPACK_IMPORTED_MODULE_1__["isAuth"])() && next_router__WEBPACK_IMPORTED_MODULE_2___default.a.push("/");
+  }, []);
+  const {
+    email,
+    password,
+    error,
+    loading,
+    message,
+    showForm
+  } = values;
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    setValues(_objectSpread({}, values, {
+      loading: true,
+      error: false
+    }));
+    const user = {
+      email,
+      password
+    };
+    Object(_actions_auth__WEBPACK_IMPORTED_MODULE_1__["signin"])(user).then(data => {
+      if (data.error) {
+        setValues(_objectSpread({}, values, {
+          error: data.error,
+          loading: false
+        }));
+      } else {
+        // save user token to cookie
+        // save user info to localstorage
+        //authenticate user
+        Object(_actions_auth__WEBPACK_IMPORTED_MODULE_1__["authenticate"])(data, () => {
+          if (Object(_actions_auth__WEBPACK_IMPORTED_MODULE_1__["isAuth"])() && Object(_actions_auth__WEBPACK_IMPORTED_MODULE_1__["isAuth"])().role === 1) {
+            next_router__WEBPACK_IMPORTED_MODULE_2___default.a.push("/admin");
+          } else {
+            next_router__WEBPACK_IMPORTED_MODULE_2___default.a.push("/user");
+          }
+        });
+      }
+    });
+  };
+
+  const handleChange = inputValue => e => {
+    setValues(_objectSpread({}, values, {
+      error: false,
+      [inputValue]: e.target.value
+    }));
+  };
+
+  const showLoading = () => loading ? __jsx("div", {
+    className: "alert alert-info",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 47
+    },
+    __self: undefined
+  }, "Loading ...") : "";
+
+  const showError = () => error ? __jsx("div", {
+    className: "alert alert-danger",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 48
+    },
+    __self: undefined
+  }, error) : "";
+
+  const showMessage = () => message ? __jsx("div", {
+    className: "alert alert-info",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 49
+    },
+    __self: undefined
+  }, message) : "";
+
+  const signinForm = () => {
+    return __jsx("form", {
+      onSubmit: handleSubmit,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 53
+      },
+      __self: undefined
+    }, __jsx("div", {
+      className: "form-group",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 54
+      },
+      __self: undefined
+    }, __jsx("input", {
+      onChange: handleChange("email"),
+      type: "email",
+      className: "form-control",
+      placeholder: "Email Address",
+      value: email,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 55
+      },
+      __self: undefined
+    })), __jsx("div", {
+      className: "form-group",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 63
+      },
+      __self: undefined
+    }, __jsx("input", {
+      onChange: handleChange("password"),
+      type: "password",
+      className: "form-control",
+      placeholder: "Password",
+      value: password,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 64
+      },
+      __self: undefined
+    })), __jsx("button", {
+      type: "submit",
+      className: "btn btn-primary",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 72
+      },
+      __self: undefined
+    }, "Sign In"));
+  };
+
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 80
+    },
+    __self: undefined
+  }, showError(), showLoading(), showMessage(), showForm && signinForm());
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SigninComponent);
+
+/***/ }),
+
+/***/ "./config.js":
+/*!*******************!*\
+  !*** ./config.js ***!
+  \*******************/
+/*! exports provided: API, APP_NAME */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API", function() { return API; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "APP_NAME", function() { return APP_NAME; });
+/* harmony import */ var next_config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/config */ "next/config");
+/* harmony import */ var next_config__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_config__WEBPACK_IMPORTED_MODULE_0__);
+
+const {
+  publicRuntimeConfig
+} = next_config__WEBPACK_IMPORTED_MODULE_0___default()();
+const API = publicRuntimeConfig.PRODUCTION ? publicRuntimeConfig.API_PRODUCTION : publicRuntimeConfig.API_DEVELOPMENT;
+const APP_NAME = publicRuntimeConfig.APP_NAME;
+
+/***/ }),
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js":
 /*!*******************************************************************************!*\
@@ -777,86 +1342,6 @@ function withRouter(ComposedComponent) {
 
   return WithRouterWrapper;
 }
-
-/***/ }),
-
-/***/ "./node_modules/next/dist/next-server/lib/constants.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/next/dist/next-server/lib/constants.js ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.PHASE_EXPORT = 'phase-export';
-exports.PHASE_PRODUCTION_BUILD = 'phase-production-build';
-exports.PHASE_PRODUCTION_SERVER = 'phase-production-server';
-exports.PHASE_DEVELOPMENT_SERVER = 'phase-development-server';
-exports.PAGES_MANIFEST = 'pages-manifest.json';
-exports.BUILD_MANIFEST = 'build-manifest.json';
-exports.EXPORT_MARKER = 'export-marker.json';
-exports.EXPORT_DETAIL = 'export-detail.json';
-exports.PRERENDER_MANIFEST = 'prerender-manifest.json';
-exports.ROUTES_MANIFEST = 'routes-manifest.json';
-exports.REACT_LOADABLE_MANIFEST = 'react-loadable-manifest.json';
-exports.SERVER_DIRECTORY = 'server';
-exports.SERVERLESS_DIRECTORY = 'serverless';
-exports.CONFIG_FILE = 'next.config.js';
-exports.BUILD_ID_FILE = 'BUILD_ID';
-exports.BLOCKED_PAGES = ['/_document', '/_app'];
-exports.CLIENT_PUBLIC_FILES_PATH = 'public';
-exports.CLIENT_STATIC_FILES_PATH = 'static';
-exports.CLIENT_STATIC_FILES_RUNTIME = 'runtime';
-exports.AMP_RENDER_TARGET = '__NEXT_AMP_RENDER_TARGET__';
-exports.CLIENT_STATIC_FILES_RUNTIME_PATH = `${exports.CLIENT_STATIC_FILES_PATH}/${exports.CLIENT_STATIC_FILES_RUNTIME}`; // static/runtime/main.js
-
-exports.CLIENT_STATIC_FILES_RUNTIME_MAIN = `${exports.CLIENT_STATIC_FILES_RUNTIME_PATH}/main.js`; // static/runtime/amp.js
-
-exports.CLIENT_STATIC_FILES_RUNTIME_AMP = `${exports.CLIENT_STATIC_FILES_RUNTIME_PATH}/amp.js`; // static/runtime/webpack.js
-
-exports.CLIENT_STATIC_FILES_RUNTIME_WEBPACK = `${exports.CLIENT_STATIC_FILES_RUNTIME_PATH}/webpack.js`; // static/runtime/polyfills.js
-
-exports.CLIENT_STATIC_FILES_RUNTIME_POLYFILLS = `${exports.CLIENT_STATIC_FILES_RUNTIME_PATH}/polyfills.js`; // matches static/<buildid>/pages/<page>.js
-
-exports.IS_BUNDLED_PAGE_REGEX = /^static[/\\][^/\\]+[/\\]pages.*\.js$/; // matches static/<buildid>/pages/:page*.js
-
-exports.ROUTE_NAME_REGEX = /^static[/\\][^/\\]+[/\\]pages[/\\](.*)\.js$/;
-exports.SERVERLESS_ROUTE_NAME_REGEX = /^pages[/\\](.*)\.js$/;
-exports.TEMPORARY_REDIRECT_STATUS = 307;
-exports.PERMANENT_REDIRECT_STATUS = 308;
-
-/***/ }),
-
-/***/ "./node_modules/next/dist/next-server/lib/document-context.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/next/dist/next-server/lib/document-context.js ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var __importStar = this && this.__importStar || function (mod) {
-  if (mod && mod.__esModule) return mod;
-  var result = {};
-  if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-  result["default"] = mod;
-  return result;
-};
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-const React = __importStar(__webpack_require__(/*! react */ "react"));
-
-exports.DocumentContext = React.createContext(null);
 
 /***/ }),
 
@@ -1832,751 +2317,6 @@ exports.ST = exports.SP && typeof performance.mark === 'function' && typeof perf
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/next-server/server/utils.js":
-/*!************************************************************!*\
-  !*** ./node_modules/next/dist/next-server/server/utils.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const constants_1 = __webpack_require__(/*! ../lib/constants */ "./node_modules/next/dist/next-server/lib/constants.js");
-function isBlockedPage(pathname) {
-    return constants_1.BLOCKED_PAGES.indexOf(pathname) !== -1;
-}
-exports.isBlockedPage = isBlockedPage;
-function cleanAmpPath(pathname) {
-    if (pathname.match(/\?amp=(y|yes|true|1)/)) {
-        pathname = pathname.replace(/\?amp=(y|yes|true|1)&?/, '?');
-    }
-    if (pathname.match(/&amp=(y|yes|true|1)/)) {
-        pathname = pathname.replace(/&amp=(y|yes|true|1)/, '');
-    }
-    pathname = pathname.replace(/\?$/, '');
-    return pathname;
-}
-exports.cleanAmpPath = cleanAmpPath;
-
-
-/***/ }),
-
-/***/ "./node_modules/next/dist/pages/_document.js":
-/*!***************************************************!*\
-  !*** ./node_modules/next/dist/pages/_document.js ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.middleware = middleware;
-exports.NextScript = exports.Main = exports.Head = exports.Html = exports.default = void 0;
-
-var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "prop-types"));
-
-var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "react"));
-
-var _server = _interopRequireDefault(__webpack_require__(/*! styled-jsx/server */ "styled-jsx/server"));
-
-var _constants = __webpack_require__(/*! ../next-server/lib/constants */ "./node_modules/next/dist/next-server/lib/constants.js");
-
-var _documentContext = __webpack_require__(/*! ../next-server/lib/document-context */ "./node_modules/next/dist/next-server/lib/document-context.js");
-
-var _utils = __webpack_require__(/*! ../next-server/lib/utils */ "./node_modules/next/dist/next-server/lib/utils.js");
-
-exports.DocumentContext = _utils.DocumentContext;
-exports.DocumentInitialProps = _utils.DocumentInitialProps;
-exports.DocumentProps = _utils.DocumentProps;
-
-var _utils2 = __webpack_require__(/*! ../next-server/server/utils */ "./node_modules/next/dist/next-server/server/utils.js");
-
-var _htmlescape = __webpack_require__(/*! ../server/htmlescape */ "./node_modules/next/dist/server/htmlescape.js");
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-}
-
-function _getRequireWildcardCache() {
-  if (typeof WeakMap !== "function") return null;
-  var cache = new WeakMap();
-
-  _getRequireWildcardCache = function () {
-    return cache;
-  };
-
-  return cache;
-}
-
-function _interopRequireWildcard(obj) {
-  if (obj && obj.__esModule) {
-    return obj;
-  }
-
-  if (obj === null || typeof obj !== "object" && typeof obj !== "function") {
-    return {
-      default: obj
-    };
-  }
-
-  var cache = _getRequireWildcardCache();
-
-  if (cache && cache.has(obj)) {
-    return cache.get(obj);
-  }
-
-  var newObj = {};
-  var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-
-  for (var key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-
-      if (desc && (desc.get || desc.set)) {
-        Object.defineProperty(newObj, key, desc);
-      } else {
-        newObj[key] = obj[key];
-      }
-    }
-  }
-
-  newObj.default = obj;
-
-  if (cache) {
-    cache.set(obj, newObj);
-  }
-
-  return newObj;
-}
-
-async function middleware({
-  req,
-  res
-}) {}
-
-function dedupe(bundles) {
-  const files = new Set();
-  const kept = [];
-
-  for (const bundle of bundles) {
-    if (files.has(bundle.file)) continue;
-    files.add(bundle.file);
-    kept.push(bundle);
-  }
-
-  return kept;
-}
-
-function getOptionalModernScriptVariant(path) {
-  if (false) {}
-
-  return path;
-}
-
-function isLowPriority(file) {
-  return file.includes('_buildManifest');
-}
-/**
-* `Document` component handles the initial `document` markup and renders only on the server side.
-* Commonly used for implementing server side rendering for `css-in-js` libraries.
-*/
-
-
-class Document extends _react.Component {
-  /**
-  * `getInitialProps` hook returns the context object with the addition of `renderPage`.
-  * `renderPage` callback executes `React` rendering logic synchronously to support server-rendering wrappers
-  */
-  static async getInitialProps(ctx) {
-    const enhancers =  false ? undefined : [];
-
-    const enhanceApp = App => {
-      for (const enhancer of enhancers) {
-        App = enhancer(App);
-      }
-
-      return props => _react.default.createElement(App, props);
-    };
-
-    const {
-      html,
-      head
-    } = await ctx.renderPage({
-      enhanceApp
-    });
-    const styles = [...(0, _server.default)(), ...( false ? undefined : [])];
-    return {
-      html,
-      head,
-      styles
-    };
-  }
-
-  static renderDocument(Document, props) {
-    return _react.default.createElement(_documentContext.DocumentContext.Provider, {
-      value: {
-        _documentProps: props,
-        // In dev we invalidate the cache by appending a timestamp to the resource URL.
-        // This is a workaround to fix https://github.com/zeit/next.js/issues/5860
-        // TODO: remove this workaround when https://bugs.webkit.org/show_bug.cgi?id=187726 is fixed.
-        _devOnlyInvalidateCacheQueryString: true ? '?ts=' + Date.now() : undefined
-      }
-    }, _react.default.createElement(Document, props));
-  }
-
-  render() {
-    return _react.default.createElement(Html, null, _react.default.createElement(Head, null), _react.default.createElement("body", null, _react.default.createElement(Main, null), _react.default.createElement(NextScript, null)));
-  }
-
-}
-
-exports.default = Document;
-Document.headTagsMiddleware =  false ? undefined : () => [];
-Document.bodyTagsMiddleware =  false ? undefined : () => [];
-Document.htmlPropsMiddleware =  false ? undefined : () => [];
-
-class Html extends _react.Component {
-  constructor(...args) {
-    super(...args);
-    this.context = void 0;
-  }
-
-  render() {
-    const {
-      inAmpMode,
-      htmlProps
-    } = this.context._documentProps;
-    return _react.default.createElement("html", Object.assign({}, htmlProps, this.props, {
-      amp: inAmpMode ? '' : undefined,
-      "data-ampdevmode": inAmpMode && true ? '' : undefined
-    }));
-  }
-
-}
-
-exports.Html = Html;
-Html.contextType = _documentContext.DocumentContext;
-Html.propTypes = {
-  children: _propTypes.default.node.isRequired
-};
-
-class Head extends _react.Component {
-  constructor(...args) {
-    super(...args);
-    this.context = void 0;
-  }
-
-  getCssLinks() {
-    const {
-      assetPrefix,
-      files
-    } = this.context._documentProps;
-    const cssFiles = files && files.length ? files.filter(f => /\.css$/.test(f)) : [];
-    const cssLinkElements = [];
-    cssFiles.forEach(file => {
-      cssLinkElements.push(_react.default.createElement("link", {
-        key: `${file}-preload`,
-        nonce: this.props.nonce,
-        rel: "preload",
-        href: `${assetPrefix}/_next/${encodeURI(file)}`,
-        as: "style",
-        crossOrigin: this.props.crossOrigin || undefined
-      }), _react.default.createElement("link", {
-        key: file,
-        nonce: this.props.nonce,
-        rel: "stylesheet",
-        href: `${assetPrefix}/_next/${encodeURI(file)}`,
-        crossOrigin: this.props.crossOrigin || undefined
-      }));
-    });
-    return cssLinkElements.length === 0 ? null : cssLinkElements;
-  }
-
-  getPreloadDynamicChunks() {
-    const {
-      dynamicImports,
-      assetPrefix
-    } = this.context._documentProps;
-    const {
-      _devOnlyInvalidateCacheQueryString
-    } = this.context;
-    return dedupe(dynamicImports).map(bundle => {
-      // `dynamicImports` will contain both `.js` and `.module.js` when the
-      // feature is enabled. This clause will filter down to the modern
-      // variants only.
-      if (!bundle.file.endsWith(getOptionalModernScriptVariant('.js'))) {
-        return null;
-      }
-
-      return _react.default.createElement("link", {
-        rel: "preload",
-        key: bundle.file,
-        href: `${assetPrefix}/_next/${encodeURI(bundle.file)}${_devOnlyInvalidateCacheQueryString}`,
-        as: "script",
-        nonce: this.props.nonce,
-        crossOrigin: this.props.crossOrigin || undefined
-      });
-    }) // Filter out nulled scripts
-    .filter(Boolean);
-  }
-
-  getPreloadMainLinks() {
-    const {
-      assetPrefix,
-      files
-    } = this.context._documentProps;
-    const {
-      _devOnlyInvalidateCacheQueryString
-    } = this.context;
-    const preloadFiles = files && files.length ? files.filter(file => {
-      // `dynamicImports` will contain both `.js` and `.module.js` when
-      // the feature is enabled. This clause will filter down to the
-      // modern variants only.
-      //
-      // Also filter out low priority files because they should not be
-      // preloaded for performance reasons.
-      return file.endsWith(getOptionalModernScriptVariant('.js')) && !isLowPriority(file);
-    }) : [];
-    return preloadFiles.length === 0 ? null : preloadFiles.map(file => {
-      return _react.default.createElement("link", {
-        key: file,
-        nonce: this.props.nonce,
-        rel: "preload",
-        href: `${assetPrefix}/_next/${encodeURI(file)}${_devOnlyInvalidateCacheQueryString}`,
-        as: "script",
-        crossOrigin: this.props.crossOrigin || undefined
-      });
-    });
-  }
-
-  render() {
-    const {
-      styles,
-      ampPath,
-      inAmpMode,
-      assetPrefix,
-      hybridAmp,
-      canonicalBase,
-      __NEXT_DATA__,
-      dangerousAsPath,
-      headTags
-    } = this.context._documentProps;
-    const {
-      _devOnlyInvalidateCacheQueryString
-    } = this.context;
-    const {
-      page,
-      buildId
-    } = __NEXT_DATA__;
-    let {
-      head
-    } = this.context._documentProps;
-    let children = this.props.children; // show a warning if Head contains <title> (only in development)
-
-    if (true) {
-      children = _react.default.Children.map(children, child => {
-        const isReactHelmet = child && child.props && child.props['data-react-helmet'];
-
-        if (child && child.type === 'title' && !isReactHelmet) {
-          console.warn("Warning: <title> should not be used in _document.js's <Head>. https://err.sh/next.js/no-document-title");
-        }
-
-        return child;
-      });
-      if (this.props.crossOrigin) console.warn('Warning: `Head` attribute `crossOrigin` is deprecated. https://err.sh/next.js/doc-crossorigin-deprecated');
-    }
-
-    let hasAmphtmlRel = false;
-    let hasCanonicalRel = false; // show warning and remove conflicting amp head tags
-
-    head = _react.default.Children.map(head || [], child => {
-      if (!child) return child;
-      const {
-        type,
-        props
-      } = child;
-
-      if (inAmpMode) {
-        let badProp = '';
-
-        if (type === 'meta' && props.name === 'viewport') {
-          badProp = 'name="viewport"';
-        } else if (type === 'link' && props.rel === 'canonical') {
-          hasCanonicalRel = true;
-        } else if (type === 'script') {
-          // only block if
-          // 1. it has a src and isn't pointing to ampproject's CDN
-          // 2. it is using dangerouslySetInnerHTML without a type or
-          // a type of text/javascript
-          if (props.src && props.src.indexOf('ampproject') < -1 || props.dangerouslySetInnerHTML && (!props.type || props.type === 'text/javascript')) {
-            badProp = '<script';
-            Object.keys(props).forEach(prop => {
-              badProp += ` ${prop}="${props[prop]}"`;
-            });
-            badProp += '/>';
-          }
-        }
-
-        if (badProp) {
-          console.warn(`Found conflicting amp tag "${child.type}" with conflicting prop ${badProp} in ${__NEXT_DATA__.page}. https://err.sh/next.js/conflicting-amp-tag`);
-          return null;
-        }
-      } else {
-        // non-amp mode
-        if (type === 'link' && props.rel === 'amphtml') {
-          hasAmphtmlRel = true;
-        }
-      }
-
-      return child;
-    }); // try to parse styles from fragment for backwards compat
-
-    const curStyles = Array.isArray(styles) ? styles : [];
-
-    if (inAmpMode && styles && // @ts-ignore Property 'props' does not exist on type ReactElement
-    styles.props && // @ts-ignore Property 'props' does not exist on type ReactElement
-    Array.isArray(styles.props.children)) {
-      const hasStyles = el => el && el.props && el.props.dangerouslySetInnerHTML && el.props.dangerouslySetInnerHTML.__html; // @ts-ignore Property 'props' does not exist on type ReactElement
-
-
-      styles.props.children.forEach(child => {
-        if (Array.isArray(child)) {
-          child.map(el => hasStyles(el) && curStyles.push(el));
-        } else if (hasStyles(child)) {
-          curStyles.push(child);
-        }
-      });
-    }
-
-    return _react.default.createElement("head", this.props, this.context._documentProps.isDevelopment && this.context._documentProps.hasCssMode && _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("style", {
-      "data-next-hide-fouc": true,
-      "data-ampdevmode": inAmpMode ? 'true' : undefined,
-      dangerouslySetInnerHTML: {
-        __html: `body{display:none}`
-      }
-    }), _react.default.createElement("noscript", {
-      "data-next-hide-fouc": true,
-      "data-ampdevmode": inAmpMode ? 'true' : undefined
-    }, _react.default.createElement("style", {
-      dangerouslySetInnerHTML: {
-        __html: `body{display:block}`
-      }
-    }))), children, head, _react.default.createElement("meta", {
-      name: "next-head-count",
-      content: _react.default.Children.count(head || []).toString()
-    }), inAmpMode && _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("meta", {
-      name: "viewport",
-      content: "width=device-width,minimum-scale=1,initial-scale=1"
-    }), !hasCanonicalRel && _react.default.createElement("link", {
-      rel: "canonical",
-      href: canonicalBase + (0, _utils2.cleanAmpPath)(dangerousAsPath)
-    }), _react.default.createElement("link", {
-      rel: "preload",
-      as: "script",
-      href: "https://cdn.ampproject.org/v0.js"
-    }), styles && _react.default.createElement("style", {
-      "amp-custom": "",
-      dangerouslySetInnerHTML: {
-        __html: curStyles.map(style => style.props.dangerouslySetInnerHTML.__html).join('').replace(/\/\*# sourceMappingURL=.*\*\//g, '').replace(/\/\*@ sourceURL=.*?\*\//g, '')
-      }
-    }), _react.default.createElement("style", {
-      "amp-boilerplate": "",
-      dangerouslySetInnerHTML: {
-        __html: `body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}`
-      }
-    }), _react.default.createElement("noscript", null, _react.default.createElement("style", {
-      "amp-boilerplate": "",
-      dangerouslySetInnerHTML: {
-        __html: `body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}`
-      }
-    })), _react.default.createElement("script", {
-      async: true,
-      src: "https://cdn.ampproject.org/v0.js"
-    })), !inAmpMode && _react.default.createElement(_react.default.Fragment, null, !hasAmphtmlRel && hybridAmp && _react.default.createElement("link", {
-      rel: "amphtml",
-      href: canonicalBase + getAmpPath(ampPath, dangerousAsPath)
-    }), this.getCssLinks(), page !== '/_error' && _react.default.createElement("link", {
-      rel: "preload",
-      href: assetPrefix + getOptionalModernScriptVariant(encodeURI(`/_next/static/${buildId}/pages${getPageFile(page)}`)) + _devOnlyInvalidateCacheQueryString,
-      as: "script",
-      nonce: this.props.nonce,
-      crossOrigin: this.props.crossOrigin || undefined
-    }), _react.default.createElement("link", {
-      rel: "preload",
-      href: assetPrefix + getOptionalModernScriptVariant(encodeURI(`/_next/static/${buildId}/pages/_app.js`)) + _devOnlyInvalidateCacheQueryString,
-      as: "script",
-      nonce: this.props.nonce,
-      crossOrigin: this.props.crossOrigin || undefined
-    }), this.getPreloadDynamicChunks(), this.getPreloadMainLinks(), this.context._documentProps.isDevelopment && this.context._documentProps.hasCssMode && // this element is used to mount development styles so the
-    // ordering matches production
-    // (by default, style-loader injects at the bottom of <head />)
-    _react.default.createElement("noscript", {
-      id: "__next_css__DO_NOT_USE__"
-    }), styles || null), _react.default.createElement(_react.default.Fragment, {}, ...(headTags || [])));
-  }
-
-}
-
-exports.Head = Head;
-Head.contextType = _documentContext.DocumentContext;
-Head.propTypes = {
-  nonce: _propTypes.default.string,
-  crossOrigin: _propTypes.default.string
-};
-
-class Main extends _react.Component {
-  constructor(...args) {
-    super(...args);
-    this.context = void 0;
-  }
-
-  render() {
-    const {
-      inAmpMode,
-      html
-    } = this.context._documentProps;
-    if (inAmpMode) return _constants.AMP_RENDER_TARGET;
-    return _react.default.createElement("div", {
-      id: "__next",
-      dangerouslySetInnerHTML: {
-        __html: html
-      }
-    });
-  }
-
-}
-
-exports.Main = Main;
-Main.contextType = _documentContext.DocumentContext;
-
-class NextScript extends _react.Component {
-  constructor(...args) {
-    super(...args);
-    this.context = void 0;
-  }
-
-  getDynamicChunks() {
-    const {
-      dynamicImports,
-      assetPrefix,
-      files
-    } = this.context._documentProps;
-    const {
-      _devOnlyInvalidateCacheQueryString
-    } = this.context;
-    return dedupe(dynamicImports).map(bundle => {
-      let modernProps = {};
-
-      if (false) {}
-
-      if (!/\.js$/.test(bundle.file) || files.includes(bundle.file)) return null;
-      return _react.default.createElement("script", Object.assign({
-        async: true,
-        key: bundle.file,
-        src: `${assetPrefix}/_next/${encodeURI(bundle.file)}${_devOnlyInvalidateCacheQueryString}`,
-        nonce: this.props.nonce,
-        crossOrigin: this.props.crossOrigin || undefined
-      }, modernProps));
-    });
-  }
-
-  getScripts() {
-    const {
-      assetPrefix,
-      files
-    } = this.context._documentProps;
-
-    if (!files || files.length === 0) {
-      return null;
-    }
-
-    const {
-      _devOnlyInvalidateCacheQueryString
-    } = this.context;
-    const normalScripts = files.filter(file => file.endsWith('.js') && !isLowPriority(file));
-    const lowPriorityScripts = files.filter(file => file.endsWith('.js') && isLowPriority(file));
-    return [...normalScripts, ...lowPriorityScripts].map(file => {
-      let modernProps = {};
-
-      if (false) {}
-
-      return _react.default.createElement("script", Object.assign({
-        key: file,
-        src: `${assetPrefix}/_next/${encodeURI(file)}${_devOnlyInvalidateCacheQueryString}`,
-        nonce: this.props.nonce,
-        async: true,
-        crossOrigin: this.props.crossOrigin || undefined
-      }, modernProps));
-    });
-  }
-
-  getPolyfillScripts() {
-    // polyfills.js has to be rendered as nomodule without async
-    // It also has to be the first script to load
-    const {
-      assetPrefix,
-      polyfillFiles
-    } = this.context._documentProps;
-    const {
-      _devOnlyInvalidateCacheQueryString
-    } = this.context;
-    return polyfillFiles.filter(polyfill => polyfill.endsWith('.js') && !/\.module\.js$/.test(polyfill)).map(polyfill => _react.default.createElement("script", {
-      key: polyfill,
-      nonce: this.props.nonce,
-      crossOrigin: this.props.crossOrigin || undefined,
-      noModule: true,
-      src: `${assetPrefix}/_next/${polyfill}${_devOnlyInvalidateCacheQueryString}`
-    }));
-  }
-
-  static getInlineScriptSource(documentProps) {
-    const {
-      __NEXT_DATA__
-    } = documentProps;
-
-    try {
-      const data = JSON.stringify(__NEXT_DATA__);
-      return (0, _htmlescape.htmlEscapeJsonString)(data);
-    } catch (err) {
-      if (err.message.indexOf('circular structure')) {
-        throw new Error(`Circular structure in "getInitialProps" result of page "${__NEXT_DATA__.page}". https://err.sh/zeit/next.js/circular-structure`);
-      }
-
-      throw err;
-    }
-  }
-
-  render() {
-    const {
-      staticMarkup,
-      assetPrefix,
-      inAmpMode,
-      devFiles,
-      __NEXT_DATA__,
-      bodyTags
-    } = this.context._documentProps;
-    const {
-      _devOnlyInvalidateCacheQueryString
-    } = this.context;
-
-    if (inAmpMode) {
-      if (false) {}
-
-      const devFiles = [_constants.CLIENT_STATIC_FILES_RUNTIME_AMP, _constants.CLIENT_STATIC_FILES_RUNTIME_WEBPACK];
-      return _react.default.createElement(_react.default.Fragment, null, staticMarkup ? null : _react.default.createElement("script", {
-        id: "__NEXT_DATA__",
-        type: "application/json",
-        nonce: this.props.nonce,
-        crossOrigin: this.props.crossOrigin || undefined,
-        dangerouslySetInnerHTML: {
-          __html: NextScript.getInlineScriptSource(this.context._documentProps)
-        },
-        "data-ampdevmode": true
-      }), devFiles ? devFiles.map(file => _react.default.createElement("script", {
-        key: file,
-        src: `${assetPrefix}/_next/${file}${_devOnlyInvalidateCacheQueryString}`,
-        nonce: this.props.nonce,
-        crossOrigin: this.props.crossOrigin || undefined,
-        "data-ampdevmode": true
-      })) : null, _react.default.createElement(_react.default.Fragment, {}, ...(bodyTags || [])));
-    }
-
-    const {
-      page,
-      buildId
-    } = __NEXT_DATA__;
-
-    if (true) {
-      if (this.props.crossOrigin) console.warn('Warning: `NextScript` attribute `crossOrigin` is deprecated. https://err.sh/next.js/doc-crossorigin-deprecated');
-    }
-
-    const pageScript = [_react.default.createElement("script", Object.assign({
-      async: true,
-      "data-next-page": page,
-      key: page,
-      src: assetPrefix + encodeURI(`/_next/static/${buildId}/pages${getPageFile(page)}`) + _devOnlyInvalidateCacheQueryString,
-      nonce: this.props.nonce,
-      crossOrigin: this.props.crossOrigin || undefined
-    },  false ? undefined : {})),  false && false];
-    const appScript = [_react.default.createElement("script", Object.assign({
-      async: true,
-      "data-next-page": "/_app",
-      src: assetPrefix + `/_next/static/${buildId}/pages/_app.js` + _devOnlyInvalidateCacheQueryString,
-      key: "_app",
-      nonce: this.props.nonce,
-      crossOrigin: this.props.crossOrigin || undefined
-    },  false ? undefined : {})),  false && false];
-    return _react.default.createElement(_react.default.Fragment, null, devFiles ? devFiles.map(file => !file.match(/\.js\.map/) && _react.default.createElement("script", {
-      key: file,
-      src: `${assetPrefix}/_next/${encodeURI(file)}${_devOnlyInvalidateCacheQueryString}`,
-      nonce: this.props.nonce,
-      crossOrigin: this.props.crossOrigin || undefined
-    })) : null, staticMarkup ? null : _react.default.createElement("script", {
-      id: "__NEXT_DATA__",
-      type: "application/json",
-      nonce: this.props.nonce,
-      crossOrigin: this.props.crossOrigin || undefined,
-      dangerouslySetInnerHTML: {
-        __html: NextScript.getInlineScriptSource(this.context._documentProps)
-      }
-    }),  false ? undefined : null, this.getPolyfillScripts(), page !== '/_error' && pageScript, appScript, staticMarkup ? null : this.getDynamicChunks(), staticMarkup ? null : this.getScripts(), _react.default.createElement(_react.default.Fragment, {}, ...(bodyTags || [])));
-  }
-
-}
-
-exports.NextScript = NextScript;
-NextScript.contextType = _documentContext.DocumentContext;
-NextScript.propTypes = {
-  nonce: _propTypes.default.string,
-  crossOrigin: _propTypes.default.string
-};
-NextScript.safariNomoduleFix = '!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()},!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();';
-
-function getAmpPath(ampPath, asPath) {
-  return ampPath ? ampPath : `${asPath}${asPath.includes('?') ? '&' : '?'}amp=1`;
-}
-
-function getPageFile(page, buildId) {
-  if (page === '/') {
-    return buildId ? `/index.${buildId}.js` : '/index.js';
-  }
-
-  return buildId ? `${page}.${buildId}.js` : `${page}.js`;
-}
-
-/***/ }),
-
-/***/ "./node_modules/next/dist/server/htmlescape.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/next/dist/server/htmlescape.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-exports.__esModule=true;exports.htmlEscapeJsonString=htmlEscapeJsonString;// This utility is based on https://github.com/zertosh/htmlescape
-// License: https://github.com/zertosh/htmlescape/blob/0527ca7156a524d256101bb310a9f970f63078ad/LICENSE
-const ESCAPE_LOOKUP={'&':'\\u0026','>':'\\u003e','<':'\\u003c','\u2028':'\\u2028','\u2029':'\\u2029'};const ESCAPE_REGEX=/[&><\u2028\u2029]/g;function htmlEscapeJsonString(str){return str.replace(ESCAPE_REGEX,match=>ESCAPE_LOOKUP[match]);}
-
-/***/ }),
-
-/***/ "./node_modules/next/document.js":
-/*!***************************************!*\
-  !*** ./node_modules/next/document.js ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! ./dist/pages/_document */ "./node_modules/next/dist/pages/_document.js")
-
-
-/***/ }),
-
 /***/ "./node_modules/next/link.js":
 /*!***********************************!*\
   !*** ./node_modules/next/link.js ***!
@@ -2589,10 +2329,10 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 /***/ }),
 
-/***/ "./pages/_document.js":
-/*!****************************!*\
-  !*** ./pages/_document.js ***!
-  \****************************/
+/***/ "./pages/signin.js":
+/*!*************************!*\
+  !*** ./pages/signin.js ***!
+  \*************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2600,91 +2340,69 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var next_document__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/document */ "./node_modules/next/document.js");
-/* harmony import */ var next_document__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_document__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\pages\\_document.js";
+/* harmony import */ var _components_auth_SigninComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/auth/SigninComponent */ "./components/auth/SigninComponent.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\pages\\signin.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1___default.a {
-  render() {
-    return __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Html"], {
-      lang: "en",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 7
-      },
-      __self: this
-    }, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Head"], {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 8
-      },
-      __self: this
-    }, __jsx("meta", {
-      charSet: "UTF-8",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 9
-      },
-      __self: this
-    }), __jsx("meta", {
-      name: "viewport",
-      content: "width=device-width, initial-scale=1.0",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 10
-      },
-      __self: this
-    }), __jsx("link", {
-      rel: "stylesheet",
-      href: "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
-      integrity: "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T",
-      crossOrigin: "anonymous",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 11
-      },
-      __self: this
-    })), __jsx("body", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 19
-      },
-      __self: this
-    }, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Main"], {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 20
-      },
-      __self: this
-    }), __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["NextScript"], {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 21
-      },
-      __self: this
-    })));
-  }
 
-}
 
-/* harmony default export */ __webpack_exports__["default"] = (MyDocument);
+const Signin = () => {
+  return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8
+    },
+    __self: undefined
+  }, __jsx("h2", {
+    className: "text-center pt-4 pb-4",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13
+    },
+    __self: undefined
+  }, "Signin"), __jsx("div", {
+    className: "row",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14
+    },
+    __self: undefined
+  }, __jsx("div", {
+    className: "col-md-6 offset-md-3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15
+    },
+    __self: undefined
+  }, __jsx(_components_auth_SigninComponent__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 16
+    },
+    __self: undefined
+  }))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Signin);
 
 /***/ }),
 
-/***/ 1:
-/*!*********************************************!*\
-  !*** multi private-next-pages/_document.js ***!
-  \*********************************************/
+/***/ 5:
+/*!*******************************!*\
+  !*** multi ./pages/signin.js ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! private-next-pages/_document.js */"./pages/_document.js");
+module.exports = __webpack_require__(/*! C:\Users\Administrator\Documents\GitHub\SEO-Blog\frontend\pages\signin.js */"./pages/signin.js");
 
 
 /***/ }),
@@ -2744,6 +2462,50 @@ module.exports = require("core-js/library/fn/weak-map");
 
 /***/ }),
 
+/***/ "isomorphic-fetch":
+/*!***********************************!*\
+  !*** external "isomorphic-fetch" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("isomorphic-fetch");
+
+/***/ }),
+
+/***/ "js-cookie":
+/*!****************************!*\
+  !*** external "js-cookie" ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("js-cookie");
+
+/***/ }),
+
+/***/ "next/config":
+/*!******************************!*\
+  !*** external "next/config" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next/config");
+
+/***/ }),
+
+/***/ "next/router":
+/*!******************************!*\
+  !*** external "next/router" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next/router");
+
+/***/ }),
+
 /***/ "prop-types":
 /*!*****************************!*\
   !*** external "prop-types" ***!
@@ -2788,14 +2550,14 @@ module.exports = require("react-is");
 
 /***/ }),
 
-/***/ "styled-jsx/server":
-/*!************************************!*\
-  !*** external "styled-jsx/server" ***!
-  \************************************/
+/***/ "reactstrap":
+/*!*****************************!*\
+  !*** external "reactstrap" ***!
+  \*****************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("styled-jsx/server");
+module.exports = require("reactstrap");
 
 /***/ }),
 
@@ -2811,4 +2573,4 @@ module.exports = require("url");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=_document.js.map
+//# sourceMappingURL=signin.js.map

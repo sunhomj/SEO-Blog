@@ -6,7 +6,7 @@ const tagSchema = new mongoose.Schema(
       type: String,
       trim: true,
       required: true,
-      max: 32
+      maxlength: 32
     },
     slug: {
       type: String,
@@ -14,9 +14,7 @@ const tagSchema = new mongoose.Schema(
       index: true
     }
   },
-  {
-    timestamps: { createdAt: true, updatedAt: false }
-  }
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("Tag", tagSchema);
