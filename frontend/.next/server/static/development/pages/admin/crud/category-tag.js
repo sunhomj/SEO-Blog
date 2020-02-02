@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -195,12 +195,15 @@ const isAuth = () => {
 /*!*****************************!*\
   !*** ./actions/category.js ***!
   \*****************************/
-/*! exports provided: create */
+/*! exports provided: create, getCategories, singleCategory, removeCategory */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create", function() { return create; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCategories", function() { return getCategories; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "singleCategory", function() { return singleCategory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCategory", function() { return removeCategory; });
 /* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! isomorphic-fetch */ "isomorphic-fetch");
 /* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../config */ "./config.js");
@@ -215,6 +218,38 @@ const create = (category, token) => {
       Authorization: `Bearer ${token}`
     },
     body: JSON.stringify(category)
+  }).then(response => {
+    return response.json();
+  }).catch(err => {
+    console.log(err);
+  });
+};
+const getCategories = () => {
+  return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default()(`${_config__WEBPACK_IMPORTED_MODULE_1__["API"]}/categories`, {
+    method: "GET"
+  }).then(response => {
+    return response.json();
+  }).catch(err => {
+    console.log(err);
+  });
+};
+const singleCategory = slug => {
+  return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default()(`${_config__WEBPACK_IMPORTED_MODULE_1__["API"]}/category/${slug}`, {
+    method: "GET"
+  }).then(response => {
+    return response.json();
+  }).catch(err => {
+    console.log(err);
+  });
+};
+const removeCategory = (slug, token) => {
+  return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default()(`${_config__WEBPACK_IMPORTED_MODULE_1__["API"]}/category/${slug}`, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    }
   }).then(response => {
     return response.json();
   }).catch(err => {
@@ -245,7 +280,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ "reactstrap");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_6__);
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\Header.js";
+var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/Header.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -451,7 +486,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header */ "./components/Header.js");
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\Layout.js";
+var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/Layout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -498,7 +533,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _actions_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/auth */ "./actions/auth.js");
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\auth\\Admin.js";
+var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/auth/Admin.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -545,7 +580,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _actions_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/auth */ "./actions/auth.js");
 /* harmony import */ var _actions_category__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/category */ "./actions/category.js");
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\crud\\Category.js";
+var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/crud/Category.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -580,6 +615,35 @@ const Category = () => {
     removed
   } = values;
   const token = Object(_actions_auth__WEBPACK_IMPORTED_MODULE_3__["getCookie"])("token");
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    loadCategories();
+  });
+
+  const loadCategories = () => {
+    Object(_actions_category__WEBPACK_IMPORTED_MODULE_4__["getCategories"])().then(data => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        setValues(_objectSpread({}, values, {
+          categories: data
+        }));
+      }
+    });
+  };
+
+  const showCategories = () => {
+    return categories.map((el, index) => {
+      return __jsx("button", {
+        key: index,
+        className: "btn btn-outline-primary mr-1 ml-1 mt-3 ",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35
+        },
+        __self: undefined
+      }, el.name);
+    });
+  };
 
   const clickSubmit = e => {
     e.preventDefault();
@@ -591,9 +655,16 @@ const Category = () => {
           error: data.error,
           success: false
         }));
+      } else {
+        console.log(data);
+        setValues(_objectSpread({}, values, {
+          error: false,
+          success: true,
+          name: ""
+        }));
       }
     });
-    console.log("create category", name);
+    console.log("create category :", name);
   };
 
   const handleChange = e => {
@@ -609,21 +680,21 @@ const Category = () => {
     onSubmit: clickSubmit,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 66
     },
     __self: undefined
   }, __jsx("div", {
     className: "form-group",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 67
     },
     __self: undefined
   }, __jsx("label", {
     className: "text-muted",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 68
     },
     __self: undefined
   }, "Name"), __jsx("input", {
@@ -634,7 +705,7 @@ const Category = () => {
     required: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 69
     },
     __self: undefined
   })), __jsx("button", {
@@ -642,7 +713,7 @@ const Category = () => {
     className: "btn btn-primary",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 71
     },
     __self: undefined
   }, "Create"));
@@ -650,10 +721,16 @@ const Category = () => {
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51
+      lineNumber: 78
     },
     __self: undefined
-  }, newCategoryForm());
+  }, newCategoryForm(), __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 80
+    },
+    __self: undefined
+  }, showCategories()));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Category);
@@ -2369,7 +2446,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _components_crud_Category__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../components/crud/Category */ "./components/crud/Category.js");
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\pages\\admin\\crud\\category-tag.js";
+var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/pages/admin/crud/category-tag.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2450,14 +2527,14 @@ const CategoryTag = () => {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!************************************************!*\
   !*** multi ./pages/admin/crud/category-tag.js ***!
   \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Administrator\Documents\GitHub\SEO-Blog\frontend\pages\admin\crud\category-tag.js */"./pages/admin/crud/category-tag.js");
+module.exports = __webpack_require__(/*! /Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/pages/admin/crud/category-tag.js */"./pages/admin/crud/category-tag.js");
 
 
 /***/ }),

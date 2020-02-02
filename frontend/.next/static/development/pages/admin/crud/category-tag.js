@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\admin\\crud\\category-tag.js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/admin/crud/category-tag.js"],{
 
 /***/ "./actions/auth.js":
 /*!*************************!*\
@@ -131,12 +131,15 @@ var isAuth = function isAuth() {
 /*!*****************************!*\
   !*** ./actions/category.js ***!
   \*****************************/
-/*! exports provided: create */
+/*! exports provided: create, getCategories, singleCategory, removeCategory */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create", function() { return create; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCategories", function() { return getCategories; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "singleCategory", function() { return singleCategory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCategory", function() { return removeCategory; });
 /* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/json/stringify */ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js");
 /* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! isomorphic-fetch */ "./node_modules/isomorphic-fetch/fetch-npm-browserify.js");
@@ -154,6 +157,38 @@ var create = function create(category, token) {
       Authorization: "Bearer ".concat(token)
     },
     body: _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(category)
+  }).then(function (response) {
+    return response.json();
+  })["catch"](function (err) {
+    console.log(err);
+  });
+};
+var getCategories = function getCategories() {
+  return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_1___default()("".concat(_config__WEBPACK_IMPORTED_MODULE_2__["API"], "/categories"), {
+    method: "GET"
+  }).then(function (response) {
+    return response.json();
+  })["catch"](function (err) {
+    console.log(err);
+  });
+};
+var singleCategory = function singleCategory(slug) {
+  return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_1___default()("".concat(_config__WEBPACK_IMPORTED_MODULE_2__["API"], "/category/").concat(slug), {
+    method: "GET"
+  }).then(function (response) {
+    return response.json();
+  })["catch"](function (err) {
+    console.log(err);
+  });
+};
+var removeCategory = function removeCategory(slug, token) {
+  return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_1___default()("".concat(_config__WEBPACK_IMPORTED_MODULE_2__["API"], "/category/").concat(slug), {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: "Bearer ".concat(token)
+    }
   }).then(function (response) {
     return response.json();
   })["catch"](function (err) {
@@ -183,7 +218,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\Header.js";
+var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/Header.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -439,7 +474,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header */ "./components/Header.js");
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\Layout.js";
+var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/Layout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -485,7 +520,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _actions_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/auth */ "./actions/auth.js");
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\auth\\Admin.js";
+var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/auth/Admin.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -551,7 +586,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\crud\\Category.js";
+var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/crud/Category.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
 
@@ -582,6 +617,35 @@ var Category = function Category() {
       categories = values.categories,
       removed = values.removed;
   var token = Object(_actions_auth__WEBPACK_IMPORTED_MODULE_10__["getCookie"])("token");
+  Object(react__WEBPACK_IMPORTED_MODULE_7__["useEffect"])(function () {
+    loadCategories();
+  });
+
+  var loadCategories = function loadCategories() {
+    Object(_actions_category__WEBPACK_IMPORTED_MODULE_11__["getCategories"])().then(function (data) {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        setValues(_objectSpread({}, values, {
+          categories: data
+        }));
+      }
+    });
+  };
+
+  var showCategories = function showCategories() {
+    return categories.map(function (el, index) {
+      return __jsx("button", {
+        key: index,
+        className: "btn btn-outline-primary mr-1 ml-1 mt-3 ",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35
+        },
+        __self: this
+      }, el.name);
+    });
+  };
 
   var clickSubmit = function clickSubmit(e) {
     e.preventDefault();
@@ -593,9 +657,16 @@ var Category = function Category() {
           error: data.error,
           success: false
         }));
+      } else {
+        console.log(data);
+        setValues(_objectSpread({}, values, {
+          error: false,
+          success: true,
+          name: ""
+        }));
       }
     });
-    console.log("create category", name);
+    console.log("create category :", name);
   };
 
   var handleChange = function handleChange(e) {
@@ -612,21 +683,21 @@ var Category = function Category() {
       onSubmit: clickSubmit,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 40
+        lineNumber: 66
       },
       __self: this
     }, __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 41
+        lineNumber: 67
       },
       __self: this
     }, __jsx("label", {
       className: "text-muted",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 42
+        lineNumber: 68
       },
       __self: this
     }, "Name"), __jsx("input", {
@@ -637,7 +708,7 @@ var Category = function Category() {
       required: true,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 43
+        lineNumber: 69
       },
       __self: this
     })), __jsx("button", {
@@ -645,7 +716,7 @@ var Category = function Category() {
       className: "btn btn-primary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 45
+        lineNumber: 71
       },
       __self: this
     }, "Create"));
@@ -654,10 +725,16 @@ var Category = function Category() {
   return __jsx(react__WEBPACK_IMPORTED_MODULE_7___default.a.Fragment, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51
+      lineNumber: 78
     },
     __self: this
-  }, newCategoryForm());
+  }, newCategoryForm(), __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 80
+    },
+    __self: this
+  }, showCategories()));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Category);
@@ -5898,7 +5975,7 @@ module.exports = exports['default'];
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(true);
 // Module
-exports.push([module.i, ".Header_mbutton__1MBmJ {\r\n  cursor: pointer;\r\n  font-weight: bold;\r\n}\r\n\r\n#Header_nprogress__JHRh3 .Header_bar__TSU4U {\r\n  height: 10px !important;\r\n}\r\n", "",{"version":3,"sources":["Header.module.css"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,iBAAiB;AACnB;;AAEA;EACE,uBAAuB;AACzB","file":"Header.module.css","sourcesContent":[".mbutton {\r\n  cursor: pointer;\r\n  font-weight: bold;\r\n}\r\n\r\n#nprogress .bar {\r\n  height: 10px !important;\r\n}\r\n"]}]);
+exports.push([module.i, ".Header_mbutton__1MBmJ {\n  cursor: pointer;\n  font-weight: bold;\n}\n\n#Header_nprogress__JHRh3 .Header_bar__TSU4U {\n  height: 10px !important;\n}\n", "",{"version":3,"sources":["Header.module.css"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,iBAAiB;AACnB;;AAEA;EACE,uBAAuB;AACzB","file":"Header.module.css","sourcesContent":[".mbutton {\n  cursor: pointer;\n  font-weight: bold;\n}\n\n#nprogress .bar {\n  height: 10px !important;\n}\n"]}]);
 // Exports
 exports.locals = {
 	"mbutton": "Header_mbutton__1MBmJ",
@@ -7084,10 +7161,10 @@ var assign=Object.assign.bind(Object);function g(){return assign;}Object.defineP
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fadmin%2Fcrud%2Fcategory-tag&absolutePagePath=C%3A%5CUsers%5CAdministrator%5CDocuments%5CGitHub%5CSEO-Blog%5Cfrontend%5Cpages%5Cadmin%5Ccrud%5Ccategory-tag.js!./":
-/*!********************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fadmin%2Fcrud%2Fcategory-tag&absolutePagePath=C%3A%5CUsers%5CAdministrator%5CDocuments%5CGitHub%5CSEO-Blog%5Cfrontend%5Cpages%5Cadmin%5Ccrud%5Ccategory-tag.js ***!
-  \********************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fadmin%2Fcrud%2Fcategory-tag&absolutePagePath=%2FUsers%2FSlothums%2FDesktop%2FSunho%20Lee%2FSeo%20blog%2FSEO-Blog%2Ffrontend%2Fpages%2Fadmin%2Fcrud%2Fcategory-tag.js!./":
+/*!***************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fadmin%2Fcrud%2Fcategory-tag&absolutePagePath=%2FUsers%2FSlothums%2FDesktop%2FSunho%20Lee%2FSeo%20blog%2FSEO-Blog%2Ffrontend%2Fpages%2Fadmin%2Fcrud%2Fcategory-tag.js ***!
+  \***************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -26784,7 +26861,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _components_crud_Category__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../components/crud/Category */ "./components/crud/Category.js");
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\pages\\admin\\crud\\category-tag.js";
+var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/pages/admin/crud/category-tag.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -26865,14 +26942,14 @@ var CategoryTag = function CategoryTag() {
 
 /***/ }),
 
-/***/ 1:
-/*!************************************************************************************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2Fadmin%2Fcrud%2Fcategory-tag&absolutePagePath=C%3A%5CUsers%5CAdministrator%5CDocuments%5CGitHub%5CSEO-Blog%5Cfrontend%5Cpages%5Cadmin%5Ccrud%5Ccategory-tag.js ***!
-  \************************************************************************************************************************************************************************************************************/
+/***/ 2:
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2Fadmin%2Fcrud%2Fcategory-tag&absolutePagePath=%2FUsers%2FSlothums%2FDesktop%2FSunho%20Lee%2FSeo%20blog%2FSEO-Blog%2Ffrontend%2Fpages%2Fadmin%2Fcrud%2Fcategory-tag.js ***!
+  \*******************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fadmin%2Fcrud%2Fcategory-tag&absolutePagePath=C%3A%5CUsers%5CAdministrator%5CDocuments%5CGitHub%5CSEO-Blog%5Cfrontend%5Cpages%5Cadmin%5Ccrud%5Ccategory-tag.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fadmin%2Fcrud%2Fcategory-tag&absolutePagePath=C%3A%5CUsers%5CAdministrator%5CDocuments%5CGitHub%5CSEO-Blog%5Cfrontend%5Cpages%5Cadmin%5Ccrud%5Ccategory-tag.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fadmin%2Fcrud%2Fcategory-tag&absolutePagePath=%2FUsers%2FSlothums%2FDesktop%2FSunho%20Lee%2FSeo%20blog%2FSEO-Blog%2Ffrontend%2Fpages%2Fadmin%2Fcrud%2Fcategory-tag.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fadmin%2Fcrud%2Fcategory-tag&absolutePagePath=%2FUsers%2FSlothums%2FDesktop%2FSunho%20Lee%2FSeo%20blog%2FSEO-Blog%2Ffrontend%2Fpages%2Fadmin%2Fcrud%2Fcategory-tag.js!./");
 
 
 /***/ }),
@@ -26888,5 +26965,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=category-tag.js.map

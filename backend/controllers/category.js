@@ -3,58 +3,59 @@ const slugify = require("slugify");
 const { errorHandler } = require("../helpers/errorHandler");
 
 exports.create = (req, res) => {
-  const { name } = req.body;
-  let slug = slugify(name).toLowerCase();
+    const { name } = req.body;
+    let slug = slugify(name).toLowerCase();
 
-  let category = new Category({ name, slug });
+    let category = new Category({ name, slug });
 
-  category.save((err, data) => {
-    if (err) {
-      return res.status(400).json({
-        err: errorHandler(err)
-      });
-    }
-    res.json(data);
-  });
+    category.save((err, data) => {
+        if (err) {
+            return res.status(400).json({
+                err: errorHandler(err)
+            });
+        }
+        res.json(data);
+        console.log("Category has created successfuly");
+    });
 };
 
 exports.list = (req, res) => {
-  Category.find({}).exec((err, data) => {
-    if (err) {
-      return res.status(400).json({
-        error: errorHandler(err)
-      });
-    }
-    res.json(data);
-  });
+    Category.find({}).exec((err, data) => {
+        if (err) {
+            return res.status(400).json({
+                error: errorHandler(err)
+            });
+        }
+        res.json(data);
+    });
 };
 
 exports.read = (req, res) => {
-  console.log(req);
-  const slug = req.params.slug.toLowerCase();
+    console.log(req);
+    const slug = req.params.slug.toLowerCase();
 
-  Category.findOne({ slug }).exec((err, category) => {
-    if (err) {
-      return res.status(400).json({
-        error: errorHandler(err)
-      });
-    }
-    res.json(category);
-  });
+    Category.findOne({ slug }).exec((err, category) => {
+        if (err) {
+            return res.status(400).json({
+                error: errorHandler(err)
+            });
+        }
+        res.json(category);
+    });
 };
 
 exports.remove = (req, res) => {
-  const slug = req.params.slug.toLowerCase();
+    const slug = req.params.slug.toLowerCase();
 
-  Category.findOneAndRemove({ slug }).exec((err, data) => {
-    if (err) {
-      return res.status(400).json({
-        error: errorHandler(err)
-      });
-    }
+    Category.findOneAndRemove({ slug }).exec((err, data) => {
+        if (err) {
+            return res.status(400).json({
+                error: errorHandler(err)
+            });
+        }
 
-    res.json({
-      message: "Category deleted successfully"
+        res.json({
+            message: "Category deleted successfully"
+        });
     });
-  });
 };
