@@ -726,7 +726,6 @@ const Category = () => {
   };
 
   const deleteCategory = slug => {
-    console.log("delete", slug);
     Object(_actions_category__WEBPACK_IMPORTED_MODULE_4__["removeCategory"])(slug, token).then(data => {
       if (data.error) {
         console.log(data.error);
@@ -753,7 +752,6 @@ const Category = () => {
           success: false
         }));
       } else {
-        console.log(data);
         setValues(_objectSpread({}, values, {
           error: false,
           success: true,
@@ -763,7 +761,6 @@ const Category = () => {
         }));
       }
     });
-    console.log("create category :", name);
   };
 
   const handleChange = e => {
@@ -778,10 +775,10 @@ const Category = () => {
   const showSuccess = () => {
     if (success) {
       return __jsx("p", {
-        className: "text-success",
+        className: "position-absolute text-success",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 92
+          lineNumber: 88
         },
         __self: undefined
       }, "Category is created");
@@ -791,10 +788,10 @@ const Category = () => {
   const showError = () => {
     if (error) {
       return __jsx("p", {
-        className: "text-danger",
+        className: "position-absolute text-danger",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 98
+          lineNumber: 94
         },
         __self: undefined
       }, "Category already exist");
@@ -804,10 +801,10 @@ const Category = () => {
   const showRemoved = () => {
     if (removed) {
       return __jsx("p", {
-        className: "text-danger",
+        className: "position-absolute text-danger",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 104
+          lineNumber: 100
         },
         __self: undefined
       }, "Category is removed");
@@ -818,21 +815,21 @@ const Category = () => {
     onSubmit: clickSubmit,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109
+      lineNumber: 105
     },
     __self: undefined
   }, __jsx("div", {
     className: "form-group",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110
+      lineNumber: 106
     },
     __self: undefined
   }, __jsx("label", {
-    className: "text-muted",
+    className: "mt-4 text-muted",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 111
+      lineNumber: 107
     },
     __self: undefined
   }, "Category Name"), __jsx("input", {
@@ -843,7 +840,7 @@ const Category = () => {
     required: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 112
+      lineNumber: 108
     },
     __self: undefined
   })), __jsx("button", {
@@ -851,7 +848,7 @@ const Category = () => {
     className: "btn btn-primary",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 114
+      lineNumber: 110
     },
     __self: undefined
   }, "Create"));
@@ -867,14 +864,14 @@ const Category = () => {
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 125
+      lineNumber: 121
     },
     __self: undefined
   }, showSuccess(), showError(), showRemoved(), __jsx("div", {
     onMouseMove: mouseMoveHandler,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 130
+      lineNumber: 126
     },
     __self: undefined
   }, newCategoryForm(), showCategories()));
@@ -1029,7 +1026,7 @@ const Tag = () => {
   const showSuccess = () => {
     if (success) {
       return __jsx("p", {
-        className: "text-success",
+        className: "position-absolute mx-auto text-success",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 89
@@ -1042,7 +1039,7 @@ const Tag = () => {
   const showError = () => {
     if (error) {
       return __jsx("p", {
-        className: "text-danger",
+        className: "position-absolute text-danger",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 95
@@ -1055,7 +1052,7 @@ const Tag = () => {
   const showRemoved = () => {
     if (removed) {
       return __jsx("p", {
-        className: "text-danger",
+        className: "position-absolute text-danger",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 101
@@ -1080,7 +1077,7 @@ const Tag = () => {
     },
     __self: undefined
   }, __jsx("label", {
-    className: "text-muted",
+    className: "text-muted mt-4",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 108

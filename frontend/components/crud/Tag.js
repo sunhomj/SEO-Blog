@@ -86,26 +86,26 @@ const Tag = () => {
 
     const showSuccess = () => {
         if (success) {
-            return <p className="text-success">Tag is created</p>;
+            return <p className="position-absolute mx-auto text-success">Tag is created</p>;
         }
     };
 
     const showError = () => {
         if (error) {
-            return <p className="text-danger">Tag already exist</p>;
+            return <p className="position-absolute text-danger">Tag already exist</p>;
         }
     };
 
     const showRemoved = () => {
         if (removed) {
-            return <p className="text-danger">Tag is removed</p>;
+            return <p className="position-absolute text-danger">Tag is removed</p>;
         }
     };
 
     const newTagForm = () => (
         <form onSubmit={clickSubmit}>
             <div className="form-group">
-                <label className="text-muted">Tag Name</label>
+                <label className="text-muted mt-4">Tag Name</label>
                 <input type="text" className="form-control" onChange={handleChange} value={name} required />
             </div>
             <button type="submit" className="btn btn-primary">

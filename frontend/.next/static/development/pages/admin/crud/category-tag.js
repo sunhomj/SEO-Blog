@@ -733,7 +733,6 @@ var Category = function Category() {
   };
 
   var deleteCategory = function deleteCategory(slug) {
-    console.log("delete", slug);
     Object(_actions_category__WEBPACK_IMPORTED_MODULE_11__["removeCategory"])(slug, token).then(function (data) {
       if (data.error) {
         console.log(data.error);
@@ -760,7 +759,6 @@ var Category = function Category() {
           success: false
         }));
       } else {
-        console.log(data);
         setValues(_objectSpread({}, values, {
           error: false,
           success: true,
@@ -770,7 +768,6 @@ var Category = function Category() {
         }));
       }
     });
-    console.log("create category :", name);
   };
 
   var handleChange = function handleChange(e) {
@@ -785,10 +782,10 @@ var Category = function Category() {
   var showSuccess = function showSuccess() {
     if (success) {
       return __jsx("p", {
-        className: "text-success",
+        className: "position-absolute text-success",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 92
+          lineNumber: 88
         },
         __self: this
       }, "Category is created");
@@ -798,10 +795,10 @@ var Category = function Category() {
   var showError = function showError() {
     if (error) {
       return __jsx("p", {
-        className: "text-danger",
+        className: "position-absolute text-danger",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 98
+          lineNumber: 94
         },
         __self: this
       }, "Category already exist");
@@ -811,10 +808,10 @@ var Category = function Category() {
   var showRemoved = function showRemoved() {
     if (removed) {
       return __jsx("p", {
-        className: "text-danger",
+        className: "position-absolute text-danger",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 104
+          lineNumber: 100
         },
         __self: this
       }, "Category is removed");
@@ -826,21 +823,21 @@ var Category = function Category() {
       onSubmit: clickSubmit,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 109
+        lineNumber: 105
       },
       __self: this
     }, __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 110
+        lineNumber: 106
       },
       __self: this
     }, __jsx("label", {
-      className: "text-muted",
+      className: "mt-4 text-muted",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 111
+        lineNumber: 107
       },
       __self: this
     }, "Category Name"), __jsx("input", {
@@ -851,7 +848,7 @@ var Category = function Category() {
       required: true,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 112
+        lineNumber: 108
       },
       __self: this
     })), __jsx("button", {
@@ -859,7 +856,7 @@ var Category = function Category() {
       className: "btn btn-primary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 114
+        lineNumber: 110
       },
       __self: this
     }, "Create"));
@@ -876,14 +873,14 @@ var Category = function Category() {
   return __jsx(react__WEBPACK_IMPORTED_MODULE_7___default.a.Fragment, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 125
+      lineNumber: 121
     },
     __self: this
   }, showSuccess(), showError(), showRemoved(), __jsx("div", {
     onMouseMove: mouseMoveHandler,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 130
+      lineNumber: 126
     },
     __self: this
   }, newCategoryForm(), showCategories()));
@@ -1056,7 +1053,7 @@ var Tag = function Tag() {
   var showSuccess = function showSuccess() {
     if (success) {
       return __jsx("p", {
-        className: "text-success",
+        className: "position-absolute mx-auto text-success",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 89
@@ -1069,7 +1066,7 @@ var Tag = function Tag() {
   var showError = function showError() {
     if (error) {
       return __jsx("p", {
-        className: "text-danger",
+        className: "position-absolute text-danger",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 95
@@ -1082,7 +1079,7 @@ var Tag = function Tag() {
   var showRemoved = function showRemoved() {
     if (removed) {
       return __jsx("p", {
-        className: "text-danger",
+        className: "position-absolute text-danger",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 101
@@ -1108,7 +1105,7 @@ var Tag = function Tag() {
       },
       __self: this
     }, __jsx("label", {
-      className: "text-muted",
+      className: "text-muted mt-4",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 108

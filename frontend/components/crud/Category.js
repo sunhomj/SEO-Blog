@@ -53,8 +53,6 @@ const Category = () => {
     };
 
     const deleteCategory = slug => {
-        console.log("delete", slug);
-
         removeCategory(slug, token).then(data => {
             if (data.error) {
                 console.log(data.error);
@@ -70,11 +68,9 @@ const Category = () => {
             if (data.error) {
                 setValues({ ...values, error: data.error, success: false });
             } else {
-                console.log(data);
                 setValues({ ...values, error: false, success: true, name: "", removed: false, reload: !reload });
             }
         });
-        console.log("create category :", name);
     };
 
     const handleChange = e => {
@@ -89,26 +85,26 @@ const Category = () => {
 
     const showSuccess = () => {
         if (success) {
-            return <p className="text-success">Category is created</p>;
+            return <p className="position-absolute text-success">Category is created</p>;
         }
     };
 
     const showError = () => {
         if (error) {
-            return <p className="text-danger">Category already exist</p>;
+            return <p className="position-absolute text-danger">Category already exist</p>;
         }
     };
 
     const showRemoved = () => {
         if (removed) {
-            return <p className="text-danger">Category is removed</p>;
+            return <p className="position-absolute text-danger">Category is removed</p>;
         }
     };
 
     const newCategoryForm = () => (
         <form onSubmit={clickSubmit}>
             <div className="form-group">
-                <label className="text-muted">Category Name</label>
+                <label className="mt-4 text-muted">Category Name</label>
                 <input type="text" className="form-control" onChange={handleChange} value={name} required />
             </div>
             <button type="submit" className="btn btn-primary">
