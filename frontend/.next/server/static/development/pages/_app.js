@@ -1944,7 +1944,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var react_quill_dist_quill_snow_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-quill/dist/quill.snow.css */ "./node_modules/react-quill/dist/quill.snow.css");
 /* harmony import */ var react_quill_dist_quill_snow_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_quill_dist_quill_snow_css__WEBPACK_IMPORTED_MODULE_6__);
-var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/pages/_app.js";
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\pages\\_app.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1970,22 +1970,47 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_1___default.a {
     return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(next_head__WEBPACK_IMPORTED_MODULE_5___default.a, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 19
+        lineNumber: 20
       },
       __self: this
-    }, __jsx("link", {
-      rel: "stylesheet",
-      type: "text/css",
-      href: "/nprogress.css",
+    }, __jsx("meta", {
+      charSet: "UTF-8",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 21
       },
       __self: this
-    })), __jsx(Component, _extends({}, pageProps, {
+    }), __jsx("meta", {
+      name: "viewport",
+      content: "width=device-width, initial-scale=1.0",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 22
+      },
+      __self: this
+    }), __jsx("link", {
+      rel: "stylesheet",
+      href: "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
+      integrity: "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T",
+      crossOrigin: "anonymous",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 23
+      },
+      __self: this
+    }), __jsx("link", {
+      rel: "stylesheet",
+      type: "text/css",
+      href: "/nprogress.css",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 30
+      },
+      __self: this
+    })), __jsx(Component, _extends({}, pageProps, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 32
       },
       __self: this
     })));

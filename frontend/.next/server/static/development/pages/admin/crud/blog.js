@@ -6,7 +6,7 @@ module.exports =
 /******/ 	// object to store loaded chunks
 /******/ 	// "0" means "already loaded"
 /******/ 	var installedChunks = {
-/******/ 		"static/development/pages/admin/crud/blog.js": 0
+/******/ 		"static\\development\\pages\\admin\\crud\\blog.js": 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -101,7 +101,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -393,7 +393,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ "reactstrap");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_6__);
-var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/Header.js";
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\Header.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -599,7 +599,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header */ "./components/Header.js");
-var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/Layout.js";
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\Layout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -640,7 +640,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _actions_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/auth */ "./actions/auth.js");
-var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/auth/Admin.js";
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\auth\\Admin.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -691,7 +691,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_category__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/category */ "./actions/category.js");
 /* harmony import */ var _actions_tag__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions/tag */ "./actions/tag.js");
 /* harmony import */ var _actions_blog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../actions/blog */ "./actions/blog.js");
-var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/crud/BlogCreate.js";
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\crud\\BlogCreate.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -743,6 +743,14 @@ const BlogCreate = ({
     1: setTags
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
   const {
+    0: checked,
+    1: setChecked
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  const {
+    0: checkedTag,
+    1: setCheckedTag
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  const {
     0: body,
     1: setBody
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(blogFromLS());
@@ -769,6 +777,8 @@ const BlogCreate = ({
     setValues(_objectSpread({}, values, {
       formData: new FormData()
     }));
+    initCategories();
+    initTags();
   }, [router]);
 
   const initCategories = () => {
@@ -790,7 +800,6 @@ const BlogCreate = ({
           error: data.error
         }));
       } else {
-        console.log(data);
         setTags(data);
       }
     });
@@ -821,26 +830,101 @@ const BlogCreate = ({
     if (false) {}
   };
 
+  const handleToggle = id => () => {
+    console.log(id);
+    setValues(_objectSpread({}, values, {
+      error: ""
+    })); //return the first index or -1
+
+    const clickedCategory = checked.indexOf(id);
+    const all = [...checked];
+
+    if (clickedCategory === -1) {
+      all.push(id);
+    } else {
+      all.splice(clickedCategory, 1);
+    }
+
+    console.log(all);
+    setChecked(all);
+    formData.set("categories", all);
+  };
+
+  const showCategories = () => {
+    return categories && categories.map((c, i) => __jsx("li", {
+      key: i,
+      className: "list-unstyled",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 110
+      },
+      __self: undefined
+    }, __jsx("input", {
+      onChange: handleToggle(c._id),
+      type: "checkbox",
+      className: "mr-2",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 111
+      },
+      __self: undefined
+    }), __jsx("label", {
+      className: "form-check-label",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 112
+      },
+      __self: undefined
+    }, c.name)));
+  };
+
+  const showTags = () => {
+    return tags && tags.map((t, i) => __jsx("li", {
+      key: i,
+      className: "list-unstyled",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 122
+      },
+      __self: undefined
+    }, __jsx("input", {
+      type: "checkbox",
+      className: "mr-2",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 123
+      },
+      __self: undefined
+    }), __jsx("label", {
+      className: "form-check-label",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 124
+      },
+      __self: undefined
+    }, t.name)));
+  };
+
   const createBlogForm = () => {
     return __jsx("form", {
       onSubmit: publishBlog,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 88
+        lineNumber: 132
       },
       __self: undefined
     }, __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 89
+        lineNumber: 133
       },
       __self: undefined
     }, __jsx("label", {
       className: "text-muted",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 90
+        lineNumber: 134
       },
       __self: undefined
     }, "Title"), __jsx("input", {
@@ -849,14 +933,14 @@ const BlogCreate = ({
       onChange: handleChange("title"),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 91
+        lineNumber: 135
       },
       __self: undefined
     })), __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 93
+        lineNumber: 137
       },
       __self: undefined
     }, __jsx(ReactQuill, {
@@ -867,44 +951,122 @@ const BlogCreate = ({
       onChange: handleBody,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 94
+        lineNumber: 138
       },
       __self: undefined
     })), __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 102
+        lineNumber: 146
       },
       __self: undefined
     }, __jsx("button", {
       className: "btn btn-primary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 103
+        lineNumber: 147
       },
       __self: undefined
     }, "Publish")));
   };
 
   return __jsx("div", {
+    className: "container-fluid",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109
+      lineNumber: 153
     },
     __self: undefined
-  }, createBlogForm(), __jsx("hr", {
+  }, __jsx("div", {
+    className: "row",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 111
+      lineNumber: 154
+    },
+    __self: undefined
+  }, __jsx("div", {
+    className: "col-md-8",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 155
+    },
+    __self: undefined
+  }, createBlogForm()), __jsx("div", {
+    className: "col-md-4",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 156
+    },
+    __self: undefined
+  }, __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 157
+    },
+    __self: undefined
+  }, __jsx("h5", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 158
+    },
+    __self: undefined
+  }, "Categories"), __jsx("hr", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 159
+    },
+    __self: undefined
+  }), __jsx("ul", {
+    style: {
+      maxHeight: "200px",
+      overflowY: "scroll"
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 160
+    },
+    __self: undefined
+  }, showCategories())), __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 162
+    },
+    __self: undefined
+  }, __jsx("h5", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 163
+    },
+    __self: undefined
+  }, "Tags"), __jsx("hr", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 164
+    },
+    __self: undefined
+  }), __jsx("ul", {
+    style: {
+      maxHeight: "200px",
+      overflowY: "scroll"
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 165
+    },
+    __self: undefined
+  }, showTags()))), __jsx("hr", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 169
     },
     __self: undefined
   }), JSON.stringify(title), __jsx("hr", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 113
+      lineNumber: 171
     },
     __self: undefined
-  }), JSON.stringify(body));
+  }), JSON.stringify(body)));
 };
 
 BlogCreate.modules = {
@@ -2638,7 +2800,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_crud_BlogCreate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../components/crud/BlogCreate */ "./components/crud/BlogCreate.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_4__);
-var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/pages/admin/crud/blog.js";
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\pages\\admin\\crud\\blog.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2706,14 +2868,14 @@ const Blog = () => {
 
 /***/ }),
 
-/***/ 6:
+/***/ 3:
 /*!****************************************!*\
   !*** multi ./pages/admin/crud/blog.js ***!
   \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/pages/admin/crud/blog.js */"./pages/admin/crud/blog.js");
+module.exports = __webpack_require__(/*! C:\Users\Administrator\Documents\GitHub\SEO-Blog\frontend\pages\admin\crud\blog.js */"./pages/admin/crud/blog.js");
 
 
 /***/ }),

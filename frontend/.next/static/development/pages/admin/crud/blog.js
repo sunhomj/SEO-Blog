@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/admin/crud/blog.js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\admin\\crud\\blog.js"],{
 
 /***/ "./actions/auth.js":
 /*!*************************!*\
@@ -321,7 +321,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/Header.js";
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\Header.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -577,7 +577,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header */ "./components/Header.js");
-var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/Layout.js";
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\Layout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -617,7 +617,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _actions_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/auth */ "./actions/auth.js");
-var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/auth/Admin.js";
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\auth\\Admin.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -667,21 +667,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js");
 /* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/json/stringify */ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! next/dynamic */ "./node_modules/next/dist/next-server/lib/dynamic.js");
-/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _actions_auth__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../actions/auth */ "./actions/auth.js");
-/* harmony import */ var _actions_category__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../actions/category */ "./actions/category.js");
-/* harmony import */ var _actions_tag__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../actions/tag */ "./actions/tag.js");
-/* harmony import */ var _actions_blog__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../actions/blog */ "./actions/blog.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/json/stringify */ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! next/dynamic */ "./node_modules/next/dist/next-server/lib/dynamic.js");
+/* harmony import */ var next_dynamic__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(next_dynamic__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _actions_auth__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../actions/auth */ "./actions/auth.js");
+/* harmony import */ var _actions_category__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../actions/category */ "./actions/category.js");
+/* harmony import */ var _actions_tag__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../actions/tag */ "./actions/tag.js");
+/* harmony import */ var _actions_blog__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../actions/blog */ "./actions/blog.js");
 
 
 
@@ -690,13 +691,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/crud/BlogCreate.js";
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement;
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\crud\\BlogCreate.js";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement;
 
 function ownKeys(object, enumerableOnly) { var keys = _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5___default()(object); if (_babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default.a) { var symbols = _babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default()(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default()(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(target, key, source[key]); }); } else if (_babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2___default.a) { _babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1___default()(target, _babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2___default()(source)); } else { ownKeys(Object(source)).forEach(function (key) { _babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default()(target, key, _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default()(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(target, key, source[key]); }); } else if (_babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2___default.a) { _babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1___default()(target, _babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2___default()(source)); } else { ownKeys(Object(source)).forEach(function (key) { _babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default()(target, key, _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default()(source, key)); }); } } return target; }
 
 
 
@@ -707,7 +709,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var ReactQuill = next_dynamic__WEBPACK_IMPORTED_MODULE_11___default()(function () {
+var ReactQuill = next_dynamic__WEBPACK_IMPORTED_MODULE_12___default()(function () {
   return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.t.bind(null, /*! react-quill */ "./node_modules/react-quill/lib/index.js", 7));
 }, {
   ssr: false,
@@ -733,19 +735,27 @@ var BlogCreate = function BlogCreate(_ref) {
     }
   };
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_8__["useState"])([]),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_9__["useState"])([]),
       categories = _useState[0],
       setCategories = _useState[1];
 
-  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_8__["useState"])([]),
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_9__["useState"])([]),
       tags = _useState2[0],
       setTags = _useState2[1];
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_8__["useState"])(blogFromLS()),
-      body = _useState3[0],
-      setBody = _useState3[1];
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_9__["useState"])([]),
+      checked = _useState3[0],
+      setChecked = _useState3[1];
 
-  var _useState4 = Object(react__WEBPACK_IMPORTED_MODULE_8__["useState"])({
+  var _useState4 = Object(react__WEBPACK_IMPORTED_MODULE_9__["useState"])([]),
+      checkedTag = _useState4[0],
+      setCheckedTag = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_9__["useState"])(blogFromLS()),
+      body = _useState5[0],
+      setBody = _useState5[1];
+
+  var _useState6 = Object(react__WEBPACK_IMPORTED_MODULE_9__["useState"])({
     error: "",
     sizeError: "",
     success: "",
@@ -753,8 +763,8 @@ var BlogCreate = function BlogCreate(_ref) {
     title: "",
     hidePublishButton: false
   }),
-      values = _useState4[0],
-      setValues = _useState4[1];
+      values = _useState6[0],
+      setValues = _useState6[1];
 
   var error = values.error,
       sizeError = values.sizeError,
@@ -762,14 +772,16 @@ var BlogCreate = function BlogCreate(_ref) {
       formData = values.formData,
       title = values.title,
       hidePublishButton = values.hidePublishButton;
-  Object(react__WEBPACK_IMPORTED_MODULE_8__["useEffect"])(function () {
+  Object(react__WEBPACK_IMPORTED_MODULE_9__["useEffect"])(function () {
     setValues(_objectSpread({}, values, {
       formData: new FormData()
     }));
+    initCategories();
+    initTags();
   }, [router]);
 
   var initCategories = function initCategories() {
-    Object(_actions_category__WEBPACK_IMPORTED_MODULE_13__["getCategories"])().then(function (data) {
+    Object(_actions_category__WEBPACK_IMPORTED_MODULE_14__["getCategories"])().then(function (data) {
       if (data.error) {
         setValues(_objectSpread({}, values, {
           error: data.error
@@ -781,13 +793,12 @@ var BlogCreate = function BlogCreate(_ref) {
   };
 
   var initTags = function initTags() {
-    Object(_actions_tag__WEBPACK_IMPORTED_MODULE_14__["getTags"])().then(function (data) {
+    Object(_actions_tag__WEBPACK_IMPORTED_MODULE_15__["getTags"])().then(function (data) {
       if (data.error) {
         setValues(_objectSpread({}, values, {
           error: data.error
         }));
       } else {
-        console.log(data);
         setTags(data);
       }
     });
@@ -806,7 +817,7 @@ var BlogCreate = function BlogCreate(_ref) {
       // console.log(e.target.value);
       var value = name === "photo" ? e.target.files[0] : e.target.value;
       formData.set(name, value);
-      setValues(_objectSpread({}, values, (_objectSpread2 = {}, Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(_objectSpread2, name, value), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(_objectSpread2, "formData", formData), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(_objectSpread2, "error", ""), _objectSpread2)));
+      setValues(_objectSpread({}, values, (_objectSpread2 = {}, Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(_objectSpread2, name, value), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(_objectSpread2, "formData", formData), Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(_objectSpread2, "error", ""), _objectSpread2)));
     };
   };
 
@@ -816,8 +827,90 @@ var BlogCreate = function BlogCreate(_ref) {
     formData.set("body", e);
 
     if (true) {
-      localStorage.setItem("blog", _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_6___default()(e));
+      localStorage.setItem("blog", _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_7___default()(e));
     }
+  };
+
+  var handleToggle = function handleToggle(id) {
+    return function () {
+      console.log(id);
+      setValues(_objectSpread({}, values, {
+        error: ""
+      })); //return the first index or -1
+
+      var clickedCategory = checked.indexOf(id);
+
+      var all = Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_6__["default"])(checked);
+
+      if (clickedCategory === -1) {
+        all.push(id);
+      } else {
+        all.splice(clickedCategory, 1);
+      }
+
+      console.log(all);
+      setChecked(all);
+      formData.set("categories", all);
+    };
+  };
+
+  var showCategories = function showCategories() {
+    return categories && categories.map(function (c, i) {
+      return __jsx("li", {
+        key: i,
+        className: "list-unstyled",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 110
+        },
+        __self: this
+      }, __jsx("input", {
+        onChange: handleToggle(c._id),
+        type: "checkbox",
+        className: "mr-2",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 111
+        },
+        __self: this
+      }), __jsx("label", {
+        className: "form-check-label",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 112
+        },
+        __self: this
+      }, c.name));
+    });
+  };
+
+  var showTags = function showTags() {
+    return tags && tags.map(function (t, i) {
+      return __jsx("li", {
+        key: i,
+        className: "list-unstyled",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 122
+        },
+        __self: this
+      }, __jsx("input", {
+        type: "checkbox",
+        className: "mr-2",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 123
+        },
+        __self: this
+      }), __jsx("label", {
+        className: "form-check-label",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 124
+        },
+        __self: this
+      }, t.name));
+    });
   };
 
   var createBlogForm = function createBlogForm() {
@@ -825,21 +918,21 @@ var BlogCreate = function BlogCreate(_ref) {
       onSubmit: publishBlog,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 88
+        lineNumber: 132
       },
       __self: this
     }, __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 89
+        lineNumber: 133
       },
       __self: this
     }, __jsx("label", {
       className: "text-muted",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 90
+        lineNumber: 134
       },
       __self: this
     }, "Title"), __jsx("input", {
@@ -848,14 +941,14 @@ var BlogCreate = function BlogCreate(_ref) {
       onChange: handleChange("title"),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 91
+        lineNumber: 135
       },
       __self: this
     })), __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 93
+        lineNumber: 137
       },
       __self: this
     }, __jsx(ReactQuill, {
@@ -866,44 +959,122 @@ var BlogCreate = function BlogCreate(_ref) {
       onChange: handleBody,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 94
+        lineNumber: 138
       },
       __self: this
     })), __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 102
+        lineNumber: 146
       },
       __self: this
     }, __jsx("button", {
       className: "btn btn-primary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 103
+        lineNumber: 147
       },
       __self: this
     }, "Publish")));
   };
 
   return __jsx("div", {
+    className: "container-fluid",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109
+      lineNumber: 153
     },
     __self: this
-  }, createBlogForm(), __jsx("hr", {
+  }, __jsx("div", {
+    className: "row",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 111
+      lineNumber: 154
     },
     __self: this
-  }), _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_6___default()(title), __jsx("hr", {
+  }, __jsx("div", {
+    className: "col-md-8",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 113
+      lineNumber: 155
     },
     __self: this
-  }), _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_6___default()(body));
+  }, createBlogForm()), __jsx("div", {
+    className: "col-md-4",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 156
+    },
+    __self: this
+  }, __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 157
+    },
+    __self: this
+  }, __jsx("h5", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 158
+    },
+    __self: this
+  }, "Categories"), __jsx("hr", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 159
+    },
+    __self: this
+  }), __jsx("ul", {
+    style: {
+      maxHeight: "200px",
+      overflowY: "scroll"
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 160
+    },
+    __self: this
+  }, showCategories())), __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 162
+    },
+    __self: this
+  }, __jsx("h5", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 163
+    },
+    __self: this
+  }, "Tags"), __jsx("hr", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 164
+    },
+    __self: this
+  }), __jsx("ul", {
+    style: {
+      maxHeight: "200px",
+      overflowY: "scroll"
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 165
+    },
+    __self: this
+  }, showTags()))), __jsx("hr", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 169
+    },
+    __self: this
+  }), _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_7___default()(title), __jsx("hr", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 171
+    },
+    __self: this
+  }), _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_7___default()(body)));
 };
 
 BlogCreate.modules = {
@@ -924,7 +1095,7 @@ BlogCreate.modules = {
   }], ["link", "image", "video"], ["clean"], ["code-block"]]
 };
 BlogCreate.formats = ["header", "font", "size", "bold", "italic", "underline", "strike", "blockquote", "list", "bullet", "link", "image", "video", "code-block"];
-/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_10__["withRouter"])(BlogCreate));
+/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_11__["withRouter"])(BlogCreate));
 
 /***/ }),
 
@@ -948,6 +1119,17 @@ var _getConfig = next_config__WEBPACK_IMPORTED_MODULE_0___default()(),
 
 var API = publicRuntimeConfig.PRODUCTION ? publicRuntimeConfig.API_PRODUCTION : publicRuntimeConfig.API_DEVELOPMENT;
 var APP_NAME = publicRuntimeConfig.APP_NAME;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/array/from.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/array/from.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/array/from */ "./node_modules/core-js/library/fn/array/from.js");
 
 /***/ }),
 
@@ -1299,6 +1481,31 @@ module.exports = _createClass;
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/arrayWithoutHoles.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/arrayWithoutHoles.js ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _arrayWithoutHoles; });
+/* harmony import */ var _core_js_array_is_array__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/array/is-array */ "./node_modules/@babel/runtime-corejs2/core-js/array/is-array.js");
+/* harmony import */ var _core_js_array_is_array__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_array_is_array__WEBPACK_IMPORTED_MODULE_0__);
+
+function _arrayWithoutHoles(arr) {
+  if (_core_js_array_is_array__WEBPACK_IMPORTED_MODULE_0___default()(arr)) {
+    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+
+    return arr2;
+  }
+}
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js ***!
@@ -1325,6 +1532,66 @@ function _defineProperty(obj, key, value) {
   }
 
   return obj;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/iterableToArray.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/iterableToArray.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _iterableToArray; });
+/* harmony import */ var _core_js_array_from__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/array/from */ "./node_modules/@babel/runtime-corejs2/core-js/array/from.js");
+/* harmony import */ var _core_js_array_from__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_array_from__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _core_js_is_iterable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../core-js/is-iterable */ "./node_modules/@babel/runtime-corejs2/core-js/is-iterable.js");
+/* harmony import */ var _core_js_is_iterable__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_core_js_is_iterable__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function _iterableToArray(iter) {
+  if (_core_js_is_iterable__WEBPACK_IMPORTED_MODULE_1___default()(Object(iter)) || Object.prototype.toString.call(iter) === "[object Arguments]") return _core_js_array_from__WEBPACK_IMPORTED_MODULE_0___default()(iter);
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/nonIterableSpread.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/nonIterableSpread.js ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _nonIterableSpread; });
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/toConsumableArray.js ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _toConsumableArray; });
+/* harmony import */ var _arrayWithoutHoles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./arrayWithoutHoles */ "./node_modules/@babel/runtime-corejs2/helpers/esm/arrayWithoutHoles.js");
+/* harmony import */ var _iterableToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./iterableToArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/iterableToArray.js");
+/* harmony import */ var _nonIterableSpread__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nonIterableSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/nonIterableSpread.js");
+
+
+
+function _toConsumableArray(arr) {
+  return Object(_arrayWithoutHoles__WEBPACK_IMPORTED_MODULE_0__["default"])(arr) || Object(_iterableToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(arr) || Object(_nonIterableSpread__WEBPACK_IMPORTED_MODULE_2__["default"])();
 }
 
 /***/ }),
@@ -1985,6 +2252,20 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	} else {}
 }());
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/library/fn/array/from.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/core-js/library/fn/array/from.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ../../modules/es6.string.iterator */ "./node_modules/core-js/library/modules/es6.string.iterator.js");
+__webpack_require__(/*! ../../modules/es6.array.from */ "./node_modules/core-js/library/modules/es6.array.from.js");
+module.exports = __webpack_require__(/*! ../../modules/_core */ "./node_modules/core-js/library/modules/_core.js").Array.from;
 
 
 /***/ }),
@@ -4805,6 +5086,55 @@ module.exports = __webpack_require__(/*! ./_core */ "./node_modules/core-js/libr
 
 /***/ }),
 
+/***/ "./node_modules/core-js/library/modules/es6.array.from.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/core-js/library/modules/es6.array.from.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var ctx = __webpack_require__(/*! ./_ctx */ "./node_modules/core-js/library/modules/_ctx.js");
+var $export = __webpack_require__(/*! ./_export */ "./node_modules/core-js/library/modules/_export.js");
+var toObject = __webpack_require__(/*! ./_to-object */ "./node_modules/core-js/library/modules/_to-object.js");
+var call = __webpack_require__(/*! ./_iter-call */ "./node_modules/core-js/library/modules/_iter-call.js");
+var isArrayIter = __webpack_require__(/*! ./_is-array-iter */ "./node_modules/core-js/library/modules/_is-array-iter.js");
+var toLength = __webpack_require__(/*! ./_to-length */ "./node_modules/core-js/library/modules/_to-length.js");
+var createProperty = __webpack_require__(/*! ./_create-property */ "./node_modules/core-js/library/modules/_create-property.js");
+var getIterFn = __webpack_require__(/*! ./core.get-iterator-method */ "./node_modules/core-js/library/modules/core.get-iterator-method.js");
+
+$export($export.S + $export.F * !__webpack_require__(/*! ./_iter-detect */ "./node_modules/core-js/library/modules/_iter-detect.js")(function (iter) { Array.from(iter); }), 'Array', {
+  // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
+  from: function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
+    var O = toObject(arrayLike);
+    var C = typeof this == 'function' ? this : Array;
+    var aLen = arguments.length;
+    var mapfn = aLen > 1 ? arguments[1] : undefined;
+    var mapping = mapfn !== undefined;
+    var index = 0;
+    var iterFn = getIterFn(O);
+    var length, result, step, iterator;
+    if (mapping) mapfn = ctx(mapfn, aLen > 2 ? arguments[2] : undefined, 2);
+    // if object isn't iterable or it's array with default iterator - use simple case
+    if (iterFn != undefined && !(C == Array && isArrayIter(iterFn))) {
+      for (iterator = iterFn.call(O), result = new C(); !(step = iterator.next()).done; index++) {
+        createProperty(result, index, mapping ? call(iterator, mapfn, [step.value, index], true) : step.value);
+      }
+    } else {
+      length = toLength(O.length);
+      for (result = new C(length); length > index; index++) {
+        createProperty(result, index, mapping ? mapfn(O[index], index) : O[index]);
+      }
+    }
+    result.length = index;
+    return result;
+  }
+});
+
+
+/***/ }),
+
 /***/ "./node_modules/core-js/library/modules/es6.array.is-array.js":
 /*!********************************************************************!*\
   !*** ./node_modules/core-js/library/modules/es6.array.is-array.js ***!
@@ -6259,7 +6589,7 @@ module.exports = exports['default'];
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(true);
 // Module
-exports.push([module.i, ".Header_mbutton__1MBmJ {\n  cursor: pointer;\n  font-weight: bold;\n}\n\n#Header_nprogress__JHRh3 .Header_bar__TSU4U {\n  height: 10px !important;\n}\n", "",{"version":3,"sources":["Header.module.css"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,iBAAiB;AACnB;;AAEA;EACE,uBAAuB;AACzB","file":"Header.module.css","sourcesContent":[".mbutton {\n  cursor: pointer;\n  font-weight: bold;\n}\n\n#nprogress .bar {\n  height: 10px !important;\n}\n"]}]);
+exports.push([module.i, ".Header_mbutton__1MBmJ {\r\n  cursor: pointer;\r\n  font-weight: bold;\r\n}\r\n\r\n#Header_nprogress__JHRh3 .Header_bar__TSU4U {\r\n  height: 10px !important;\r\n}\r\n", "",{"version":3,"sources":["Header.module.css"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,iBAAiB;AACnB;;AAEA;EACE,uBAAuB;AACzB","file":"Header.module.css","sourcesContent":[".mbutton {\r\n  cursor: pointer;\r\n  font-weight: bold;\r\n}\r\n\r\n#nprogress .bar {\r\n  height: 10px !important;\r\n}\r\n"]}]);
 // Exports
 exports.locals = {
 	"mbutton": "Header_mbutton__1MBmJ",
@@ -7445,10 +7775,10 @@ var assign=Object.assign.bind(Object);function g(){return assign;}Object.defineP
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fadmin%2Fcrud%2Fblog&absolutePagePath=%2FUsers%2FSlothums%2FDesktop%2FSunho%20Lee%2FSeo%20blog%2FSEO-Blog%2Ffrontend%2Fpages%2Fadmin%2Fcrud%2Fblog.js!./":
-/*!***********************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fadmin%2Fcrud%2Fblog&absolutePagePath=%2FUsers%2FSlothums%2FDesktop%2FSunho%20Lee%2FSeo%20blog%2FSEO-Blog%2Ffrontend%2Fpages%2Fadmin%2Fcrud%2Fblog.js ***!
-  \***********************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fadmin%2Fcrud%2Fblog&absolutePagePath=C%3A%5CUsers%5CAdministrator%5CDocuments%5CGitHub%5CSEO-Blog%5Cfrontend%5Cpages%5Cadmin%5Ccrud%5Cblog.js!./":
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fadmin%2Fcrud%2Fblog&absolutePagePath=C%3A%5CUsers%5CAdministrator%5CDocuments%5CGitHub%5CSEO-Blog%5Cfrontend%5Cpages%5Cadmin%5Ccrud%5Cblog.js ***!
+  \****************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -27990,7 +28320,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_crud_BlogCreate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../components/crud/BlogCreate */ "./components/crud/BlogCreate.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_4__);
-var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/pages/admin/crud/blog.js";
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\pages\\admin\\crud\\blog.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -28058,14 +28388,14 @@ var Blog = function Blog() {
 
 /***/ }),
 
-/***/ 4:
-/*!***************************************************************************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2Fadmin%2Fcrud%2Fblog&absolutePagePath=%2FUsers%2FSlothums%2FDesktop%2FSunho%20Lee%2FSeo%20blog%2FSEO-Blog%2Ffrontend%2Fpages%2Fadmin%2Fcrud%2Fblog.js ***!
-  \***************************************************************************************************************************************************************************************************/
+/***/ 1:
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2Fadmin%2Fcrud%2Fblog&absolutePagePath=C%3A%5CUsers%5CAdministrator%5CDocuments%5CGitHub%5CSEO-Blog%5Cfrontend%5Cpages%5Cadmin%5Ccrud%5Cblog.js ***!
+  \********************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fadmin%2Fcrud%2Fblog&absolutePagePath=%2FUsers%2FSlothums%2FDesktop%2FSunho%20Lee%2FSeo%20blog%2FSEO-Blog%2Ffrontend%2Fpages%2Fadmin%2Fcrud%2Fblog.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fadmin%2Fcrud%2Fblog&absolutePagePath=%2FUsers%2FSlothums%2FDesktop%2FSunho%20Lee%2FSeo%20blog%2FSEO-Blog%2Ffrontend%2Fpages%2Fadmin%2Fcrud%2Fblog.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fadmin%2Fcrud%2Fblog&absolutePagePath=C%3A%5CUsers%5CAdministrator%5CDocuments%5CGitHub%5CSEO-Blog%5Cfrontend%5Cpages%5Cadmin%5Ccrud%5Cblog.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fadmin%2Fcrud%2Fblog&absolutePagePath=C%3A%5CUsers%5CAdministrator%5CDocuments%5CGitHub%5CSEO-Blog%5Cfrontend%5Cpages%5Cadmin%5Ccrud%5Cblog.js!./");
 
 
 /***/ }),
@@ -28081,5 +28411,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[4,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=blog.js.map
