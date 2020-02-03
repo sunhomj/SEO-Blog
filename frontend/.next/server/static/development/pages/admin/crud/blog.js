@@ -6,7 +6,7 @@ module.exports =
 /******/ 	// object to store loaded chunks
 /******/ 	// "0" means "already loaded"
 /******/ 	var installedChunks = {
-/******/ 		"static\\development\\pages\\admin\\crud\\blog.js": 0
+/******/ 		"static/development/pages/admin/crud/blog.js": 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -101,7 +101,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -393,7 +393,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ "reactstrap");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_6__);
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\Header.js";
+var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/Header.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -599,7 +599,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header */ "./components/Header.js");
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\Layout.js";
+var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/Layout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -640,7 +640,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _actions_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/auth */ "./actions/auth.js");
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\auth\\Admin.js";
+var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/auth/Admin.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -691,7 +691,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_category__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/category */ "./actions/category.js");
 /* harmony import */ var _actions_tag__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions/tag */ "./actions/tag.js");
 /* harmony import */ var _actions_blog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../actions/blog */ "./actions/blog.js");
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\crud\\BlogCreate.js";
+var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/components/crud/BlogCreate.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -721,10 +721,31 @@ const ReactQuill = next_dynamic__WEBPACK_IMPORTED_MODULE_3___default()(() => Pro
 const BlogCreate = ({
   router
 }) => {
+  const blogFromLS = () => {
+    if (true) {
+      return false;
+    }
+
+    if (localStorage.getItem("blog")) {
+      // convert data to javascript
+      return JSON.parse(localStorage.getItem("blog"));
+    } else {
+      return false;
+    }
+  };
+
+  const {
+    0: categories,
+    1: setCategories
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  const {
+    0: tags,
+    1: setTags
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
   const {
     0: body,
     1: setBody
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({});
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(blogFromLS());
   const {
     0: values,
     1: setValues
@@ -749,7 +770,32 @@ const BlogCreate = ({
       formData: new FormData()
     }));
   }, [router]);
-  console.log(router);
+
+  const initCategories = () => {
+    Object(_actions_category__WEBPACK_IMPORTED_MODULE_5__["getCategories"])().then(data => {
+      if (data.error) {
+        setValues(_objectSpread({}, values, {
+          error: data.error
+        }));
+      } else {
+        setCategories(data);
+      }
+    });
+  };
+
+  const initTags = () => {
+    Object(_actions_tag__WEBPACK_IMPORTED_MODULE_6__["getTags"])().then(data => {
+      if (data.error) {
+        setValues(_objectSpread({}, values, {
+          error: data.error
+        }));
+      } else {
+        console.log(data);
+        setTags(data);
+      }
+    });
+  }; // console.log(router);
+
 
   const publishBlog = e => {
     e.preventDefault();
@@ -780,21 +826,21 @@ const BlogCreate = ({
       onSubmit: publishBlog,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 53
+        lineNumber: 88
       },
       __self: undefined
     }, __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 54
+        lineNumber: 89
       },
       __self: undefined
     }, __jsx("label", {
       className: "text-muted",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 55
+        lineNumber: 90
       },
       __self: undefined
     }, "Title"), __jsx("input", {
@@ -803,14 +849,14 @@ const BlogCreate = ({
       onChange: handleChange("title"),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 56
+        lineNumber: 91
       },
       __self: undefined
     })), __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 58
+        lineNumber: 93
       },
       __self: undefined
     }, __jsx(ReactQuill, {
@@ -821,20 +867,20 @@ const BlogCreate = ({
       onChange: handleBody,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 59
+        lineNumber: 94
       },
       __self: undefined
     })), __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 67
+        lineNumber: 102
       },
       __self: undefined
     }, __jsx("button", {
       className: "btn btn-primary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 68
+        lineNumber: 103
       },
       __self: undefined
     }, "Publish")));
@@ -843,16 +889,22 @@ const BlogCreate = ({
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 74
+      lineNumber: 109
     },
     __self: undefined
   }, createBlogForm(), __jsx("hr", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76
+      lineNumber: 111
     },
     __self: undefined
-  }), JSON.stringify(title));
+  }), JSON.stringify(title), __jsx("hr", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 113
+    },
+    __self: undefined
+  }), JSON.stringify(body));
 };
 
 BlogCreate.modules = {
@@ -2586,7 +2638,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_crud_BlogCreate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../components/crud/BlogCreate */ "./components/crud/BlogCreate.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_4__);
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\pages\\admin\\crud\\blog.js";
+var _jsxFileName = "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/pages/admin/crud/blog.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2654,14 +2706,14 @@ const Blog = () => {
 
 /***/ }),
 
-/***/ 4:
+/***/ 6:
 /*!****************************************!*\
   !*** multi ./pages/admin/crud/blog.js ***!
   \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Administrator\Documents\GitHub\SEO-Blog\frontend\pages\admin\crud\blog.js */"./pages/admin/crud/blog.js");
+module.exports = __webpack_require__(/*! /Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/pages/admin/crud/blog.js */"./pages/admin/crud/blog.js");
 
 
 /***/ }),
