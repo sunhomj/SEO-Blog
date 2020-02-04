@@ -28,3 +28,7 @@
   -ms-transform: rotate(3deg) translate(0px, -4px);
   transform: rotate(3deg) translate(0px, -4px);
 }
+
+.ql-editor {
+  min-height: 300px;
+}

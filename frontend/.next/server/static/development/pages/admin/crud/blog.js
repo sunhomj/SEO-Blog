@@ -691,6 +691,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_category__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/category */ "./actions/category.js");
 /* harmony import */ var _actions_tag__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions/tag */ "./actions/tag.js");
 /* harmony import */ var _actions_blog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../actions/blog */ "./actions/blog.js");
+/* harmony import */ var _helpers_quill__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../helpers/quill */ "./helpers/quill.js");
 var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\crud\\BlogCreate.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
@@ -700,6 +701,7 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -773,6 +775,7 @@ const BlogCreate = ({
     title,
     hidePublishButton
   } = values;
+  const token = Object(_actions_auth__WEBPACK_IMPORTED_MODULE_4__["getCookie"])("token");
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     setValues(_objectSpread({}, values, {
       formData: new FormData()
@@ -808,10 +811,27 @@ const BlogCreate = ({
 
   const publishBlog = e => {
     e.preventDefault();
+    Object(_actions_blog__WEBPACK_IMPORTED_MODULE_7__["createBlog"])(formData, token).then(data => {
+      if (data.error) {
+        setValues(_objectSpread({}, values, {
+          error: data.error
+        }));
+      } else {
+        setValues(_objectSpread({}, values, {
+          title: "",
+          error: "",
+          success: `A new blog title "${data.title}" is created`
+        }));
+        setBody("");
+        setCategories([]);
+        setTags([]);
+      }
+    });
     console.log("ready to publishBlog");
-  };
+  }; // photo file handler
 
-  const handleChange = name => e => {
+
+  const titlePhotoHandller = name => e => {
     // console.log(e.target.value);
     const value = name === "photo" ? e.target.files[0] : e.target.value;
     formData.set(name, value);
@@ -830,24 +850,39 @@ const BlogCreate = ({
     if (false) {}
   };
 
-  const handleToggle = id => () => {
-    console.log(id);
+  const categoryToggleHandller = id => () => {
     setValues(_objectSpread({}, values, {
       error: ""
-    })); //return the first index or -1
+    }));
+    const clickedCategories = [...checked];
+    const indexOfClickedCategory = checked.indexOf(id);
 
-    const clickedCategory = checked.indexOf(id);
-    const all = [...checked];
-
-    if (clickedCategory === -1) {
-      all.push(id);
+    if (indexOfClickedCategory === -1) {
+      clickedCategories.push(id);
     } else {
-      all.splice(clickedCategory, 1);
+      clickedCategories.splice(indexOfClickedCategory, 1);
     }
 
-    console.log(all);
-    setChecked(all);
-    formData.set("categories", all);
+    setChecked(clickedCategories);
+    formData.set("categories", clickedCategories);
+  };
+
+  const tagToggleHandller = id => () => {
+    setValues(_objectSpread({}, values, {
+      error: ""
+    }));
+    const clickedTags = [...checkedTag];
+    const indexOfClickedTag = checkedTag.indexOf(id);
+
+    if (indexOfClickedTag === -1) {
+      clickedTags.push(id);
+    } else {
+      clickedTags.splice(indexOfClickedTag, 1);
+    }
+
+    setCheckedTag(clickedTags);
+    console.log(clickedTags);
+    formData.set("tags", clickedTags);
   };
 
   const showCategories = () => {
@@ -856,23 +891,23 @@ const BlogCreate = ({
       className: "list-unstyled",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 110
+        lineNumber: 140
       },
       __self: undefined
     }, __jsx("input", {
-      onChange: handleToggle(c._id),
+      onChange: categoryToggleHandller(c._id),
       type: "checkbox",
       className: "mr-2",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 111
+        lineNumber: 141
       },
       __self: undefined
     }), __jsx("label", {
       className: "form-check-label",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 112
+        lineNumber: 142
       },
       __self: undefined
     }, c.name)));
@@ -884,136 +919,211 @@ const BlogCreate = ({
       className: "list-unstyled",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 122
+        lineNumber: 152
       },
       __self: undefined
     }, __jsx("input", {
+      onChange: tagToggleHandller(t._id),
       type: "checkbox",
       className: "mr-2",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 123
+        lineNumber: 153
       },
       __self: undefined
     }), __jsx("label", {
       className: "form-check-label",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 124
+        lineNumber: 154
       },
       __self: undefined
     }, t.name)));
   };
+
+  const showError = () => __jsx("div", {
+    className: "alert alert-danger",
+    style: {
+      display: error ? "" : "none"
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 161
+    },
+    __self: undefined
+  }, error);
+
+  const showSuccess = () => __jsx("div", {
+    className: "alert alert-success",
+    style: {
+      display: success ? "" : "none"
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 166
+    },
+    __self: undefined
+  }, success);
 
   const createBlogForm = () => {
     return __jsx("form", {
       onSubmit: publishBlog,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 132
+        lineNumber: 173
       },
       __self: undefined
     }, __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 133
+        lineNumber: 174
       },
       __self: undefined
     }, __jsx("label", {
       className: "text-muted",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 134
+        lineNumber: 175
       },
       __self: undefined
     }, "Title"), __jsx("input", {
       type: "text",
       className: "form-control",
-      onChange: handleChange("title"),
+      onChange: titlePhotoHandller("title"),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 135
+        lineNumber: 176
       },
       __self: undefined
     })), __jsx("div", {
       className: "form-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 137
+        lineNumber: 178
       },
       __self: undefined
     }, __jsx(ReactQuill, {
-      modules: BlogCreate.modules,
-      formats: BlogCreate.formats,
+      modules: _helpers_quill__WEBPACK_IMPORTED_MODULE_8__["QuillModules"],
+      formats: _helpers_quill__WEBPACK_IMPORTED_MODULE_8__["QuillFormats"],
       value: body,
       placeholder: "Write something amazing...",
       onChange: handleBody,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 138
+        lineNumber: 179
       },
       __self: undefined
     })), __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 146
+        lineNumber: 187
       },
       __self: undefined
     }, __jsx("button", {
       className: "btn btn-primary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 147
+        lineNumber: 188
       },
       __self: undefined
     }, "Publish")));
   };
 
   return __jsx("div", {
-    className: "container-fluid",
+    className: "container-fluid pb-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 153
+      lineNumber: 194
     },
     __self: undefined
   }, __jsx("div", {
     className: "row",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 154
+      lineNumber: 195
     },
     __self: undefined
   }, __jsx("div", {
     className: "col-md-8",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 155
+      lineNumber: 196
     },
     __self: undefined
-  }, createBlogForm()), __jsx("div", {
+  }, createBlogForm(), __jsx("div", {
+    className: "pt-3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 198
+    },
+    __self: undefined
+  }, showError(), showSuccess())), __jsx("div", {
     className: "col-md-4",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 156
+      lineNumber: 204
     },
     __self: undefined
   }, __jsx("div", {
+    className: "form-group pb-2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 157
+      lineNumber: 205
     },
     __self: undefined
   }, __jsx("h5", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 158
+      lineNumber: 206
+    },
+    __self: undefined
+  }, "Featured image"), __jsx("hr", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 207
+    },
+    __self: undefined
+  }), __jsx("label", {
+    className: "btn btn-outline-info",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 209
+    },
+    __self: undefined
+  }, "Upload featured image", __jsx("input", {
+    onChange: titlePhotoHandller("photo"),
+    type: "file",
+    accept: "image/*",
+    hidden: true,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 211
+    },
+    __self: undefined
+  })), __jsx("small", {
+    className: "text-muted",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 213
+    },
+    __self: undefined
+  }, " Max size:1 Mb")), __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 215
+    },
+    __self: undefined
+  }, __jsx("h5", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 216
     },
     __self: undefined
   }, "Categories"), __jsx("hr", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 159
+      lineNumber: 217
     },
     __self: undefined
   }), __jsx("ul", {
@@ -1023,25 +1133,25 @@ const BlogCreate = ({
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 160
+      lineNumber: 218
     },
     __self: undefined
   }, showCategories())), __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 162
+      lineNumber: 220
     },
     __self: undefined
   }, __jsx("h5", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 163
+      lineNumber: 221
     },
     __self: undefined
   }, "Tags"), __jsx("hr", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 164
+      lineNumber: 222
     },
     __self: undefined
   }), __jsx("ul", {
@@ -1051,42 +1161,12 @@ const BlogCreate = ({
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 165
+      lineNumber: 223
     },
     __self: undefined
-  }, showTags()))), __jsx("hr", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 169
-    },
-    __self: undefined
-  }), JSON.stringify(title), __jsx("hr", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 171
-    },
-    __self: undefined
-  }), JSON.stringify(body)));
+  }, showTags())))));
 };
 
-BlogCreate.modules = {
-  toolbar: [[{
-    header: "1"
-  }, {
-    header: "2"
-  }, {
-    header: [3, 4, 5, 6]
-  }, {
-    font: []
-  }], [{
-    size: []
-  }], ["bold", "italic", "underline", "strike", "blockquote"], [{
-    list: "ordered"
-  }, {
-    list: "bullet"
-  }], ["link", "image", "video"], ["clean"], ["code-block"]]
-};
-BlogCreate.formats = ["header", "font", "size", "bold", "italic", "underline", "strike", "blockquote", "list", "bullet", "link", "image", "video", "code-block"];
 /* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(BlogCreate));
 
 /***/ }),
@@ -1110,6 +1190,39 @@ const {
 } = next_config__WEBPACK_IMPORTED_MODULE_0___default()();
 const API = publicRuntimeConfig.PRODUCTION ? publicRuntimeConfig.API_PRODUCTION : publicRuntimeConfig.API_DEVELOPMENT;
 const APP_NAME = publicRuntimeConfig.APP_NAME;
+
+/***/ }),
+
+/***/ "./helpers/quill.js":
+/*!**************************!*\
+  !*** ./helpers/quill.js ***!
+  \**************************/
+/*! exports provided: QuillModules, QuillFormats */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QuillModules", function() { return QuillModules; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QuillFormats", function() { return QuillFormats; });
+// React quill form config setting
+const QuillModules = {
+  toolbar: [[{
+    header: "1"
+  }, {
+    header: "2"
+  }, {
+    header: [3, 4, 5, 6]
+  }, {
+    font: []
+  }], [{
+    size: []
+  }], ["bold", "italic", "underline", "strike", "blockquote"], [{
+    list: "ordered"
+  }, {
+    list: "bullet"
+  }], ["link", "image", "video"], ["clean"], ["code-block"]]
+};
+const QuillFormats = ["header", "font", "size", "bold", "italic", "underline", "strike", "blockquote", "list", "bullet", "link", "image", "video", "code-block"];
 
 /***/ }),
 
