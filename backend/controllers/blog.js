@@ -103,3 +103,27 @@ exports.create = (req, res) => {
     });
   });
 };
+
+exports.list = (req, res) => {
+  Blog.find({})
+    .populate("categories", "_id name slug")
+    .populate("tags", "_id name slug")
+    .populate("postedBy", "_id name username")
+    .select("_id title slug excerpt categories tags postedBy createdAt updatedAt")
+    .exec((err, data) => {
+      if (err) {
+        return res.json({
+          error: errorHandler(err)
+        });
+      }
+      res.json(data);
+    });
+};
+
+exports.lislistAllBlogsCategoriesTagst = (req, res) => {};
+
+exports.read = (req, res) => {};
+
+exports.update = (req, res) => {};
+
+//const { create, list, listAllBlogsCategoriesTags, read, remove, update } = require("../controllers/blog");
