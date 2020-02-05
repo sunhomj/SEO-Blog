@@ -247,6 +247,10 @@ exports.update = (req, res) => {
 
       oldBlog.save((err, result) => {
         //   res.json(result);
+        if (err) {
+          return res.status(400).json({
+            error: errorHandler(err)
+          });
         Blog.findByIdAndUpdate(
           result._id,
           { $push: { categories: arrayOfCategories } },
@@ -262,10 +266,6 @@ exports.update = (req, res) => {
               { $push: { tags: arrayOfTags } },
               { new: true }
             ).exec((err, result) => {
-              if (err) {
-                return res.status(400).json({
-                  error: errorHandler(err)
-                });
               } else {
                 res.json(result);
               }
