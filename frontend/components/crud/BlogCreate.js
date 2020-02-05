@@ -41,9 +41,12 @@ const BlogCreate = ({ router }) => {
 
   const { error, sizeError, success, formData, title, hidePublishButton } = values;
   const token = getCookie("token");
+  // const existingBody = window.localStorage.getItem("blog");
+  // console.log(existingBody);
 
   useEffect(() => {
     setValues({ ...values, formData: new FormData() });
+    setBody({ ...body });
     initCategories();
     initTags();
   }, [router]);
@@ -85,6 +88,8 @@ const BlogCreate = ({ router }) => {
         setBody("");
         setCategories([]);
         setTags([]);
+        initCategories();
+        initTags();
       }
     });
     console.log("ready to publishBlog");
