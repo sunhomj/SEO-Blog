@@ -4797,7 +4797,7 @@ function connect(options) {
       error.name = err.name;
       error.stack = err.stack; // __NEXT_DIST_DIR is provided by webpack
 
-      (0, _sourceMapSupport.rewriteStacktrace)(error, "/Users/Slothums/Desktop/Sunho Lee/Seo blog/SEO-Blog/frontend/.next");
+      (0, _sourceMapSupport.rewriteStacktrace)(error, "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\.next");
       return error;
     }
   };

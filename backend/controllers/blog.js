@@ -198,24 +198,24 @@ exports.remove = (req, res) => {
 
 exports.update = (req, res) => {
   const slug = req.params.slug.toLowerCase();
+
   Blog.findOne({ slug }).exec((err, oldBlog) => {
     if (err) {
       return res.status(400).json({
         error: errorHandler(err)
       });
     }
+
     let form = new formidable.IncomingForm();
     form.keepExtensions = true;
 
     form.parse(req, (err, fields, files) => {
-      const { title, body, categories, tags } = fields;
       if (err) {
         return res.status(400).json({
           error: "Image could not upload"
         });
       }
       // when blog is generated and resigisted on google, slug that registed does not update when blog is updated. cause error when updated blog is revisited. so do not change slug !. keep old slug
-
       let slugBeforeMerge = oldBlog.slug;
       oldBlog = _.merge(oldBlog, fields); // update the properties that have changed only. loadash method _.merge taking 2 arguments . 1 = one that needs to be updated, 2 = new data that has new info
       oldBlog.slug = slugBeforeMerge;
@@ -224,7 +224,7 @@ exports.update = (req, res) => {
 
       if (body) {
         oldBlog.excerpt = smartTrim(body, 320, " ", " ...");
-        oldBlog.mdesc = stripHtml(body.substring(0, 160));
+        oldBlog.desc = stripHtml(body.substring(0, 160));
       }
 
       if (categories) {
@@ -238,7 +238,7 @@ exports.update = (req, res) => {
       if (files.photo) {
         if (files.photo.size > 10000000) {
           return res.status(400).json({
-            error: "Image should be less than 1mb in size"
+            error: "Image should be less then 1mb in size"
           });
         }
         oldBlog.photo.data = fs.readFileSync(files.photo.path);
@@ -246,14 +246,28 @@ exports.update = (req, res) => {
       }
 
       oldBlog.save((err, result) => {
-        //   res.json(result);
         if (err) {
           return res.status(400).json({
             error: errorHandler(err)
           });
         }
+        // result.photo = undefined;
         res.json(result);
       });
     });
   });
+};
+exports.getphoto = (req, res) => {
+  const slug = req.params.slug.toLowerCase();
+  Blog.findOne({ slug })
+    .select("photo")
+    .exec((err, blog) => {
+      if (err || !blog) {
+        return res.status(400).json({
+          error: errorHandler(err)
+        });
+      }
+      res.set("Content-Type", blog.photo.contentType);
+      return res.send(blog.photo.data);
+    });
 };
