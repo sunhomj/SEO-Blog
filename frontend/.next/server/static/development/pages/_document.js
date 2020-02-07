@@ -2625,22 +2625,56 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1___default.a {
         lineNumber: 8
       },
       __self: this
-    }), __jsx("body", {
+    }, __jsx("meta", {
+      charSet: "UTF-8",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 9
+      },
+      __self: this
+    }), __jsx("meta", {
+      name: "viewport",
+      content: "width=device-width, initial-scale=1.0",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 10
       },
       __self: this
-    }, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Main"], {
+    }), __jsx("link", {
+      rel: "stylesheet",
+      href: "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
+      integrity: "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T",
+      crossOrigin: "anonymous",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 11
       },
       __self: this
+    }), __jsx("link", {
+      rel: "stylesheet",
+      type: "text/css",
+      href: "/nprogress.css",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 18
+      },
+      __self: this
+    })), __jsx("body", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 21
+      },
+      __self: this
+    }, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Main"], {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 22
+      },
+      __self: this
     }), __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["NextScript"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 12
+        lineNumber: 23
       },
       __self: this
     })));
