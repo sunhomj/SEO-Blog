@@ -217,6 +217,7 @@ const BlogCreate = ({ router }) => {
             </label>
             <small className="text-muted"> Max size:1 Mb</small>
           </div>
+
           <div>
             <h5>Categories</h5>
             <hr />

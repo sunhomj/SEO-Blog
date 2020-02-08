@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/blogs/[slug].js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\blogs\\[slug].js"],{
 
 /***/ "./actions/auth.js":
 /*!*************************!*\
@@ -282,7 +282,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-var _jsxFileName = "/Users/Slothums/Documents/GitHub/SEO-Blog/frontend/components/Header.js";
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\Header.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -518,7 +518,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header */ "./components/Header.js");
-var _jsxFileName = "/Users/Slothums/Documents/GitHub/SEO-Blog/frontend/components/Layout.js";
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\Layout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -565,7 +565,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_render_html__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_render_html__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_6__);
-var _jsxFileName = "/Users/Slothums/Documents/GitHub/SEO-Blog/frontend/components/blog/Card.js";
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\blog\\Card.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -799,7 +799,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/Slothums/Documents/GitHub/SEO-Blog/frontend/components/crud/Category.js";
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\crud\\Category.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
 
@@ -8604,7 +8604,7 @@ module.exports = exports['default'];
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(true);
 // Module
-exports.push([module.i, ".Header_mbutton__1MBmJ {\n  cursor: pointer;\n  font-weight: bold;\n}\n\n#Header_nprogress__JHRh3 .Header_bar__TSU4U {\n  height: 10px !important;\n}\n", "",{"version":3,"sources":["Header.module.css"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,iBAAiB;AACnB;;AAEA;EACE,uBAAuB;AACzB","file":"Header.module.css","sourcesContent":[".mbutton {\n  cursor: pointer;\n  font-weight: bold;\n}\n\n#nprogress .bar {\n  height: 10px !important;\n}\n"]}]);
+exports.push([module.i, ".Header_mbutton__1MBmJ {\r\n  cursor: pointer;\r\n  font-weight: bold;\r\n}\r\n\r\n#Header_nprogress__JHRh3 .Header_bar__TSU4U {\r\n  height: 10px !important;\r\n}\r\n", "",{"version":3,"sources":["Header.module.css"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,iBAAiB;AACnB;;AAEA;EACE,uBAAuB;AACzB","file":"Header.module.css","sourcesContent":[".mbutton {\r\n  cursor: pointer;\r\n  font-weight: bold;\r\n}\r\n\r\n#nprogress .bar {\r\n  height: 10px !important;\r\n}\r\n"]}]);
 // Exports
 exports.locals = {
 	"mbutton": "Header_mbutton__1MBmJ",
@@ -28002,10 +28002,10 @@ var assign=Object.assign.bind(Object);function g(){return assign;}Object.defineP
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fblogs%2F%5Bslug%5D&absolutePagePath=%2FUsers%2FSlothums%2FDocuments%2FGitHub%2FSEO-Blog%2Ffrontend%2Fpages%2Fblogs%2F%5Bslug%5D.js!./":
-/*!*****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fblogs%2F%5Bslug%5D&absolutePagePath=%2FUsers%2FSlothums%2FDocuments%2FGitHub%2FSEO-Blog%2Ffrontend%2Fpages%2Fblogs%2F%5Bslug%5D.js ***!
-  \*****************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fblogs%2F%5Bslug%5D&absolutePagePath=C%3A%5CUsers%5CAdministrator%5CDocuments%5CGitHub%5CSEO-Blog%5Cfrontend%5Cpages%5Cblogs%5C%5Bslug%5D.js!./":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fblogs%2F%5Bslug%5D&absolutePagePath=C%3A%5CUsers%5CAdministrator%5CDocuments%5CGitHub%5CSEO-Blog%5Cfrontend%5Cpages%5Cblogs%5C%5Bslug%5D.js ***!
+  \**************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -61082,7 +61082,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var react_render_html__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-render-html */ "./node_modules/react-render-html/index.js");
 /* harmony import */ var react_render_html__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_render_html__WEBPACK_IMPORTED_MODULE_9__);
-var _jsxFileName = "/Users/Slothums/Documents/GitHub/SEO-Blog/frontend/pages/blogs/[slug].js";
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_10__);
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\pages\\blogs\\[slug].js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -61096,8 +61098,114 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+
 var SingleBlog = function SingleBlog(_ref) {
-  var blog = _ref.blog;
+  var blog = _ref.blog,
+      query = _ref.query;
+
+  var head = function head() {
+    return __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 15
+      },
+      __self: this
+    }, __jsx("title", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 16
+      },
+      __self: this
+    }, blog.title, " | ", _config__WEBPACK_IMPORTED_MODULE_6__["APP_NAME"]), __jsx("meta", {
+      name: "description",
+      content: blog.mdesc,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 19
+      },
+      __self: this
+    }), __jsx("link", {
+      rel: "canonical",
+      href: "".concat(_config__WEBPACK_IMPORTED_MODULE_6__["DOMAIN"], "/blogs/").concat(query.slug),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 20
+      },
+      __self: this
+    }), __jsx("meta", {
+      property: "og:title",
+      content: "".concat(blog.title, "| ").concat(_config__WEBPACK_IMPORTED_MODULE_6__["APP_NAME"]),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 21
+      },
+      __self: this
+    }), __jsx("meta", {
+      property: "og:description",
+      content: blog.mdesc,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 22
+      },
+      __self: this
+    }), __jsx("meta", {
+      property: "og:type",
+      content: "webiste",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 23
+      },
+      __self: this
+    }), __jsx("meta", {
+      property: "og:url",
+      content: "".concat(_config__WEBPACK_IMPORTED_MODULE_6__["DOMAIN"], "/blogs/").concat(query.slug),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 24
+      },
+      __self: this
+    }), __jsx("meta", {
+      property: "og:site_name",
+      content: "".concat(_config__WEBPACK_IMPORTED_MODULE_6__["APP_NAME"]),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 25
+      },
+      __self: this
+    }), __jsx("meta", {
+      property: "og:image",
+      content: "".concat(_config__WEBPACK_IMPORTED_MODULE_6__["API"], "/blog/photo/").concat(blog.slug),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 27
+      },
+      __self: this
+    }), __jsx("meta", {
+      property: "og:image:secure_url",
+      ccontent: "".concat(_config__WEBPACK_IMPORTED_MODULE_6__["API"], "/blog/photo/").concat(blog.slug),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 28
+      },
+      __self: this
+    }), __jsx("meta", {
+      property: "og:image:type",
+      content: "image/jpg",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 29
+      },
+      __self: this
+    }), __jsx("meta", {
+      property: "fb:app_id",
+      content: "".concat(_config__WEBPACK_IMPORTED_MODULE_6__["FB_APP_ID"]),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 30
+      },
+      __self: this
+    }));
+  };
 
   var showBlogCategories = function showBlogCategories(blog) {
     return blog.categories.map(function (c, i) {
@@ -61105,14 +61213,14 @@ var SingleBlog = function SingleBlog(_ref) {
         href: "/categories/".concat(c.slug),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 14
+          lineNumber: 35
         },
         __self: this
       }, __jsx("a", {
         className: "btn btn-info mr-1 ml-1 mt-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 15
+          lineNumber: 36
         },
         __self: this
       }, c.name));
@@ -61125,14 +61233,14 @@ var SingleBlog = function SingleBlog(_ref) {
         href: "/tags/".concat(t.slug),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 42
         },
         __self: this
       }, __jsx("a", {
         className: "btn btn-outline-primary mr-1 ml-1 mt-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22
+          lineNumber: 43
         },
         __self: this
       }, t.name));
@@ -61142,38 +61250,38 @@ var SingleBlog = function SingleBlog(_ref) {
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 48
     },
     __self: this
-  }, __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, head(), __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 50
     },
     __self: this
   }, __jsx("main", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 51
     },
     __self: this
   }, __jsx("article", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 52
     },
     __self: this
   }, __jsx("div", {
     className: "container-fluid",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 53
     },
     __self: this
   }, __jsx("section", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 54
     },
     __self: this
   }, __jsx("div", {
@@ -61183,7 +61291,7 @@ var SingleBlog = function SingleBlog(_ref) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 55
     },
     __self: this
   }, __jsx("img", {
@@ -61192,91 +61300,105 @@ var SingleBlog = function SingleBlog(_ref) {
     className: "img img-fluid featured-image",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 56
     },
     __self: this
   }))), __jsx("section", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 63
     },
     __self: this
-  }, __jsx("p", {
+  }, __jsx("div", {
+    className: "container",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 64
+    },
+    __self: this
+  }, __jsx("h2", {
+    className: "display-4 pb-3 pt-3 text-center font-weight-bold",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 65
+    },
+    __self: this
+  }, blog.title), __jsx("p", {
     className: "lead mark mt-3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 66
     },
     __self: this
   }, "Written by ", blog.postedBy.name, " | published ", moment__WEBPACK_IMPORTED_MODULE_8___default()(blog.createdAt).fromNow()), __jsx("div", {
     className: "pb-3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 69
     },
     __self: this
   }, __jsx("section", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 70
     },
     __self: this
   }, showBlogCategories(blog), showBlogTags(blog), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50
+      lineNumber: 73
     },
     __self: this
   }), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51
+      lineNumber: 74
     },
     __self: this
-  }))))), __jsx("div", {
+  })))))), __jsx("div", {
     className: "container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 80
     },
     __self: this
   }, __jsx("section", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57
+      lineNumber: 81
     },
     __self: this
   }, __jsx("div", {
     className: "col-md-12 lead",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58
+      lineNumber: 82
     },
     __self: this
   }, react_render_html__WEBPACK_IMPORTED_MODULE_9___default()(blog.body)))), __jsx("div", {
     className: "container pb-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 85
     },
     __self: this
   }, __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62
+      lineNumber: 86
     },
     __self: this
   }, "related blogs")), __jsx("div", {
     className: "container pb-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64
+      lineNumber: 88
     },
     __self: this
   }, __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65
+      lineNumber: 89
     },
     __self: this
   }, "Show comments"))))));
@@ -61290,7 +61412,8 @@ SingleBlog.getInitialProps = function (_ref2) {
     } else {
       // console.log('GET INITIAL PROPS IN SINGLE BLOG', data);
       return {
-        blog: data
+        blog: data,
+        query: query
       };
     }
   });
@@ -61302,13 +61425,13 @@ SingleBlog.getInitialProps = function (_ref2) {
 /***/ }),
 
 /***/ 2:
-/*!*********************************************************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2Fblogs%2F%5Bslug%5D&absolutePagePath=%2FUsers%2FSlothums%2FDocuments%2FGitHub%2FSEO-Blog%2Ffrontend%2Fpages%2Fblogs%2F%5Bslug%5D.js ***!
-  \*********************************************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2Fblogs%2F%5Bslug%5D&absolutePagePath=C%3A%5CUsers%5CAdministrator%5CDocuments%5CGitHub%5CSEO-Blog%5Cfrontend%5Cpages%5Cblogs%5C%5Bslug%5D.js ***!
+  \******************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fblogs%2F%5Bslug%5D&absolutePagePath=%2FUsers%2FSlothums%2FDocuments%2FGitHub%2FSEO-Blog%2Ffrontend%2Fpages%2Fblogs%2F%5Bslug%5D.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fblogs%2F%5Bslug%5D&absolutePagePath=%2FUsers%2FSlothums%2FDocuments%2FGitHub%2FSEO-Blog%2Ffrontend%2Fpages%2Fblogs%2F%5Bslug%5D.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fblogs%2F%5Bslug%5D&absolutePagePath=C%3A%5CUsers%5CAdministrator%5CDocuments%5CGitHub%5CSEO-Blog%5Cfrontend%5Cpages%5Cblogs%5C%5Bslug%5D.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fblogs%2F%5Bslug%5D&absolutePagePath=C%3A%5CUsers%5CAdministrator%5CDocuments%5CGitHub%5CSEO-Blog%5Cfrontend%5Cpages%5Cblogs%5C%5Bslug%5D.js!./");
 
 
 /***/ }),

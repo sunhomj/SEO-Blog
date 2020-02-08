@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/_app.js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\_app.js"],{
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/array/from.js":
 /*!*******************************************************************!*\
@@ -4972,7 +4972,7 @@ exports.push([module.i, "/*!\n * Quill Editor v1.3.0\n * https://quilljs.com/\n 
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(true);
 // Module
-exports.push([module.i, "#nprogress .bar {\n    background: #29d;\n\n    position: fixed;\n    z-index: 1031;\n    top: 0;\n    left: 0;\n\n    width: 100%;\n    height: 6px;\n}\n\n.ql-editor {\n    min-height: 300px;\n}\n\n.featured-image {\n    width: 100%;\n    max-height: 500px;\n    -o-object-fit: cover;\n       object-fit: cover;\n}\n", "",{"version":3,"sources":["style.css"],"names":[],"mappings":"AAAA;IACI,gBAAgB;;IAEhB,eAAe;IACf,aAAa;IACb,MAAM;IACN,OAAO;;IAEP,WAAW;IACX,WAAW;AACf;;AAEA;IACI,iBAAiB;AACrB;;AAEA;IACI,WAAW;IACX,iBAAiB;IACjB,oBAAiB;OAAjB,iBAAiB;AACrB","file":"style.css","sourcesContent":["#nprogress .bar {\n    background: #29d;\n\n    position: fixed;\n    z-index: 1031;\n    top: 0;\n    left: 0;\n\n    width: 100%;\n    height: 6px;\n}\n\n.ql-editor {\n    min-height: 300px;\n}\n\n.featured-image {\n    width: 100%;\n    max-height: 500px;\n    object-fit: cover;\n}\n"]}]);
+exports.push([module.i, "#nprogress .bar {\r\n    background: #29d;\r\n\r\n    position: fixed;\r\n    z-index: 1031;\r\n    top: 0;\r\n    left: 0;\r\n\r\n    width: 100%;\r\n    height: 6px;\r\n}\r\n\r\n.ql-editor {\r\n    min-height: 300px;\r\n}\r\n\r\n.featured-image {\r\n    width: 100%;\r\n    max-height: 500px;\r\n    -o-object-fit: cover;\r\n       object-fit: cover;\r\n}\r\n", "",{"version":3,"sources":["style.css"],"names":[],"mappings":"AAAA;IACI,gBAAgB;;IAEhB,eAAe;IACf,aAAa;IACb,MAAM;IACN,OAAO;;IAEP,WAAW;IACX,WAAW;AACf;;AAEA;IACI,iBAAiB;AACrB;;AAEA;IACI,WAAW;IACX,iBAAiB;IACjB,oBAAiB;OAAjB,iBAAiB;AACrB","file":"style.css","sourcesContent":["#nprogress .bar {\r\n    background: #29d;\r\n\r\n    position: fixed;\r\n    z-index: 1031;\r\n    top: 0;\r\n    left: 0;\r\n\r\n    width: 100%;\r\n    height: 6px;\r\n}\r\n\r\n.ql-editor {\r\n    min-height: 300px;\r\n}\r\n\r\n.featured-image {\r\n    width: 100%;\r\n    max-height: 500px;\r\n    object-fit: cover;\r\n}\r\n"]}]);
 
 
 /***/ }),
@@ -11735,7 +11735,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/Slothums/Documents/GitHub/SEO-Blog/frontend/pages/_app.js";
+var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\pages\\_app.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement;
 
 
@@ -11858,7 +11858,7 @@ if (true) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! next-client-pages-loader?page=%2F_app&absolutePagePath=private-next-pages%2F_app.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F_app&absolutePagePath=private-next-pages%2F_app.js!./");
-module.exports = __webpack_require__(/*! /Users/Slothums/Documents/GitHub/SEO-Blog/frontend/node_modules/next/dist/client/router.js */"./node_modules/next/dist/client/router.js");
+module.exports = __webpack_require__(/*! C:\Users\Administrator\Documents\GitHub\SEO-Blog\frontend\node_modules\next\dist\client\router.js */"./node_modules/next/dist/client/router.js");
 
 
 /***/ }),
