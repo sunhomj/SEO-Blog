@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\blogs\\[slug].js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/blogs/[slug].js"],{
 
 /***/ "./actions/auth.js":
 /*!*************************!*\
@@ -282,7 +282,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/es/index.js");
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\Header.js";
+var _jsxFileName = "/Users/Slothums/Documents/GitHub/SEO-Blog/frontend/components/Header.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -518,7 +518,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header */ "./components/Header.js");
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\Layout.js";
+var _jsxFileName = "/Users/Slothums/Documents/GitHub/SEO-Blog/frontend/components/Layout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -565,7 +565,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_render_html__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_render_html__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_6__);
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\blog\\Card.js";
+var _jsxFileName = "/Users/Slothums/Documents/GitHub/SEO-Blog/frontend/components/blog/Card.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -799,7 +799,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\components\\crud\\Category.js";
+var _jsxFileName = "/Users/Slothums/Documents/GitHub/SEO-Blog/frontend/components/crud/Category.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
 
@@ -8604,7 +8604,7 @@ module.exports = exports['default'];
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(true);
 // Module
-exports.push([module.i, ".Header_mbutton__1MBmJ {\r\n  cursor: pointer;\r\n  font-weight: bold;\r\n}\r\n\r\n#Header_nprogress__JHRh3 .Header_bar__TSU4U {\r\n  height: 10px !important;\r\n}\r\n", "",{"version":3,"sources":["Header.module.css"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,iBAAiB;AACnB;;AAEA;EACE,uBAAuB;AACzB","file":"Header.module.css","sourcesContent":[".mbutton {\r\n  cursor: pointer;\r\n  font-weight: bold;\r\n}\r\n\r\n#nprogress .bar {\r\n  height: 10px !important;\r\n}\r\n"]}]);
+exports.push([module.i, ".Header_mbutton__1MBmJ {\n  cursor: pointer;\n  font-weight: bold;\n}\n\n#Header_nprogress__JHRh3 .Header_bar__TSU4U {\n  height: 10px !important;\n}\n", "",{"version":3,"sources":["Header.module.css"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,iBAAiB;AACnB;;AAEA;EACE,uBAAuB;AACzB","file":"Header.module.css","sourcesContent":[".mbutton {\n  cursor: pointer;\n  font-weight: bold;\n}\n\n#nprogress .bar {\n  height: 10px !important;\n}\n"]}]);
 // Exports
 exports.locals = {
 	"mbutton": "Header_mbutton__1MBmJ",
@@ -28002,10 +28002,10 @@ var assign=Object.assign.bind(Object);function g(){return assign;}Object.defineP
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fblogs%2F%5Bslug%5D&absolutePagePath=C%3A%5CUsers%5CAdministrator%5CDocuments%5CGitHub%5CSEO-Blog%5Cfrontend%5Cpages%5Cblogs%5C%5Bslug%5D.js!./":
-/*!**************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fblogs%2F%5Bslug%5D&absolutePagePath=C%3A%5CUsers%5CAdministrator%5CDocuments%5CGitHub%5CSEO-Blog%5Cfrontend%5Cpages%5Cblogs%5C%5Bslug%5D.js ***!
-  \**************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fblogs%2F%5Bslug%5D&absolutePagePath=%2FUsers%2FSlothums%2FDocuments%2FGitHub%2FSEO-Blog%2Ffrontend%2Fpages%2Fblogs%2F%5Bslug%5D.js!./":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fblogs%2F%5Bslug%5D&absolutePagePath=%2FUsers%2FSlothums%2FDocuments%2FGitHub%2FSEO-Blog%2Ffrontend%2Fpages%2Fblogs%2F%5Bslug%5D.js ***!
+  \*****************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -61080,10 +61080,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_blog_Card__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/blog/Card */ "./components/blog/Card.js");
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../config */ "./config.js");
 /* harmony import */ var _components_crud_Category__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/crud/Category */ "./components/crud/Category.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_9__);
 
-var _jsxFileName = "C:\\Users\\Administrator\\Documents\\GitHub\\SEO-Blog\\frontend\\pages\\blogs\\[slug].js";
+var _jsxFileName = "/Users/Slothums/Documents/GitHub/SEO-Blog/frontend/pages/blogs/[slug].js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
@@ -61095,46 +61093,62 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
-
 var SingleBlog = function SingleBlog(_ref) {
-  var blog = _ref.blog,
-      router = _ref.router;
-  console.log(router);
+  var blog = _ref.blog;
   return __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 12
     },
     __self: this
   }, __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 13
     },
     __self: this
   }, __jsx("main", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 14
     },
     __self: this
   }, __jsx("article", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17
+      lineNumber: 15
     },
     __self: this
   }, __jsx("div", {
     className: "container-fluid",
     __source: {
       fileName: _jsxFileName,
+      lineNumber: 16
+    },
+    __self: this
+  }, __jsx("div", {
+    className: "row",
+    style: {
+      marginTop: "-30px"
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17
+    },
+    __self: this
+  }, __jsx("img", {
+    src: "".concat(_config__WEBPACK_IMPORTED_MODULE_7__["API"], "/blog/photo/").concat(blog.slug),
+    alt: blog.title,
+    className: "img img-fluid featured-image",
+    __source: {
+      fileName: _jsxFileName,
       lineNumber: 18
     },
     __self: this
-  }, __jsx("section", {
+  })), __jsx("section", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 24
     },
     __self: this
   }, _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(blog)))))));
@@ -61154,7 +61168,20 @@ SingleBlog.getInitialProps = function (_ref2) {
   });
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_9__["withRouter"])(SingleBlog));
+/* harmony default export */ __webpack_exports__["default"] = (SingleBlog);
+"";
+
+/***/ }),
+
+/***/ 1:
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2Fblogs%2F%5Bslug%5D&absolutePagePath=%2FUsers%2FSlothums%2FDocuments%2FGitHub%2FSEO-Blog%2Ffrontend%2Fpages%2Fblogs%2F%5Bslug%5D.js ***!
+  \*********************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fblogs%2F%5Bslug%5D&absolutePagePath=%2FUsers%2FSlothums%2FDocuments%2FGitHub%2FSEO-Blog%2Ffrontend%2Fpages%2Fblogs%2F%5Bslug%5D.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fblogs%2F%5Bslug%5D&absolutePagePath=%2FUsers%2FSlothums%2FDocuments%2FGitHub%2FSEO-Blog%2Ffrontend%2Fpages%2Fblogs%2F%5Bslug%5D.js!./");
+
 
 /***/ }),
 
@@ -61180,18 +61207,6 @@ SingleBlog.getInitialProps = function (_ref2) {
 
 /***/ }),
 
-/***/ 5:
-/*!******************************************************************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2Fblogs%2F%5Bslug%5D&absolutePagePath=C%3A%5CUsers%5CAdministrator%5CDocuments%5CGitHub%5CSEO-Blog%5Cfrontend%5Cpages%5Cblogs%5C%5Bslug%5D.js ***!
-  \******************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fblogs%2F%5Bslug%5D&absolutePagePath=C%3A%5CUsers%5CAdministrator%5CDocuments%5CGitHub%5CSEO-Blog%5Cfrontend%5Cpages%5Cblogs%5C%5Bslug%5D.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fblogs%2F%5Bslug%5D&absolutePagePath=C%3A%5CUsers%5CAdministrator%5CDocuments%5CGitHub%5CSEO-Blog%5Cfrontend%5Cpages%5Cblogs%5C%5Bslug%5D.js!./");
-
-
-/***/ }),
-
 /***/ "dll-reference dll_ef0ff7c60362f24a921f":
 /*!*******************************************!*\
   !*** external "dll_ef0ff7c60362f24a921f" ***!
@@ -61203,5 +61218,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[5,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=[slug].js.map
