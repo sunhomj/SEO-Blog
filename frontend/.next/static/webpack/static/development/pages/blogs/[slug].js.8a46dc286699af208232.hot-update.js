@@ -116,4 +116,4 @@ SingleBlog.getInitialProps = function (_ref2) {
 /***/ })
 
 })
-//# sourceMappingURL=[slug].js.6c4c7d4e62a71e73d420.hot-update.js.map
+//# sourceMappingURL=[slug].js.8a46dc286699af208232.hot-update.js.map
