@@ -195,7 +195,7 @@ const isAuth = () => {
 /*!*************************!*\
   !*** ./actions/blog.js ***!
   \*************************/
-/*! exports provided: createBlog, listBlogWithCategoriesAndTags, singleBlog */
+/*! exports provided: createBlog, listBlogWithCategoriesAndTags, singleBlog, listRelated */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -203,6 +203,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createBlog", function() { return createBlog; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listBlogWithCategoriesAndTags", function() { return listBlogWithCategoriesAndTags; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "singleBlog", function() { return singleBlog; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listRelated", function() { return listRelated; });
 /* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! isomorphic-fetch */ "isomorphic-fetch");
 /* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../config */ "./config.js");
@@ -246,6 +247,20 @@ const singleBlog = slug => {
   }).then(response => {
     return response.json();
   }).catch(err => console.log(err));
+};
+const listRelated = blog => {
+  return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default()(`${_config__WEBPACK_IMPORTED_MODULE_1__["API"]}/blogs/related`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(blog)
+  }).then(response => {
+    return response.json();
+  }).catch(err => {
+    console.log(err);
+  });
 };
 
 /***/ }),
@@ -2754,16 +2769,37 @@ const SingleBlog = ({
   blog,
   query
 }) => {
+  const {
+    0: related,
+    1: setRelated
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+
+  const loadRelated = () => {
+    Object(_actions_blog__WEBPACK_IMPORTED_MODULE_4__["listRelated"])({
+      blog
+    }).then(data => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        setRelated(data);
+      }
+    });
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    loadRelated();
+  }, []);
+
   const head = () => __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 31
     },
     __self: undefined
   }, __jsx("title", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 32
     },
     __self: undefined
   }, blog.title, " | ", _config__WEBPACK_IMPORTED_MODULE_6__["APP_NAME"]), __jsx("meta", {
@@ -2771,7 +2807,7 @@ const SingleBlog = ({
     content: blog.mdesc,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 35
     },
     __self: undefined
   }), __jsx("link", {
@@ -2779,7 +2815,7 @@ const SingleBlog = ({
     href: `${_config__WEBPACK_IMPORTED_MODULE_6__["DOMAIN"]}/blogs/${query.slug}`,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
+      lineNumber: 36
     },
     __self: undefined
   }), __jsx("meta", {
@@ -2787,7 +2823,7 @@ const SingleBlog = ({
     content: `${blog.title}| ${_config__WEBPACK_IMPORTED_MODULE_6__["APP_NAME"]}`,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 37
     },
     __self: undefined
   }), __jsx("meta", {
@@ -2795,7 +2831,7 @@ const SingleBlog = ({
     content: blog.mdesc,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 38
     },
     __self: undefined
   }), __jsx("meta", {
@@ -2803,7 +2839,7 @@ const SingleBlog = ({
     content: "webiste",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 39
     },
     __self: undefined
   }), __jsx("meta", {
@@ -2811,7 +2847,7 @@ const SingleBlog = ({
     content: `${_config__WEBPACK_IMPORTED_MODULE_6__["DOMAIN"]}/blogs/${query.slug}`,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 40
     },
     __self: undefined
   }), __jsx("meta", {
@@ -2819,7 +2855,7 @@ const SingleBlog = ({
     content: `${_config__WEBPACK_IMPORTED_MODULE_6__["APP_NAME"]}`,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25
+      lineNumber: 41
     },
     __self: undefined
   }), __jsx("meta", {
@@ -2827,7 +2863,7 @@ const SingleBlog = ({
     content: `${_config__WEBPACK_IMPORTED_MODULE_6__["API"]}/blog/photo/${blog.slug}`,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 43
     },
     __self: undefined
   }), __jsx("meta", {
@@ -2835,7 +2871,7 @@ const SingleBlog = ({
     ccontent: `${_config__WEBPACK_IMPORTED_MODULE_6__["API"]}/blog/photo/${blog.slug}`,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 44
     },
     __self: undefined
   }), __jsx("meta", {
@@ -2843,7 +2879,7 @@ const SingleBlog = ({
     content: "image/jpg",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 45
     },
     __self: undefined
   }), __jsx("meta", {
@@ -2851,7 +2887,7 @@ const SingleBlog = ({
     content: `${_config__WEBPACK_IMPORTED_MODULE_6__["FB_APP_ID"]}`,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 46
     },
     __self: undefined
   }));
@@ -2860,14 +2896,14 @@ const SingleBlog = ({
     href: `/categories/${c.slug}`,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 51
     },
     __self: undefined
   }, __jsx("a", {
     className: "btn btn-info mr-1 ml-1 mt-3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 52
     },
     __self: undefined
   }, c.name)));
@@ -2876,14 +2912,14 @@ const SingleBlog = ({
     href: `/tags/${t.slug}`,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 58
     },
     __self: undefined
   }, __jsx("a", {
     className: "btn btn-outline-primary mr-1 ml-1 mt-3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 59
     },
     __self: undefined
   }, t.name)));
@@ -2891,88 +2927,29 @@ const SingleBlog = ({
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 64
     },
     __self: undefined
   }, head(), __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50
+      lineNumber: 66
     },
     __self: undefined
   }, __jsx("main", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51
+      lineNumber: 67
     },
     __self: undefined
   }, __jsx("article", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 68
     },
     __self: undefined
   }, __jsx("div", {
     className: "container-fluid",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 53
-    },
-    __self: undefined
-  }, __jsx("section", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 54
-    },
-    __self: undefined
-  }, __jsx("div", {
-    className: "row",
-    style: {
-      marginTop: "-30px"
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 55
-    },
-    __self: undefined
-  }, __jsx("img", {
-    src: `${_config__WEBPACK_IMPORTED_MODULE_6__["API"]}/blog/photo/${blog.slug}`,
-    alt: blog.title,
-    className: "img img-fluid featured-image",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 56
-    },
-    __self: undefined
-  }))), __jsx("section", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 63
-    },
-    __self: undefined
-  }, __jsx("div", {
-    className: "container",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 64
-    },
-    __self: undefined
-  }, __jsx("h2", {
-    className: "display-4 pb-3 pt-3 text-center font-weight-bold",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 65
-    },
-    __self: undefined
-  }, blog.title), __jsx("p", {
-    className: "lead mark mt-3",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 66
-    },
-    __self: undefined
-  }, "Written by ", blog.postedBy.name, " | published ", moment__WEBPACK_IMPORTED_MODULE_8___default()(blog.createdAt).fromNow()), __jsx("div", {
-    className: "pb-3",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 69
@@ -2984,62 +2961,121 @@ const SingleBlog = ({
       lineNumber: 70
     },
     __self: undefined
-  }, showBlogCategories(blog), showBlogTags(blog), __jsx("br", {
+  }, __jsx("div", {
+    className: "row",
+    style: {
+      marginTop: "-30px"
+    },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73
+      lineNumber: 71
     },
     __self: undefined
-  }), __jsx("br", {
+  }, __jsx("img", {
+    src: `${_config__WEBPACK_IMPORTED_MODULE_6__["API"]}/blog/photo/${blog.slug}`,
+    alt: blog.title,
+    className: "img img-fluid featured-image",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 74
+      lineNumber: 72
     },
     __self: undefined
-  })))))), __jsx("div", {
+  }))), __jsx("section", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 79
+    },
+    __self: undefined
+  }, __jsx("div", {
     className: "container",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 80
     },
     __self: undefined
-  }, __jsx("section", {
+  }, __jsx("h2", {
+    className: "display-4 pb-3 pt-3 text-center font-weight-bold",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 81
+    },
+    __self: undefined
+  }, blog.title), __jsx("p", {
+    className: "lead mark mt-3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 82
+    },
+    __self: undefined
+  }, "Written by ", blog.postedBy.name, " | published ", moment__WEBPACK_IMPORTED_MODULE_8___default()(blog.createdAt).fromNow()), __jsx("div", {
+    className: "pb-3",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 85
+    },
+    __self: undefined
+  }, __jsx("section", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 86
+    },
+    __self: undefined
+  }, showBlogCategories(blog), showBlogTags(blog), __jsx("br", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 89
+    },
+    __self: undefined
+  }), __jsx("br", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 90
+    },
+    __self: undefined
+  })))))), __jsx("div", {
+    className: "container",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 96
+    },
+    __self: undefined
+  }, __jsx("section", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 97
     },
     __self: undefined
   }, __jsx("div", {
     className: "col-md-12 lead",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 82
+      lineNumber: 98
     },
     __self: undefined
   }, react_render_html__WEBPACK_IMPORTED_MODULE_9___default()(blog.body)))), __jsx("div", {
     className: "container pb-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85
+      lineNumber: 101
     },
     __self: undefined
   }, __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 86
+      lineNumber: 102
     },
     __self: undefined
-  }, "related blogs")), __jsx("div", {
+  }, JSON.stringify(related))), __jsx("div", {
     className: "container pb-5",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88
+      lineNumber: 104
     },
     __self: undefined
   }, __jsx("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89
+      lineNumber: 105
     },
     __self: undefined
   }, "Show comments"))))));

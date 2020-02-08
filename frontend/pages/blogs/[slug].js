@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import Layout from "../../components/Layout";
-import { useState } from "react";
-import { singleBlog } from "../../actions/blog";
+import { useState, useEffect } from "react";
+import { singleBlog, listRelated } from "../../actions/blog";
 import Card from "../../components/blog/Card";
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
 import Category from "../../components/crud/Category";
@@ -11,6 +11,22 @@ import renderHTML from "react-render-html";
 import withRouter from "next/router";
 
 const SingleBlog = ({ blog, query }) => {
+  const [related, setRelated] = useState([]);
+
+  const loadRelated = () => {
+    listRelated({ blog }).then(data => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        setRelated(data);
+      }
+    });
+  };
+
+  useEffect(() => {
+    loadRelated();
+  }, []);
+
   const head = () => (
     <Head>
       <title>
@@ -83,7 +99,7 @@ const SingleBlog = ({ blog, query }) => {
               </section>
             </div>
             <div className="container pb-5">
-              <p>related blogs</p>
+              <p>{JSON.stringify(related)}</p>
             </div>
             <div className="container pb-5">
               <p>Show comments</p>
