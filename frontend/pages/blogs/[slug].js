@@ -3,7 +3,7 @@ import Link from "next/link";
 import Layout from "../../components/Layout";
 import { useState, useEffect } from "react";
 import { singleBlog, listRelated } from "../../actions/blog";
-import Card from "../../components/blog/Card";
+import SmallCard from "../../components/blog/SmallCard";
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
 import Category from "../../components/crud/Category";
 import moment from "moment";
@@ -46,19 +46,30 @@ const SingleBlog = ({ blog, query }) => {
       <meta property="fb:app_id" content={`${FB_APP_ID}`} />
     </Head>
   );
+
   const showBlogCategories = blog =>
     blog.categories.map((c, i) => (
-      <Link href={`/categories/${c.slug}`}>
-        <a className="btn btn-info mr-1 ml-1 mt-3">{c.name}</a>
+      <Link key={i} href={`/categories/${c.slug}`}>
+        <a className="btn btn-primary mr-1 ml-1 mt-3">{c.name}</a>
       </Link>
     ));
 
   const showBlogTags = blog =>
     blog.tags.map((t, i) => (
-      <Link href={`/tags/${t.slug}`}>
+      <Link key={i} href={`/tags/${t.slug}`}>
         <a className="btn btn-outline-primary mr-1 ml-1 mt-3">{t.name}</a>
       </Link>
     ));
+
+  const showRelatedBlog = () => {
+    return related.map((blog, i) => (
+      <div className="col-md-4" key={i}>
+        <article>
+          <SmallCard blog={blog} />
+        </article>
+      </div>
+    ));
+  };
 
   return (
     <React.Fragment>
@@ -73,36 +84,42 @@ const SingleBlog = ({ blog, query }) => {
                     src={`${API}/blog/photo/${blog.slug}`}
                     alt={blog.title}
                     className="img img-fluid featured-image"
-                  ></img>
+                  />
                 </div>
               </section>
+
               <section>
                 <div className="container">
-                  <h2 className="display-4 pb-3 pt-3 text-center font-weight-bold">{blog.title}</h2>
-                  <p className="lead mark mt-3">
-                    Written by {blog.postedBy.name} | published {moment(blog.createdAt).fromNow()}
+                  <h1 className="display-2 pb-3 pt-3 text-center font-weight-bold">{blog.title}</h1>
+                  <p className="lead mt-3 mark">
+                    Written by {blog.postedBy.name} | Published {moment(blog.updatedAt).fromNow()}
                   </p>
+
                   <div className="pb-3">
-                    <section>
-                      {showBlogCategories(blog)}
-                      {showBlogTags(blog)}
-                      <br />
-                      <br />
-                    </section>
+                    {showBlogCategories(blog)}
+                    {showBlogTags(blog)}
+                    <br />
+                    <br />
                   </div>
                 </div>
               </section>
             </div>
+
             <div className="container">
               <section>
                 <div className="col-md-12 lead">{renderHTML(blog.body)}</div>
               </section>
             </div>
-            <div className="container pb-5">
-              <p>{JSON.stringify(related)}</p>
+
+            <div className="container">
+              <h4 className="text-center pt-5 pb-5 h2">Related blogs</h4>
+              <div className="row">
+                <div className="row">{showRelatedBlog()}</div>
+              </div>
             </div>
+
             <div className="container pb-5">
-              <p>Show comments</p>
+              <p>show comments</p>
             </div>
           </article>
         </main>
@@ -123,4 +140,3 @@ SingleBlog.getInitialProps = ({ query }) => {
 };
 
 export default SingleBlog;
-``;
