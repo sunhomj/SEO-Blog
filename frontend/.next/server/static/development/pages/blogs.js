@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -195,13 +195,14 @@ const isAuth = () => {
 /*!*************************!*\
   !*** ./actions/blog.js ***!
   \*************************/
-/*! exports provided: createBlog, listBlogWithCategoriesAndTags */
+/*! exports provided: createBlog, listBlogWithCategoriesAndTags, singleBlog */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createBlog", function() { return createBlog; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listBlogWithCategoriesAndTags", function() { return listBlogWithCategoriesAndTags; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "singleBlog", function() { return singleBlog; });
 /* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! isomorphic-fetch */ "isomorphic-fetch");
 /* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../config */ "./config.js");
@@ -238,6 +239,13 @@ const listBlogWithCategoriesAndTags = (limit, skip) => {
   }).catch(err => {
     console.log(err);
   });
+};
+const singleBlog = slug => {
+  return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default()(`${_config__WEBPACK_IMPORTED_MODULE_1__["API"]}/blog/${slug}`, {
+    method: "GET"
+  }).then(response => {
+    return response.json();
+  }).catch(err => console.log(err));
 };
 
 /***/ }),
@@ -796,7 +804,7 @@ const Card = ({
     },
     __self: undefined
   }, react_render_html__WEBPACK_IMPORTED_MODULE_5___default()(blog.excerpt)), __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    href: `/blogs/${blog.slug}`,
+    href: `/blog/${blog.slug}`,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 59
@@ -3159,7 +3167,7 @@ Blogs.getInitialProps = () => {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!************************************!*\
   !*** multi ./pages/blogs/index.js ***!
   \************************************/
