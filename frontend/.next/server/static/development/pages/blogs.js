@@ -221,14 +221,19 @@ const createBlog = (blog, token) => {
     console.log(err);
   });
 };
-const listBlogWithCategoriesAndTags = () => {
+const listBlogWithCategoriesAndTags = (limit, skip) => {
+  const data = {
+    limit,
+    skip
+  };
   return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default()(`${_config__WEBPACK_IMPORTED_MODULE_1__["API"]}/blogs-categories-tags`, {
     method: "POST",
     headers: {
-      Accept: "application/json"
-    }
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
   }).then(response => {
-    console.log(response);
     return response.json();
   }).catch(err => {
     console.log(err);
@@ -804,7 +809,13 @@ const Card = ({
       lineNumber: 60
     },
     __self: undefined
-  }, "Read more")))))));
+  }, "Read more")))))), __jsx("hr", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 66
+    },
+    __self: undefined
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Card);
@@ -1082,7 +1093,7 @@ const {
 } = next_config__WEBPACK_IMPORTED_MODULE_0___default()();
 const API = publicRuntimeConfig.PRODUCTION ? publicRuntimeConfig.API_PRODUCTION : publicRuntimeConfig.API_DEVELOPMENT;
 const APP_NAME = publicRuntimeConfig.APP_NAME;
-const DOMAIN = publicRuntimeConfig.PRODUCTION ? publicRuntimeConfig.DOMAIN_DEVELOPMENT : publicRuntimeConfig.DOMAIN_PRODUCTION;
+const DOMAIN = publicRuntimeConfig.PRODUCTION ? publicRuntimeConfig.DOMAIN_PRODUCTION : publicRuntimeConfig.DOMAIN_DEVELOPMENT;
 const FB_APP_ID = publicRuntimeConfig.FB_APP_ID;
 
 /***/ }),
@@ -2805,111 +2816,153 @@ const Blogs = ({
   blogs,
   categories,
   tags,
-  size,
+  totlaBlogs,
+  blogsLimit,
+  blogSkip,
   router
 }) => {
-  const head = () => {
-    __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
+  const head = () => __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 16
+    },
+    __self: undefined
+  }, __jsx("title", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17
+    },
+    __self: undefined
+  }, "Programming blogs | ", _config__WEBPACK_IMPORTED_MODULE_6__["APP_NAME"]), __jsx("meta", {
+    name: "description",
+    content: "Programming blogs and tutorials on react node next.js and web developoment",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18
+    },
+    __self: undefined
+  }), __jsx("link", {
+    rel: "canonical",
+    href: `${_config__WEBPACK_IMPORTED_MODULE_6__["DOMAIN"]}${router.pathname}`,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    },
+    __self: undefined
+  }), __jsx("meta", {
+    property: "og:title",
+    content: `Latest web developoment tutorials | ${_config__WEBPACK_IMPORTED_MODULE_6__["APP_NAME"]}`,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23
+    },
+    __self: undefined
+  }), __jsx("meta", {
+    property: "og:description",
+    content: "Programming blogs and tutorials on react node next vue php laravel and web developoment",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24
+    },
+    __self: undefined
+  }), __jsx("meta", {
+    property: "og:type",
+    content: "webiste",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28
+    },
+    __self: undefined
+  }), __jsx("meta", {
+    property: "og:url",
+    content: `${_config__WEBPACK_IMPORTED_MODULE_6__["DOMAIN"]}${router.pathname}`,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    },
+    __self: undefined
+  }), __jsx("meta", {
+    property: "og:site_name",
+    content: `${_config__WEBPACK_IMPORTED_MODULE_6__["APP_NAME"]}`,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30
+    },
+    __self: undefined
+  }), __jsx("meta", {
+    property: "og:image",
+    content: `${_config__WEBPACK_IMPORTED_MODULE_6__["DOMAIN"]}/images/blog.jpg`,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32
+    },
+    __self: undefined
+  }), __jsx("meta", {
+    property: "og:image:secure_url",
+    ccontent: `${_config__WEBPACK_IMPORTED_MODULE_6__["DOMAIN"]}/images/blog.jpg`,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 33
+    },
+    __self: undefined
+  }), __jsx("meta", {
+    property: "og:image:type",
+    content: "image/jpg",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34
+    },
+    __self: undefined
+  }), __jsx("meta", {
+    property: "fb:app_id",
+    content: `${_config__WEBPACK_IMPORTED_MODULE_6__["FB_APP_ID"]}`,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35
+    },
+    __self: undefined
+  }));
+
+  const {
+    0: limit,
+    1: setLimit
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(blogsLimit);
+  const {
+    0: skip,
+    1: setSkip
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0);
+  const {
+    0: size,
+    1: setSize
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(totlaBlogs);
+  const {
+    0: loadedBlogs,
+    1: setLoadedBlogs
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+
+  const loadMore = () => {
+    let toSkip = skip + limit;
+    Object(_actions_blog__WEBPACK_IMPORTED_MODULE_4__["listBlogWithCategoriesAndTags"])(toSkip, limit).then(data => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        setLoadedBlogs([...loadedBlogs, ...data.blogs]);
+        setSize(data.size);
+        setSkip(toSkip);
+      }
+    });
+  };
+
+  const loadMoreButton = () => {
+    return size > 0 && size >= limit && __jsx("button", {
+      onClick: loadMore,
+      className: "btn btn-outline-primary btn-lg",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 16
+        lineNumber: 61
       },
       __self: undefined
-    }, __jsx("title", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 17
-      },
-      __self: undefined
-    }, " Programming Blogs | ", _config__WEBPACK_IMPORTED_MODULE_6__["APP_NAME"]), __jsx("meta", {
-      name: "description",
-      content: "Programming blogs and tutorials on react node next web development",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 18
-      },
-      __self: undefined
-    }), __jsx("link", {
-      rel: "canonical",
-      href: `${_config__WEBPACK_IMPORTED_MODULE_6__["DOMAIN"]}${router.pathname}`,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 22
-      },
-      __self: undefined
-    }), __jsx("meta", {
-      property: "og:title",
-      content: `Lastest web development tutorials | ${_config__WEBPACK_IMPORTED_MODULE_6__["APP_NAME"]}`,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 23
-      },
-      __self: undefined
-    }), __jsx("meta", {
-      property: "og:description",
-      content: "Programming blogs and tutorials on react node next web development",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 24
-      },
-      __self: undefined
-    }), __jsx("meta", {
-      property: "og:type",
-      content: "website",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 28
-      },
-      __self: undefined
-    }), __jsx("meta", {
-      property: "og:url",
-      content: `${_config__WEBPACK_IMPORTED_MODULE_6__["DOMAIN"]}${router.pathname}`,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 29
-      },
-      __self: undefined
-    }), __jsx("meta", {
-      property: "og:site_name",
-      content: `${_config__WEBPACK_IMPORTED_MODULE_6__["APP_NAME"]}`,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 30
-      },
-      __self: undefined
-    }), __jsx("meta", {
-      property: "og:image",
-      content: "/public/blog.jpg",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 32
-      },
-      __self: undefined
-    }), __jsx("meta", {
-      property: "og:image:secure_url",
-      content: "/public/blog.jpg",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 33
-      },
-      __self: undefined
-    }), __jsx("meta", {
-      property: "og:image:type",
-      content: "/public/blog.jpg",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 34
-      },
-      __self: undefined
-    }), __jsx("meta", {
-      property: "fb:app_id",
-      content: `${_config__WEBPACK_IMPORTED_MODULE_6__["FB_APP_ID"]}`,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 35
-      },
-      __self: undefined
-    }));
+    }, "Load More");
   };
 
   const showAllBlogs = () => {
@@ -2918,20 +2971,14 @@ const Blogs = ({
         key: index,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 42
+          lineNumber: 71
         },
         __self: undefined
       }, __jsx(_components_blog_Card__WEBPACK_IMPORTED_MODULE_5__["default"], {
         blog: blog,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43
-        },
-        __self: undefined
-      }), __jsx("hr", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 44
+          lineNumber: 72
         },
         __self: undefined
       }));
@@ -2945,14 +2992,14 @@ const Blogs = ({
         key: i,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 53
+          lineNumber: 81
         },
         __self: undefined
       }, __jsx("a", {
         className: "btn btn-info mr-1 ml-1 mt-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54
+          lineNumber: 82
         },
         __self: undefined
       }, c.name));
@@ -2966,105 +3013,133 @@ const Blogs = ({
         key: i,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 63
+          lineNumber: 91
         },
         __self: undefined
       }, __jsx("a", {
         className: "btn btn-outline-primary mr-1 ml-1 mt-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 64
+          lineNumber: 92
         },
         __self: undefined
       }, t.name));
     });
   };
 
-  return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  const showLoadedBlogs = () => {
+    return loadedBlogs.map((blog, i) => {
+      return __jsx("article", {
+        key: i,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 101
+        },
+        __self: undefined
+      }, __jsx(_components_blog_Card__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        blog: blog,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 102
+        },
+        __self: undefined
+      }));
+    });
+  };
+
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71
+      lineNumber: 109
+    },
+    __self: undefined
+  }, head(), __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 111
     },
     __self: undefined
   }, __jsx("main", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72
+      lineNumber: 112
     },
     __self: undefined
   }, __jsx("div", {
     className: "container-fluid",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73
+      lineNumber: 113
     },
     __self: undefined
   }, __jsx("header", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 74
+      lineNumber: 114
     },
     __self: undefined
   }, __jsx("div", {
     className: "col-md-12 pt-3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75
+      lineNumber: 115
     },
     __self: undefined
   }, __jsx("h1", {
     className: "display-4 font-weight-bold text-center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76
+      lineNumber: 116
     },
     __self: undefined
   }, " ", "Programming blogs and tutor"), __jsx("section", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 80
+      lineNumber: 120
     },
     __self: undefined
   }, __jsx("div", {
     className: "pb-5 text-center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81
+      lineNumber: 121
     },
     __self: undefined
   }, showAllCategories(), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83
+      lineNumber: 123
     },
     __self: undefined
   }), showAllTags()))), __jsx("div", {
     className: "container-fluid",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88
+      lineNumber: 128
     },
     __self: undefined
-  }, __jsx("div", {
-    className: "row",
+  }, showAllBlogs()), __jsx("div", {
+    className: "container-fluid",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89
+      lineNumber: 129
     },
     __self: undefined
-  }, __jsx("div", {
-    className: "col-md-12",
+  }, showLoadedBlogs()), __jsx("div", {
+    className: "text-center pt-5 pb-5 ",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 90
+      lineNumber: 130
     },
     __self: undefined
-  }, showAllBlogs(), " ")))))));
+  }, " ", loadMoreButton()))))));
 }; //server-side rendering method from next.js    getinitialprops - can be used only on pages Not in components
 
 
 Blogs.getInitialProps = () => {
-  return Object(_actions_blog__WEBPACK_IMPORTED_MODULE_4__["listBlogWithCategoriesAndTags"])().then(data => {
+  let skip = 0;
+  let limit = 2;
+  return Object(_actions_blog__WEBPACK_IMPORTED_MODULE_4__["listBlogWithCategoriesAndTags"])(limit, skip).then(data => {
     if (data.error) {
       console.log(data.error);
     } else {
@@ -3072,7 +3147,9 @@ Blogs.getInitialProps = () => {
         blogs: data.blogs,
         categories: data.categories,
         tags: data.tags,
-        size: data.size
+        totlaBlogs: data.size,
+        blogsLimit: limit,
+        blogSkip: skip
       }; // once these are returned, these can be used as props.
     }
   });

@@ -63,6 +63,7 @@ const Card = ({ blog }) => {
           </div>
         </div>
       </section>
+      <hr />
     </div>
   );
 };

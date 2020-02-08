@@ -11,29 +11,58 @@ import renderHTML from "react-render-html";
 import moment from "moment";
 import { withRouter } from "next/router";
 
-const Blogs = ({ blogs, categories, tags, size, router }) => {
-  const head = () => {
+const Blogs = ({ blogs, categories, tags, totlaBlogs, blogsLimit, blogSkip, router }) => {
+  const head = () => (
     <Head>
-      <title> Programming Blogs | {APP_NAME}</title>
+      <title>Programming blogs | {APP_NAME}</title>
       <meta
         name="description"
-        content="Programming blogs and tutorials on react node next web development"
+        content="Programming blogs and tutorials on react node next.js and web developoment"
       />
       <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
-      <meta property="og:title" content={`Lastest web development tutorials | ${APP_NAME}`} />
+      <meta property="og:title" content={`Latest web developoment tutorials | ${APP_NAME}`} />
       <meta
         property="og:description"
-        content="Programming blogs and tutorials on react node next web development"
+        content="Programming blogs and tutorials on react node next vue php laravel and web developoment"
       />
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="webiste" />
       <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
       <meta property="og:site_name" content={`${APP_NAME}`} />
 
-      <meta property="og:image" content="/public/blog.jpg" />
-      <meta property="og:image:secure_url" content="/public/blog.jpg" />
-      <meta property="og:image:type" content="/public/blog.jpg" />
+      <meta property="og:image" content={`${DOMAIN}/images/blog.jpg`} />
+      <meta property="og:image:secure_url" ccontent={`${DOMAIN}/images/blog.jpg`} />
+      <meta property="og:image:type" content="image/jpg" />
       <meta property="fb:app_id" content={`${FB_APP_ID}`} />
-    </Head>;
+    </Head>
+  );
+
+  const [limit, setLimit] = useState(blogsLimit);
+  const [skip, setSkip] = useState(0);
+  const [size, setSize] = useState(totlaBlogs);
+  const [loadedBlogs, setLoadedBlogs] = useState([]);
+
+  const loadMore = () => {
+    let toSkip = skip + limit;
+    listBlogWithCategoriesAndTags(toSkip, limit).then(data => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        setLoadedBlogs([...loadedBlogs, ...data.blogs]);
+        setSize(data.size);
+        setSkip(toSkip);
+      }
+    });
+  };
+
+  const loadMoreButton = () => {
+    return (
+      size > 0 &&
+      size >= limit && (
+        <button onClick={loadMore} className="btn btn-outline-primary btn-lg">
+          Load More
+        </button>
+      )
+    );
   };
 
   const showAllBlogs = () => {
@@ -41,7 +70,6 @@ const Blogs = ({ blogs, categories, tags, size, router }) => {
       return (
         <article key={index}>
           <Card blog={blog} />
-          <hr />
         </article>
       );
     });
@@ -67,39 +95,52 @@ const Blogs = ({ blogs, categories, tags, size, router }) => {
     });
   };
 
+  const showLoadedBlogs = () => {
+    return loadedBlogs.map((blog, i) => {
+      return (
+        <article key={i}>
+          <Card blog={blog} />
+        </article>
+      );
+    });
+  };
+
   return (
-    <Layout>
-      <main>
-        <div className="container-fluid">
-          <header>
-            <div className="col-md-12 pt-3">
-              <h1 className="display-4 font-weight-bold text-center">
-                {" "}
-                Programming blogs and tutor
-              </h1>
-              <section>
-                <div className="pb-5 text-center">
-                  {showAllCategories()}
-                  <br />
-                  {showAllTags()}
-                </div>
-              </section>
-            </div>
-            <div className="container-fluid">
-              <div className="row">
-                <div className="col-md-12">{showAllBlogs()} </div>
+    <React.Fragment>
+      {head()}
+      <Layout>
+        <main>
+          <div className="container-fluid">
+            <header>
+              <div className="col-md-12 pt-3">
+                <h1 className="display-4 font-weight-bold text-center">
+                  {" "}
+                  Programming blogs and tutor
+                </h1>
+                <section>
+                  <div className="pb-5 text-center">
+                    {showAllCategories()}
+                    <br />
+                    {showAllTags()}
+                  </div>
+                </section>
               </div>
-            </div>
-          </header>
-        </div>
-      </main>
-    </Layout>
+              <div className="container-fluid">{showAllBlogs()}</div>
+              <div className="container-fluid">{showLoadedBlogs()}</div>
+              <div className="text-center pt-5 pb-5 "> {loadMoreButton()}</div>
+            </header>
+          </div>
+        </main>
+      </Layout>
+    </React.Fragment>
   );
 };
 
 //server-side rendering method from next.js    getinitialprops - can be used only on pages Not in components
 Blogs.getInitialProps = () => {
-  return listBlogWithCategoriesAndTags().then(data => {
+  let skip = 0;
+  let limit = 2;
+  return listBlogWithCategoriesAndTags(limit, skip).then(data => {
     if (data.error) {
       console.log(data.error);
     } else {
@@ -107,7 +148,9 @@ Blogs.getInitialProps = () => {
         blogs: data.blogs,
         categories: data.categories,
         tags: data.tags,
-        size: data.size
+        totlaBlogs: data.size,
+        blogsLimit: limit,
+        blogSkip: skip
       };
       // once these are returned, these can be used as props.
     }
