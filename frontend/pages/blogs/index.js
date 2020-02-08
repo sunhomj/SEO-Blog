@@ -4,13 +4,38 @@ import Layout from "../../components/Layout";
 import { useState } from "react";
 import { listBlogWithCategoriesAndTags } from "../../actions/blog";
 import Card from "../../components/blog/Card";
-import { API } from "../../config";
+import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
 import Category from "../../components/crud/Category";
 import { getTags } from "../../actions/tag";
 import renderHTML from "react-render-html";
 import moment from "moment";
+import { withRouter } from "next/router";
 
-const Blogs = ({ blogs, categories, tags, size }) => {
+const Blogs = ({ blogs, categories, tags, size, router }) => {
+  const head = () => {
+    <Head>
+      <title> Programming Blogs | {APP_NAME}</title>
+      <meta
+        name="description"
+        content="Programming blogs and tutorials on react node next web development"
+      />
+      <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
+      <meta property="og:title" content={`Lastest web development tutorials | ${APP_NAME}`} />
+      <meta
+        property="og:description"
+        content="Programming blogs and tutorials on react node next web development"
+      />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
+      <meta property="og:site_name" content={`${APP_NAME}`} />
+
+      <meta property="og:image" content="/public/blog.jpg" />
+      <meta property="og:image:secure_url" content="/public/blog.jpg" />
+      <meta property="og:image:type" content="/public/blog.jpg" />
+      <meta property="fb:app_id" content={`${FB_APP_ID}`} />
+    </Head>;
+  };
+
   const showAllBlogs = () => {
     return blogs.map((blog, index) => {
       return (
@@ -88,4 +113,4 @@ Blogs.getInitialProps = () => {
     }
   });
 };
-export default Blogs;
+export default withRouter(Blogs);
