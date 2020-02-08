@@ -21,6 +21,27 @@ const Blogs = ({ blogs, categories, tags, size }) => {
       );
     });
   };
+
+  const showAllCategories = () => {
+    return categories.map((c, i) => {
+      return (
+        <Link href={`/categories/${c.slug}`} key={i}>
+          <a className="btn btn-info mr-1 ml-1 mt-3">{c.name}</a>
+        </Link>
+      );
+    });
+  };
+
+  const showAllTags = () => {
+    return tags.map((t, i) => {
+      return (
+        <Link href={`/tags/${t.slug}`} key={i}>
+          <a className="btn btn-outline-primary mr-1 ml-1 mt-3">{t.name}</a>
+        </Link>
+      );
+    });
+  };
+
   return (
     <Layout>
       <main>
@@ -32,7 +53,11 @@ const Blogs = ({ blogs, categories, tags, size }) => {
                 Programming blogs and tutor
               </h1>
               <section>
-                <p> show categories and tags</p>
+                <div className="pb-5 text-center">
+                  {showAllCategories()}
+                  <br />
+                  {showAllTags()}
+                </div>
               </section>
             </div>
             <div className="container-fluid">

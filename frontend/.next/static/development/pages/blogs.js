@@ -157,13 +157,14 @@ var createBlog = function createBlog(blog, token) {
     console.log(err);
   });
 };
-var listBlogWithCategoriesAndTags = function listBlogWithCategoriesAndTags(blog, token) {
+var listBlogWithCategoriesAndTags = function listBlogWithCategoriesAndTags() {
   return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default()("".concat(_config__WEBPACK_IMPORTED_MODULE_1__["API"], "/blogs-categories-tags"), {
     method: "POST",
     headers: {
       Accept: "application/json"
     }
   }).then(function (response) {
+    console.log(response);
     return response.json();
   })["catch"](function (err) {
     console.log(err);
@@ -697,7 +698,7 @@ var Card = function Card(_ref) {
     },
     __self: this
   }, __jsx("h2", {
-    className: "pb-3 font-weight-bold",
+    className: " pb-3 font-weight-bold",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 30
@@ -1082,13 +1083,14 @@ var Category = function Category() {
 /*!*******************!*\
   !*** ./config.js ***!
   \*******************/
-/*! exports provided: API, APP_NAME */
+/*! exports provided: API, APP_NAME, DOMAIN */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API", function() { return API; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "APP_NAME", function() { return APP_NAME; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DOMAIN", function() { return DOMAIN; });
 /* harmony import */ var next_config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/config */ "./node_modules/next/dist/next-server/lib/runtime-config.js");
 /* harmony import */ var next_config__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_config__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -1098,6 +1100,7 @@ var _getConfig = next_config__WEBPACK_IMPORTED_MODULE_0___default()(),
 
 var API = publicRuntimeConfig.PRODUCTION ? publicRuntimeConfig.API_PRODUCTION : publicRuntimeConfig.API_DEVELOPMENT;
 var APP_NAME = publicRuntimeConfig.APP_NAME;
+var DOMAIN = publicRuntimeConfig.PRODUCTION ? publicRuntimeConfig.DOMAIN_DEVELOPMENT : publicRuntimeConfig.DOMAIN_PRODUCTION;
 
 /***/ }),
 
@@ -56304,7 +56307,7 @@ util.inherits = __webpack_require__(/*! inherits */ "./node_modules/inherits/inh
 /*</replacement>*/
 
 /*<replacement>*/
-var debugUtil = __webpack_require__(/*! util */ 3);
+var debugUtil = __webpack_require__(/*! util */ 2);
 var debug = void 0;
 if (debugUtil && debugUtil.debuglog) {
   debug = debugUtil.debuglog('stream');
@@ -58193,7 +58196,7 @@ Writable.prototype._destroy = function (err, cb) {
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Buffer = __webpack_require__(/*! safe-buffer */ "./node_modules/safe-buffer/index.js").Buffer;
-var util = __webpack_require__(/*! util */ 4);
+var util = __webpack_require__(/*! util */ 3);
 
 function copyBuffer(src, target, offset) {
   src.copy(target, offset);
@@ -61172,76 +61175,125 @@ var Blogs = function Blogs(_ref) {
     });
   };
 
+  var showAllCategories = function showAllCategories() {
+    return categories.map(function (c, i) {
+      return __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        href: "/categories/".concat(c.slug),
+        key: i,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 28
+        },
+        __self: this
+      }, __jsx("a", {
+        className: "btn btn-info mr-1 ml-1 mt-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 29
+        },
+        __self: this
+      }, c.name));
+    });
+  };
+
+  var showAllTags = function showAllTags() {
+    return tags.map(function (t, i) {
+      return __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        href: "/tags/".concat(t.slug),
+        key: i,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 38
+        },
+        __self: this
+      }, __jsx("a", {
+        className: "btn btn-outline-primary mr-1 ml-1 mt-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 39
+        },
+        __self: this
+      }, t.name));
+    });
+  };
+
   return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25
+      lineNumber: 46
     },
     __self: this
   }, __jsx("main", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 47
     },
     __self: this
   }, __jsx("div", {
     className: "container-fluid",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 48
     },
     __self: this
   }, __jsx("header", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 49
     },
     __self: this
   }, __jsx("div", {
     className: "col-md-12 pt-3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 50
     },
     __self: this
   }, __jsx("h1", {
     className: "display-4 font-weight-bold text-center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 51
     },
     __self: this
   }, " ", "Programming blogs and tutor"), __jsx("section", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 55
     },
     __self: this
-  }, __jsx("p", {
+  }, __jsx("div", {
+    className: "pb-5 text-center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 56
     },
     __self: this
-  }, " show categories and tags"))), __jsx("div", {
+  }, showAllCategories(), __jsx("br", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 58
+    },
+    __self: this
+  }), showAllTags()))), __jsx("div", {
     className: "container-fluid",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 63
     },
     __self: this
   }, __jsx("div", {
     className: "row",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39
+      lineNumber: 64
     },
     __self: this
   }, __jsx("div", {
     className: "col-md-12",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 65
     },
     __self: this
   }, showAllBlogs(), " ")))))));
@@ -61267,7 +61319,7 @@ Blogs.getInitialProps = function () {
 
 /***/ }),
 
-/***/ 2:
+/***/ 1:
 /*!************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fblogs&absolutePagePath=C%3A%5CUsers%5CAdministrator%5CDocuments%5CGitHub%5CSEO-Blog%5Cfrontend%5Cpages%5Cblogs%5Cindex.js ***!
   \************************************************************************************************************************************************************************/
@@ -61279,7 +61331,7 @@ module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fblogs&
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /*!**********************!*\
   !*** util (ignored) ***!
   \**********************/
@@ -61290,7 +61342,7 @@ module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fblogs&
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!**********************!*\
   !*** util (ignored) ***!
   \**********************/
@@ -61312,5 +61364,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=blogs.js.map

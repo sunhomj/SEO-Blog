@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -221,13 +221,14 @@ const createBlog = (blog, token) => {
     console.log(err);
   });
 };
-const listBlogWithCategoriesAndTags = (blog, token) => {
+const listBlogWithCategoriesAndTags = () => {
   return isomorphic_fetch__WEBPACK_IMPORTED_MODULE_0___default()(`${_config__WEBPACK_IMPORTED_MODULE_1__["API"]}/blogs-categories-tags`, {
     method: "POST",
     headers: {
       Accept: "application/json"
     }
   }).then(response => {
+    console.log(response);
     return response.json();
   }).catch(err => {
     console.log(err);
@@ -699,7 +700,7 @@ const Card = ({
     },
     __self: undefined
   }, __jsx("h2", {
-    className: "pb-3 font-weight-bold",
+    className: " pb-3 font-weight-bold",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 30
@@ -1064,13 +1065,14 @@ const Category = () => {
 /*!*******************!*\
   !*** ./config.js ***!
   \*******************/
-/*! exports provided: API, APP_NAME */
+/*! exports provided: API, APP_NAME, DOMAIN */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API", function() { return API; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "APP_NAME", function() { return APP_NAME; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DOMAIN", function() { return DOMAIN; });
 /* harmony import */ var next_config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/config */ "next/config");
 /* harmony import */ var next_config__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_config__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -1079,6 +1081,7 @@ const {
 } = next_config__WEBPACK_IMPORTED_MODULE_0___default()();
 const API = publicRuntimeConfig.PRODUCTION ? publicRuntimeConfig.API_PRODUCTION : publicRuntimeConfig.API_DEVELOPMENT;
 const APP_NAME = publicRuntimeConfig.APP_NAME;
+const DOMAIN = publicRuntimeConfig.PRODUCTION ? publicRuntimeConfig.DOMAIN_DEVELOPMENT : publicRuntimeConfig.DOMAIN_PRODUCTION;
 
 /***/ }),
 
@@ -2825,76 +2828,125 @@ const Blogs = ({
     });
   };
 
+  const showAllCategories = () => {
+    return categories.map((c, i) => {
+      return __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        href: `/categories/${c.slug}`,
+        key: i,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 28
+        },
+        __self: undefined
+      }, __jsx("a", {
+        className: "btn btn-info mr-1 ml-1 mt-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 29
+        },
+        __self: undefined
+      }, c.name));
+    });
+  };
+
+  const showAllTags = () => {
+    return tags.map((t, i) => {
+      return __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        href: `/tags/${t.slug}`,
+        key: i,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 38
+        },
+        __self: undefined
+      }, __jsx("a", {
+        className: "btn btn-outline-primary mr-1 ml-1 mt-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 39
+        },
+        __self: undefined
+      }, t.name));
+    });
+  };
+
   return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25
+      lineNumber: 46
     },
     __self: undefined
   }, __jsx("main", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 47
     },
     __self: undefined
   }, __jsx("div", {
     className: "container-fluid",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 48
     },
     __self: undefined
   }, __jsx("header", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 49
     },
     __self: undefined
   }, __jsx("div", {
     className: "col-md-12 pt-3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 50
     },
     __self: undefined
   }, __jsx("h1", {
     className: "display-4 font-weight-bold text-center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 51
     },
     __self: undefined
   }, " ", "Programming blogs and tutor"), __jsx("section", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 55
     },
     __self: undefined
-  }, __jsx("p", {
+  }, __jsx("div", {
+    className: "pb-5 text-center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 56
     },
     __self: undefined
-  }, " show categories and tags"))), __jsx("div", {
+  }, showAllCategories(), __jsx("br", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 58
+    },
+    __self: undefined
+  }), showAllTags()))), __jsx("div", {
     className: "container-fluid",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 63
     },
     __self: undefined
   }, __jsx("div", {
     className: "row",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39
+      lineNumber: 64
     },
     __self: undefined
   }, __jsx("div", {
     className: "col-md-12",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 65
     },
     __self: undefined
   }, showAllBlogs(), " ")))))));
@@ -2920,7 +2972,7 @@ Blogs.getInitialProps = () => {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!************************************!*\
   !*** multi ./pages/blogs/index.js ***!
   \************************************/

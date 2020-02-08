@@ -121,9 +121,9 @@ exports.list = (req, res) => {
 };
 
 exports.listAllBlogsCategoriesTags = (req, res) => {
-  // to access req.body, POST method needed
   let limit = req.body.limit ? parseInt(req.body.limit) : 10;
   let skip = req.body.skip ? parseInt(req.body.skip) : 0;
+
   let blogs;
   let categories;
   let tags;
@@ -142,8 +142,8 @@ exports.listAllBlogsCategoriesTags = (req, res) => {
           error: errorHandler(err)
         });
       }
-      blogs = data; //blogs
-      //get all categories
+      blogs = data; // blogs
+      // get all categories
       Category.find({}).exec((err, c) => {
         if (err) {
           return res.json({
@@ -151,18 +151,18 @@ exports.listAllBlogsCategoriesTags = (req, res) => {
           });
         }
         categories = c; // categories
+        // get all tags
+        Tag.find({}).exec((err, t) => {
+          if (err) {
+            return res.json({
+              error: errorHandler(err)
+            });
+          }
+          tags = t;
+          // return all blogs categories tags
+          res.json({ blogs, categories, tags, size: blogs.length });
+        });
       });
-      Tag.find({}).exec((err, t) => {
-        if (err) {
-          return res.json({
-            error: errorHandler(err)
-          });
-        }
-        tags = t; // tags
-      });
-
-      //return all blogs categories and tags
-      res.json({ blogs, categories, tags, size: blogs.length });
     });
 };
 

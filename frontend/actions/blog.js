@@ -18,7 +18,7 @@ export const createBlog = (blog, token) => {
     });
 };
 
-export const listBlogWithCategoriesAndTags = (blog, token) => {
+export const listBlogWithCategoriesAndTags = () => {
   return fetch(`${API}/blogs-categories-tags`, {
     method: "POST",
     headers: {
@@ -26,6 +26,7 @@ export const listBlogWithCategoriesAndTags = (blog, token) => {
     }
   })
     .then(response => {
+      console.log(response);
       return response.json();
     })
     .catch(err => {
