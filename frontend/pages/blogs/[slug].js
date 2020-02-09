@@ -70,7 +70,6 @@ const SingleBlog = ({ blog, query }) => {
       </div>
     ));
   };
-
   return (
     <React.Fragment>
       {head()}
@@ -113,9 +112,7 @@ const SingleBlog = ({ blog, query }) => {
 
             <div className="container">
               <h4 className="text-center pt-5 pb-5 h2">Related blogs</h4>
-              <div className="row">
-                <div className="row">{showRelatedBlog()}</div>
-              </div>
+              <div className="row">{showRelatedBlog()}</div>
             </div>
 
             <div className="container pb-5">
