@@ -222,8 +222,7 @@ var removeBlog = function removeBlog(slug, token) {
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: "Bearer ".concat(token)
-    },
-    body: blog
+    }
   }).then(function (response) {
     return response.json();
   })["catch"](function (err) {

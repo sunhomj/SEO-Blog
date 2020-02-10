@@ -84,8 +84,7 @@ export const removeBlog = (slug, token) => {
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`
-    },
-    body: blog
+    }
   })
     .then(response => {
       return response.json();
