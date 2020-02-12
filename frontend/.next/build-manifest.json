@@ -16,6 +16,14 @@
     "/_polyfills": [
       "static/runtime/polyfills.js",
       "static/runtime/polyfills.js.map"
+    ],
+    "/admin": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/blogs": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
     ]
   }
 }
