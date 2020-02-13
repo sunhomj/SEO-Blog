@@ -31,7 +31,6 @@ exports.list = (req, res) => {
 };
 
 exports.read = (req, res) => {
-  console.log(req);
   const slug = req.params.slug.toLowerCase();
 
   Category.findOne({ slug }).exec((err, category) => {

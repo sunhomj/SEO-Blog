@@ -1,9 +1,10 @@
 import Layout from "../../components/Layout";
-import { singleCategory } from "../../actions/category";
+import { singleTag } from "../../actions/tag";
 import Card from "../../components/blog/Card";
+import { listBlogWithCategoriesAndTags } from "../../actions/blog";
 
-const Category = ({ category, blogs }) => {
-  console.log("category~~", category, "blogs~~~~", blogs);
+const Category = ({ tag, blogs }) => {
+  console.log("tag~~", tag, "blogs~~~~", blogs);
   return (
     <React.Fragment>
       <Layout>
@@ -11,7 +12,7 @@ const Category = ({ category, blogs }) => {
           <div className="container-fluid text-center">
             <header>
               <div className="col-md-12 pt-3">
-                <h1 className="display-4 font-weight-bold"> {category.name} </h1>
+                <h1 className="display-4 font-weight-bold"> {tag.name} </h1>
                 <hr />
                 {blogs.map((b, i) => (
                   <div>
@@ -30,11 +31,12 @@ const Category = ({ category, blogs }) => {
 
 Category.getInitialProps = ({ query }) => {
   console.log("111111111111111111111111", query);
-  return singleCategory(query.slug).then(data => {
+  return singleTag(query.slug).then(data => {
     if (data.error) {
       console.log(data.error);
     } else {
-      return { category: data.category, blogs: data.blogs };
+      console.log(data);
+      return { tag: data.tag, blogs: data.blogs };
     }
   });
 };

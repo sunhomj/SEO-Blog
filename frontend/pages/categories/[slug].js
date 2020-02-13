@@ -3,7 +3,6 @@ import { singleCategory } from "../../actions/category";
 import Card from "../../components/blog/Card";
 
 const Category = ({ category, blogs }) => {
-  console.log("category~~", category, "blogs~~~~", blogs);
   return (
     <React.Fragment>
       <Layout>
@@ -29,7 +28,6 @@ const Category = ({ category, blogs }) => {
 };
 
 Category.getInitialProps = ({ query }) => {
-  console.log("111111111111111111111111", query);
   return singleCategory(query.slug).then(data => {
     if (data.error) {
       console.log(data.error);
