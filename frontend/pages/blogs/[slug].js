@@ -5,10 +5,8 @@ import { useState, useEffect } from "react";
 import { singleBlog, listRelated } from "../../actions/blog";
 import SmallCard from "../../components/blog/SmallCard";
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
-import Category from "../../components/crud/Category";
 import moment from "moment";
 import renderHTML from "react-render-html";
-import withRouter from "next/router";
 
 const SingleBlog = ({ blog, query }) => {
   const [related, setRelated] = useState([]);

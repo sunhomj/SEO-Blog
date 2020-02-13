@@ -1,13 +1,34 @@
 import Layout from "../../components/Layout";
 import { singleTag } from "../../actions/tag";
 import Card from "../../components/blog/Card";
-import { listBlogWithCategoriesAndTags } from "../../actions/blog";
+import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
+import Head from "next/head";
 
-const Category = ({ tag, blogs }) => {
-  console.log("tag~~", tag, "blogs~~~~", blogs);
+const Tag = ({ tag, blogs, asPath }) => {
+  const head = () => (
+    <Head>
+      <title>
+        {tag.name} | {APP_NAME}
+      </title>
+      <meta name="description" content={`Best Programming tutorials on ${tag.name}`} />
+      <link rel="canonical" href={`${DOMAIN}${asPath}`} />
+      <meta property="og:title" content={`${tag.name}| ${APP_NAME}`} />
+      <meta property="og:description" content={`Best Programming tutorials on ${tag.name}`} />
+      <meta property="og:type" content="webiste" />
+      <meta property="og:url" content={`${DOMAIN}${asPath}`} />
+      <meta property="og:site_name" content={`${APP_NAME}`} />
+
+      <meta property="og:image" content={`${DOMAIN}/images/blog.jpg`} />
+      <meta property="og:image:secure_url" ccontent={`${DOMAIN}/images/blog.jpg`} />
+      <meta property="og:image:type" content="image/jpg" />
+      <meta property="fb:app_id" content={`${FB_APP_ID}`} />
+    </Head>
+  );
+
   return (
     <React.Fragment>
       <Layout>
+        {head()}
         <main>
           <div className="container-fluid text-center">
             <header>
@@ -29,16 +50,15 @@ const Category = ({ tag, blogs }) => {
   );
 };
 
-Category.getInitialProps = ({ query }) => {
-  console.log("111111111111111111111111", query);
+Tag.getInitialProps = ({ query, asPath }) => {
   return singleTag(query.slug).then(data => {
     if (data.error) {
       console.log(data.error);
     } else {
       console.log(data);
-      return { tag: data.tag, blogs: data.blogs };
+      return { tag: data.tag, blogs: data.blogs, asPath: asPath };
     }
   });
 };
 
-export default Category;
+export default Tag;
