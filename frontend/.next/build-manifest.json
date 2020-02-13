@@ -17,11 +17,7 @@
       "static/runtime/polyfills.js",
       "static/runtime/polyfills.js.map"
     ],
-    "/categories/[slug]": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/tags/[slug]": [
+    "/blogs": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
