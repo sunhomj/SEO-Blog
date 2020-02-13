@@ -10,16 +10,18 @@ const Search = () => {
     searched: false,
     message: ""
   });
+  const { search, results, searched, message } = values;
 
   const handleChange = e => {
-    console.log(e);
+    setValues({ ...values, search: e.target.value, searched: false, results: [] });
   };
 
   const searchSubmit = e => {
     e.preventDefault();
+    listSearch({ search }).then(data => {
+      setValues({ ...values, result: data, searched: true, message: `${data.length} blogs found` });
+    });
   };
-
-  const { search, results, searched, message } = values;
 
   const searchForm = () => (
     <form onSubmit={searchSubmit}>
