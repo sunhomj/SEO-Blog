@@ -1,15 +1,12 @@
 import fetch from "isomorphic-fetch";
 import { API } from "../config";
-import queryString from "query-string";
 
-export const createBlog = (blog, token) => {
-  return fetch(`${API}/blog`, {
-    method: "POST",
+export const userPublicProfile = username => {
+  return fetch(`${API}/user/${username}`, {
+    method: "GET",
     headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`
-    },
-    body: blog
+      Accept: "application/json"
+    }
   })
     .then(response => {
       return response.json();
