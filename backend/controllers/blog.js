@@ -292,7 +292,7 @@ exports.listRelated = (req, res) => {
 };
 
 exports.listSearch = (req, res) => {
-  console.log("backend req.query ", req.query);
+  // console.log("backend req.query ", req.query);
   const { search } = req.query;
   if (search) {
     // $or either title or body match.  $regex  regular expression syntex in mongoose, $options: "i" case insensitive

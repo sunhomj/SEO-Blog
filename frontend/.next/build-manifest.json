@@ -20,6 +20,10 @@
     "/blogs": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
+    ],
+    "/blogs/[slug]": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
     ]
   }
 }
