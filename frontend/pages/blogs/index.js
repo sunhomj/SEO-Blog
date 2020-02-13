@@ -5,13 +5,10 @@ import { useState } from "react";
 import { listBlogWithCategoriesAndTags } from "../../actions/blog";
 import Card from "../../components/blog/Card";
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../../config";
-import Category from "../../components/crud/Category";
-import { getTags } from "../../actions/tag";
-import renderHTML from "react-render-html";
-import moment from "moment";
+
 import { withRouter } from "next/router";
 
-const Blogs = ({ blogs, categories, tags, totlaBlogs, blogsLimit, blogSkip, router }) => {
+const Blogs = ({ blogs, categories, tags, totlaBlogs, blogsLimit, router }) => {
   const head = () => (
     <Head>
       <title>Programming blogs | {APP_NAME}</title>
