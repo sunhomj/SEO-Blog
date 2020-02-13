@@ -290,3 +290,42 @@ exports.listRelated = (req, res) => {
       res.json(blogs);
     });
 };
+
+exports.listSearch = (req, res) => {
+  // console.log(req.body.blog);
+  const { search } = req.query;
+  if (search) {
+    // $or either title or body match.  $regex  regular expression syntex in mongoose, $options: "i" case insensitive
+    Blog.find(
+      {
+        $or: [
+          { title: { $regex: search, $options: "i" } },
+          { body: { $regex: search, $option: "i" } }
+        ]
+      },
+      (err, blogs) => {
+        if (err) {
+          return res.status(400).json({
+            error: errorHandler(err)
+          });
+        }
+        res.json(blogs);
+      }
+    ).select("-photo -body");
+  }
+
+  const { _id, categories } = req.body.blog;
+
+  Blog.find({ _id: { $ne: _id }, categories: { $in: categories } })
+    .limit(limit)
+    .populate("postedBy", "_id name profile")
+    .select("title slug excerpt postedBy createdAt updatedAt")
+    .exec((err, blogs) => {
+      if (err) {
+        return res.status(400).json({
+          error: "Blogs not found"
+        });
+      }
+      res.json(blogs);
+    });
+};
