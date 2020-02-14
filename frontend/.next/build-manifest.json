@@ -20,6 +20,10 @@
     "/user": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
+    ],
+    "/user/update": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
     ]
   }
 }
