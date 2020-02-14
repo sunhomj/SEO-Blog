@@ -8,6 +8,7 @@ import { API } from "../../config";
 const ProfileUpdate = () => {
   const [values, setValues] = useState({
     username: "",
+    username_for_photo: "",
     name: "",
     email: "",
     about: "",
@@ -16,12 +17,13 @@ const ProfileUpdate = () => {
     success: false,
     loading: false,
     photo: "",
-    userData: ""
+    userData: process.browser && new FormData()
   });
 
   const token = getCookie("token");
   const {
     username,
+    username_for_photo,
     name,
     email,
     about,
@@ -41,9 +43,11 @@ const ProfileUpdate = () => {
         setValues({
           ...values,
           username: data.username,
+          username_for_photo: data.username,
           name: data.name,
           email: data.email,
-          about: data.about
+          about: data.about,
+          photo: data.photo
         });
       }
     });
@@ -51,15 +55,17 @@ const ProfileUpdate = () => {
 
   useEffect(() => {
     init();
+    setValues({ ...values, userData: new FormData() });
   }, []);
 
   const handleChange = name => e => {
     // console.log(e.target.value);
     const value = name === "photo" ? e.target.files[0] : e.target.value;
-    let userFormData = new FormData();
-    userFormData.set(name, value);
-
-    setValues({ ...values, [name]: value, userData: userFormData, error: false, success: false });
+    // let userFormData = new FormData();
+    // userFormData.set(name, value);
+    userData.set(name, value);
+    console.log(...userData); // SEE THE FORMDATA IN CONSOLE
+    setValues({ ...values, [name]: value, userData, error: false, success: false });
   };
 
   const handleSubmit = e => {
@@ -67,7 +73,7 @@ const ProfileUpdate = () => {
     setValues({ ...values, loading: true });
     update(token, userData).then(data => {
       if (data.error) {
-        setValues({ ...values, error: data.error, success: false, loading: false });
+        setValues({ ...values, error: data.error, loading: false });
       } else {
         updateUser(data, () => {
           setValues({
@@ -106,7 +112,7 @@ const ProfileUpdate = () => {
         <label className="text-muted">Name</label>
         <input onChange={handleChange("name")} type="text" value={name} className="form-control" />
       </div>
-      <div className="form-group">
+      {/* <div className="form-group">
         <label className="text-muted">Email</label>
         <input
           onChange={handleChange("email")}
@@ -114,7 +120,7 @@ const ProfileUpdate = () => {
           value={email}
           className="form-control"
         />
-      </div>
+      </div> */}
       <div className="form-group">
         <label className="text-muted">About</label>
         <textarea
@@ -134,8 +140,13 @@ const ProfileUpdate = () => {
         />
       </div>
       <div>
+        {showSuccess()}
+        {showError()}
+        {showLoading()}
+      </div>
+      <div>
         <button type="submit" className="btn btn-primary">
-          Submit
+          Update
         </button>
       </div>
     </form>
@@ -165,18 +176,13 @@ const ProfileUpdate = () => {
         <div className="row">
           <div className="col-md-4">
             <img
-              src={`${API}/user/photo/${username}`}
+              src={`${API}/user/photo/${username_for_photo}`}
               className="img img-fluid img-thumbnail mb-3"
               style={{ maxHeight: "auto", maxWidth: "100%" }}
               alt="user profile"
             />
           </div>
-          <div className="col-md-8 mb-5">
-            {showSuccess()}
-            {showError()}
-            {showLoading()}
-            {profileUpdateForm()}
-          </div>
+          <div className="col-md-8 mb-5">{profileUpdateForm()}</div>
         </div>
       </div>
     </React.Fragment>
