@@ -73,7 +73,7 @@ exports.signout = (req, res) => {
 
 // check incoming token secret and compare to JWT_SECRET then return true or false
 exports.requireSignin = expressJwt({
-  secret: process.env.JWT_SECRET
+  secret: process.env.JWT_SECRET // req.user
 });
 
 // user middleware
