@@ -69,14 +69,14 @@ exports.update = (req, res) => {
           error: "Image should be less than 1mb"
         });
       }
-      user.photo.data = fs.readFile(files.photo.path);
+      user.photo.data = fs.readFileSync(files.photo.path);
       user.photo.contentType = files.photo.type;
     }
 
     user.save((err, result) => {
       if (err) {
         return res.status(400).json({
-          error: "All filds required"
+          error: "All fields required"
         });
       }
       user.hashed_password = undefined;

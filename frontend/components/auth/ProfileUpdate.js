@@ -1,8 +1,9 @@
+import Link from "next/link";
 import { useState, useEffect } from "react";
-import { signup, isAuth, getCookie } from "../../actions/auth";
-import { getProfile, udpate } from "../../actions/user";
-
-import { update } from "../../../backend/controllers/user";
+import Router from "next/router";
+import { getCookie, isAuth, updateUser } from "../../actions/auth";
+import { getProfile, update } from "../../actions/user";
+import { API } from "../../config";
 
 const ProfileUpdate = () => {
   const [values, setValues] = useState({
@@ -57,6 +58,7 @@ const ProfileUpdate = () => {
     const value = name === "photo" ? e.target.files[0] : e.target.value;
     let userFormData = new FormData();
     userFormData.set(name, value);
+
     setValues({ ...values, [name]: value, userData: userFormData, error: false, success: false });
   };
 
