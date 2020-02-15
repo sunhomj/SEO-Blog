@@ -46,14 +46,14 @@ const BlogRead = ({ username }) => {
   const showUpdateButton = blog => {
     if (isAuth() && isAuth().role === 0) {
       return (
-        <Link href={`/user/crud/blog/${blog.slug}`}>
-          <a className="btn btn-sm btn-warning ml-2">Update</a>
+        <Link href={`/user/crud/${blog.slug}`}>
+          <a className="ml-2 btn btn-sm btn-warning ml-2">Update</a>
         </Link>
       );
     } else if (isAuth() && isAuth().role === 1) {
       return (
         <Link href={`/admin/crud/${blog.slug}`}>
-          <a className="btn btn-sm btn-warning ml-2">Update</a>
+          <a className="ml-2 btn btn-sm btn-warning ml-2">Update</a>
         </Link>
       );
     }

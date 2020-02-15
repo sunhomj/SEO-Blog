@@ -3,6 +3,8 @@ const shortId = require("shortid");
 const jwt = require("jsonwebtoken");
 const expressJwt = require("express-jwt");
 const { errorHandler } = require("../helpers/errorHandler");
+const Blog = require("../models/blog");
+
 exports.signup = (req, res) => {
   //   const { name, email, password } = req.body;
   //   res.json({
