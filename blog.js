@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { requireSignin, authMiddleware, adminMiddleware } = require("../controllers/auth");
+const { requireSignin, authMiddleware, adminMiddleware } = require("./backend/controllers/auth");
 const {
   create,
   list,
@@ -10,9 +10,8 @@ const {
   update,
   getphoto,
   listRelated,
-  listSearch,
-  listByUser
-} = require("../controllers/blog");
+  listSearch
+} = require("./backend/controllers/blog");
 
 router.post("/blog", requireSignin, adminMiddleware, create);
 router.get("/blogs", list);
@@ -27,7 +26,6 @@ router.get("/blogs/search", listSearch);
 // auth user blog crud
 
 router.post("/user/blog", requireSignin, authMiddleware, create);
-router.get("/:username/blogs", listByUser);
 router.delete("/user/blog/:slug", requireSignin, authMiddleware, remove);
 router.put("/user/blog/:slug", requireSignin, authMiddleware, update);
 
