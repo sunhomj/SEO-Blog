@@ -1,0 +1,3 @@
+{"_id":{"$oid":"5e3f924ab24f7815a894122e"},"name":"Features","slug":"features","createdAt":{"$date":{"$numberLong":"1581224522180"}},"updatedAt":{"$date":{"$numberLong":"1581224522180"}},"__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e3f926fb24f7815a8941230"},"name":"language","slug":"language","createdAt":{"$date":{"$numberLong":"1581224559411"}},"updatedAt":{"$date":{"$numberLong":"1581224559411"}},"__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e3f9308b24f7815a894123b"},"name":"syntactic sugar","slug":"syntactic-sugar","createdAt":{"$date":{"$numberLong":"1581224712581"}},"updatedAt":{"$date":{"$numberLong":"1581224712581"}},"__v":{"$numberInt":"0"}}
