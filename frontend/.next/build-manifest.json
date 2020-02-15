@@ -25,7 +25,7 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/user/update": [
+    "/user/crud/blogs": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

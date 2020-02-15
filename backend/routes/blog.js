@@ -1,6 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const { requireSignin, authMiddleware, adminMiddleware } = require("../controllers/auth");
+const {
+  requireSignin,
+  authMiddleware,
+  canUpdateDeleteBlog,
+  adminMiddleware
+} = require("../controllers/auth");
 const {
   create,
   list,
@@ -28,7 +33,7 @@ router.get("/blogs/search", listSearch);
 
 router.post("/user/blog", requireSignin, authMiddleware, create);
 router.get("/:username/blogs", listByUser);
-router.delete("/user/blog/:slug", requireSignin, authMiddleware, remove);
-router.put("/user/blog/:slug", requireSignin, authMiddleware, update);
+router.delete("/user/blog/:slug", requireSignin, authMiddleware, canUpdateDeleteBlog, remove);
+router.put("/user/blog/:slug", requireSignin, authMiddleware, canUpdateDeleteBlog, update);
 
 module.exports = router;

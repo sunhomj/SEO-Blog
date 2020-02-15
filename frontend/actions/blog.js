@@ -74,8 +74,15 @@ export const listRelated = blog => {
     });
 };
 
-export const list = () => {
-  return fetch(`${API}/blogs`, {
+export const list = username => {
+  let listBlogEndpoint;
+
+  if (username) {
+    listBlogEndpoint = `${API}/${username}/blogs`;
+  } else {
+    listBlogEndpoint = `${API}/blogs`;
+  }
+  return fetch(`${listBlogEndpoint}`, {
     method: "GET"
   })
     .then(response => {
