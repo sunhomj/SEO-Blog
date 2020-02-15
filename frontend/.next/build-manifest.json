@@ -17,11 +17,11 @@
       "static/runtime/polyfills.js",
       "static/runtime/polyfills.js.map"
     ],
-    "/blogs": [
+    "/blogs/[slug]": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/blogs/[slug]": [
+    "/user": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
