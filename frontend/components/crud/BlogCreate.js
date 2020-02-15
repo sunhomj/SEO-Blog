@@ -16,18 +16,19 @@ const BlogCreate = ({ router }) => {
     if (typeof window === "undefined") {
       return false;
     }
+
     if (localStorage.getItem("blog")) {
-      // convert data to javascript
       return JSON.parse(localStorage.getItem("blog"));
     } else {
       return false;
     }
   };
+
   const [categories, setCategories] = useState([]);
   const [tags, setTags] = useState([]);
 
-  const [checked, setChecked] = useState([]);
-  const [checkedTag, setCheckedTag] = useState([]);
+  const [checked, setChecked] = useState([]); // categories
+  const [checkedTag, setCheckedTag] = useState([]); // tags
 
   const [body, setBody] = useState(blogFromLS());
   const [values, setValues] = useState({
@@ -41,12 +42,9 @@ const BlogCreate = ({ router }) => {
 
   const { error, sizeError, success, formData, title, hidePublishButton } = values;
   const token = getCookie("token");
-  // const existingBody = window.localStorage.getItem("blog");
-  // console.log(existingBody);
 
   useEffect(() => {
     setValues({ ...values, formData: new FormData() });
-    setBody({ ...body });
     initCategories();
     initTags();
   }, [router]);
@@ -71,10 +69,9 @@ const BlogCreate = ({ router }) => {
     });
   };
 
-  // console.log(router);
   const publishBlog = e => {
     e.preventDefault();
-
+    // console.log('ready to publishBlog');
     createBlog(formData, token).then(data => {
       if (data.error) {
         setValues({ ...values, error: data.error });
@@ -83,19 +80,16 @@ const BlogCreate = ({ router }) => {
           ...values,
           title: "",
           error: "",
-          success: `A new blog title "${data.title}" is created`
+          success: `A new blog titled "${data.title}" is created`
         });
         setBody("");
         setCategories([]);
         setTags([]);
-        initCategories();
-        initTags();
       }
     });
-    console.log("ready to publishBlog");
   };
-  // photo file handler
-  const titlePhotoHandller = name => e => {
+
+  const handleChange = name => e => {
     // console.log(e.target.value);
     const value = name === "photo" ? e.target.files[0] : e.target.value;
     formData.set(name, value);
@@ -111,31 +105,36 @@ const BlogCreate = ({ router }) => {
     }
   };
 
-  const categoryToggleHandller = id => () => {
+  const handleToggle = c => () => {
     setValues({ ...values, error: "" });
-    const clickedCategories = [...checked];
-    const indexOfClickedCategory = checked.indexOf(id);
-    if (indexOfClickedCategory === -1) {
-      clickedCategories.push(id);
+    // return the first index or -1
+    const clickedCategory = checked.indexOf(c);
+    const all = [...checked];
+
+    if (clickedCategory === -1) {
+      all.push(c);
     } else {
-      clickedCategories.splice(indexOfClickedCategory, 1);
+      all.splice(clickedCategory, 1);
     }
-    setChecked(clickedCategories);
-    formData.set("categories", clickedCategories);
+    console.log(all);
+    setChecked(all);
+    formData.set("categories", all);
   };
 
-  const tagToggleHandller = id => () => {
+  const handleTagsToggle = t => () => {
     setValues({ ...values, error: "" });
-    const clickedTags = [...checkedTag];
-    const indexOfClickedTag = checkedTag.indexOf(id);
-    if (indexOfClickedTag === -1) {
-      clickedTags.push(id);
+    // return the first index or -1
+    const clickedTag = checked.indexOf(t);
+    const all = [...checkedTag];
+
+    if (clickedTag === -1) {
+      all.push(t);
     } else {
-      clickedTags.splice(indexOfClickedTag, 1);
+      all.splice(clickedTag, 1);
     }
-    setCheckedTag(clickedTags);
-    console.log(clickedTags);
-    formData.set("tags", clickedTags);
+    console.log(all);
+    setCheckedTag(all);
+    formData.set("tags", all);
   };
 
   const showCategories = () => {
@@ -143,7 +142,7 @@ const BlogCreate = ({ router }) => {
       categories &&
       categories.map((c, i) => (
         <li key={i} className="list-unstyled">
-          <input onChange={categoryToggleHandller(c._id)} type="checkbox" className="mr-2" />
+          <input onChange={handleToggle(c._id)} type="checkbox" className="mr-2" />
           <label className="form-check-label">{c.name}</label>
         </li>
       ))
@@ -155,7 +154,7 @@ const BlogCreate = ({ router }) => {
       tags &&
       tags.map((t, i) => (
         <li key={i} className="list-unstyled">
-          <input onChange={tagToggleHandller(t._id)} type="checkbox" className="mr-2" />
+          <input onChange={handleTagsToggle(t._id)} type="checkbox" className="mr-2" />
           <label className="form-check-label">{t.name}</label>
         </li>
       ))
@@ -167,6 +166,7 @@ const BlogCreate = ({ router }) => {
       {error}
     </div>
   );
+
   const showSuccess = () => (
     <div className="alert alert-success" style={{ display: success ? "" : "none" }}>
       {success}
@@ -178,8 +178,14 @@ const BlogCreate = ({ router }) => {
       <form onSubmit={publishBlog}>
         <div className="form-group">
           <label className="text-muted">Title</label>
-          <input type="text" className="form-control" onChange={titlePhotoHandller("title")} />
+          <input
+            type="text"
+            className="form-control"
+            value={title}
+            onChange={handleChange("title")}
+          />
         </div>
+
         <div className="form-group">
           <ReactQuill
             modules={QuillModules}
@@ -189,12 +195,16 @@ const BlogCreate = ({ router }) => {
             onChange={handleBody}
           />
         </div>
+
         <div>
-          <button className="btn btn-primary">Publish</button>
+          <button type="submit" className="btn btn-primary">
+            Publish
+          </button>
         </div>
       </form>
     );
   };
+
   return (
     <div className="container-fluid pb-5">
       <div className="row">
@@ -207,20 +217,23 @@ const BlogCreate = ({ router }) => {
         </div>
 
         <div className="col-md-4">
-          <div className="form-group pb-2">
-            <h5>Featured image</h5>
-            <hr />
+          <div>
+            <div className="form-group pb-2">
+              <h5>Featured image</h5>
+              <hr />
 
-            <label className="btn btn-outline-info">
-              Upload featured image
-              <input onChange={titlePhotoHandller("photo")} type="file" accept="image/*" hidden />
-            </label>
-            <small className="text-muted"> Max size:1 Mb</small>
+              <small className="text-muted">Max size: 1mb</small>
+              <br />
+              <label className="btn btn-outline-info">
+                Upload featured image
+                <input onChange={handleChange("photo")} type="file" accept="image/*" hidden />
+              </label>
+            </div>
           </div>
-
           <div>
             <h5>Categories</h5>
             <hr />
+
             <ul style={{ maxHeight: "200px", overflowY: "scroll" }}>{showCategories()}</ul>
           </div>
           <div>
