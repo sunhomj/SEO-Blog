@@ -18,7 +18,7 @@ import {
   DropdownItem,
   NavbarText
 } from "reactstrap";
-
+import Search from "./blog/Search";
 //loading progress bar magic
 
 const Header = props => {
@@ -27,7 +27,7 @@ const Header = props => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
+    <React.Fragment>
       <Navbar color="light" light expand="md">
         <Link href="/">
           <NavLink className={styles.mbutton}>{APP_NAME}</NavLink>
@@ -69,10 +69,16 @@ const Header = props => {
                 </Link>
               </NavItem>
             )}
+            <NavItem>
+              <Link href="/user/crud/create">
+                <NavLink className="btn btn-primary text-light">Write a Blog</NavLink>
+              </Link>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>
-    </div>
+      <Search />
+    </React.Fragment>
   );
 };
 

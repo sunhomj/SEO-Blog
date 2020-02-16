@@ -2,6 +2,8 @@ const User = require("../models/user");
 const shortId = require("shortid");
 const jwt = require("jsonwebtoken");
 const expressJwt = require("express-jwt");
+const { errorHandler } = require("../helpers/errorHandler");
+const Blog = require("../models/blog");
 
 exports.signup = (req, res) => {
   //   const { name, email, password } = req.body;
@@ -41,6 +43,7 @@ exports.signup = (req, res) => {
 exports.signin = (req, res) => {
   const { email, password } = req.body;
   // check if user exist
+  console.log(req.body);
   User.findOne({ email }).exec((err, user) => {
     if (err || !user) {
       return res.status(400).json({
@@ -73,7 +76,7 @@ exports.signout = (req, res) => {
 
 // check incoming token secret and compare to JWT_SECRET then return true or false
 exports.requireSignin = expressJwt({
-  secret: process.env.JWT_SECRET
+  secret: process.env.JWT_SECRET // req.user
 });
 
 // user middleware
@@ -107,6 +110,24 @@ exports.adminMiddleware = (req, res, next) => {
     }
 
     req.profile = user;
+    next();
+  });
+};
+
+exports.canUpdateDeleteBlog = (req, res, next) => {
+  const slug = req.params.slug.toLowerCase();
+  Blog.findOne({ slug }).exec((err, data) => {
+    if (err) {
+      return res.status(400).json({
+        error: errorHandler(err)
+      });
+    }
+    let authorizedUser = data.postedBy._id.toString() === req.profile._id.toString();
+    if (!authorizedUser) {
+      return res.status(400).json({
+        error: "You are not authorized"
+      });
+    }
     next();
   });
 };

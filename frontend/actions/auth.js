@@ -113,3 +113,15 @@ export const isAuth = () => {
     }
   }
 };
+
+export const updateUser = (user, next) => {
+  //check where we are now. client side is  process.browser
+  if (process.browser) {
+    if (localStorage.getItem("user")) {
+      let auth = JSON.parse(localStorage.getItem("user"));
+      auth = user;
+      localStorage.setItem("user", JSON.stringify(auth));
+      next();
+    }
+  }
+};

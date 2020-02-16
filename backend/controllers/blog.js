@@ -1,7 +1,7 @@
 const Blog = require("../models/blog");
 const Category = require("../models/category");
 const Tag = require("../models/tag");
-
+const User = require("../models/user");
 const formidable = require("formidable");
 const slugify = require("slugify");
 const stripHtml = require("string-strip-html");
@@ -270,4 +270,71 @@ exports.getphoto = (req, res) => {
       res.set("Content-Type", blog.photo.contentType);
       return res.send(blog.photo.data);
     });
+};
+
+exports.listRelated = (req, res) => {
+  // console.log(req.body.blog);
+  let limit = req.body.limit ? parseInt(req.body.limit) : 3;
+  const { _id, categories } = req.body.blog;
+
+  Blog.find({ _id: { $ne: _id }, categories: { $in: categories } })
+    .limit(limit)
+    .populate("postedBy", "_id name profile username")
+    .select("title slug excerpt postedBy createdAt updatedAt")
+    .exec((err, blogs) => {
+      if (err) {
+        return res.status(400).json({
+          error: "Blogs not found"
+        });
+      }
+      res.json(blogs);
+    });
+};
+
+exports.listSearch = (req, res) => {
+  // console.log("backend req.query ", req.query);
+  const { search } = req.query;
+  if (search) {
+    // $or either title or body match.  $regex  regular expression syntex in mongoose, $options: "i" case insensitive
+    Blog.find(
+      {
+        $or: [
+          { title: { $regex: search, $options: "i" } },
+          { body: { $regex: search, $options: "i" } }
+        ]
+      },
+      (err, blogs) => {
+        if (err) {
+          return res.status(400).json({
+            error: errorHandler(err)
+          });
+        }
+        res.json(blogs);
+      }
+    ).select("-photo -body");
+  }
+};
+
+exports.listByUser = (req, res) => {
+  User.findOne({ username: req.params.username }).exec((err, user) => {
+    if (err) {
+      return res.status(400).json({
+        error: errorHandler(err)
+      });
+    }
+    let userId = user._id;
+    Blog.find({ postedBy: userId })
+      .populate("categories", "_id name slug")
+      .populate("tags", "_id name slug")
+      .populate("postedBy", "_id name username")
+      .select("_id title slug postedBy createdAt updatedAt")
+      .exec((err, data) => {
+        if (err) {
+          return res.status(400).json({
+            error: errorHandler(err)
+          });
+        }
+        res.json(data);
+      });
+  });
 };

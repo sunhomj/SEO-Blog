@@ -15,7 +15,6 @@ class MyDocument extends Document {
             crossOrigin="anonymous"
           ></link>
           {/* Import CSS for nprogress */}
-          <link rel="stylesheet" type="text/css" href="/nprogress.css" />
         </Head>
 
         <body>

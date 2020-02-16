@@ -6,10 +6,10 @@ const Index = () => {
     <Layout>
       <h2>Index page</h2>
       <Link href="/signup">
-        <a>Signup</a>
+        <a>signup</a>
       </Link>
       <Link href="/signin">
-        <a>SignIn</a>
+        <a>signin</a>
       </Link>
     </Layout>
   );
