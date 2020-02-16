@@ -17,6 +17,10 @@
       "static/runtime/polyfills.js",
       "static/runtime/polyfills.js.map"
     ],
+    "/admin": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
     "/blogs/[slug]": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
