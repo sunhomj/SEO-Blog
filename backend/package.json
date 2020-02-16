@@ -4,6 +4,7 @@
     "description": "",
     "main": "server.js",
     "dependencies": {
+        "@sendgrid/mail": "^6.5.2",
         "body-parser": "^1.19.0",
         "cookie-parser": "^1.4.4",
         "cor": "0.0.0",
