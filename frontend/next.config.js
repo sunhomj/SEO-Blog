@@ -5,6 +5,7 @@ module.exports = {
     API_PRODUCTION: false,
     DOMAIN_DEVELOPMENT: "localhost:3000",
     DOMAIN_PRODUCTION: "https://seoblog.com",
-    FB_APP_ID: "554723705390158"
+    FB_APP_ID: "554723705390158",
+    DISQUS_SHORTNAME: "webdevblogs"
   }
 };
