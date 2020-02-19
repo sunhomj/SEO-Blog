@@ -28,7 +28,7 @@ exports.contactForm = (req, res) => {
 
 exports.contactBlogAuthroForm = (req, res) => {
   const { authorEmail, name, email, message } = req.body;
-
+  console.log(req.body);
   let mailList = [authorEmail, process.env.EMAIL_TO];
   const emailData = {
     to: mailList,
